@@ -117,7 +117,10 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
                     return false;
             }
 
-            public void onTakeItem(PlayerEntity player, ItemStack stack) {
+            public ItemStack onTakeItem(PlayerEntity player, ItemStack stack) {
+
+
+                return super.onTakeItem(player, stack);
             }
 
         });
@@ -243,7 +246,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
     @Override
     public void onContentChanged(Inventory inventory) {
         updateResultSlot();
-        //this.sendContentUpdates();
+        this.sendContentUpdates();
     }
 
     public void updateResultSlot() {
@@ -310,9 +313,9 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         }
     }
 
-    public int getBrewingTimeInResultSlot(){
+    public int getBrewingTimeInResultSlot() {
         Item beerItem = this.resultSlot.getStack().getItem();
-        if(beerItem!=Items.AIR) {
+        if (beerItem != Items.AIR) {
             Map<Item, Integer> brewingTimeMap = createBrewingTimeMap();
             return brewingTimeMap.get(beerItem);
         }
@@ -385,14 +388,14 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
             this.resultSlot.markDirty();
         }
         this.context.run((world, blockPos) -> {
-            this.dropInventory(player, this.input);
+            this.dropInventory(player, player.world, this.input);
             if (getBackResultList != null) {
                 if (getBackResultList.size() > 0) {
                     Inventory getBackInventory = new SimpleInventory(getBackResultList.size());
                     for (int i = 0; i < getBackResultList.size(); i++) {
                         getBackInventory.setStack(i, this.getBackResultList.get(i));
                     }
-                    this.dropInventory(player, getBackInventory);
+                    this.dropInventory(player, player.world, getBackInventory);
                 }
             }
         });

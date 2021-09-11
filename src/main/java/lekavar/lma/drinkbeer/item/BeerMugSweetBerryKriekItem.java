@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class BeerMugSweetBerryKriekItem extends BeerMugBlockItem{
+public class BeerMugSweetBerryKriekItem extends BeerMugBlockItem {
     public BeerMugSweetBerryKriekItem(Block block, Settings settings) {
         super(block,settings);
     }

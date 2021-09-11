@@ -9,18 +9,17 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Tickable;
 import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 
-public class BeerBarrelEntity extends BlockEntity implements ImplementedInventory, NamedScreenHandlerFactory{
+public class BeerBarrelEntity extends BlockEntity implements ImplementedInventory, NamedScreenHandlerFactory, Tickable {
     private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(6, ItemStack.EMPTY);
     private int remainingBrewTime;
     private int isMaterialCompleted;
@@ -71,13 +70,14 @@ public class BeerBarrelEntity extends BlockEntity implements ImplementedInventor
         }
     };
 
-    public static void tick(World world, BlockPos pos, BlockState state, BeerBarrelEntity beerBarrelEntity) {
+    @Override
+    public void tick() {
         if (!world.isClient)
-            beerBarrelEntity.remainingBrewTime = beerBarrelEntity.remainingBrewTime > 0 ? --beerBarrelEntity.remainingBrewTime : 0;
+            remainingBrewTime = remainingBrewTime > 0 ? --remainingBrewTime : 0;
     }
 
-    public BeerBarrelEntity(BlockPos pos,BlockState state) {
-        super(DrinkBeer.INSTANCE.BEER_BARREL_ENTITY,pos,state);
+    public BeerBarrelEntity() {
+        super(DrinkBeer.BEER_BARREL_ENTITY);
     }
 
     @Override
@@ -91,21 +91,20 @@ public class BeerBarrelEntity extends BlockEntity implements ImplementedInventor
     }
 
     @Override
-    public NbtCompound writeNbt(NbtCompound tag) {
-        super.writeNbt(tag);
-        Inventories.writeNbt(tag,inventory);
+    public CompoundTag toTag(CompoundTag tag) {
+        Inventories.toTag(tag, this.inventory);
         tag.putShort("RemainingBrewTime", (short)this.remainingBrewTime);
         tag.putShort("IsMaterialCompleted", (short)this.isMaterialCompleted);
         tag.putShort("BeerType", (short)this.beerType);
         tag.putShort("IsBrewing", (short)this.isBrewing);
 
-        return tag;
+        return super.toTag(tag);
     }
 
     @Override
-    public void readNbt(NbtCompound tag) {
-        super.readNbt(tag);
-        Inventories.readNbt(tag, inventory);
+    public void fromTag(BlockState state, CompoundTag tag) {
+        super.fromTag(state, tag);
+        Inventories.fromTag(tag, inventory);
         this.remainingBrewTime = tag.getShort("RemainingBrewTime");
         this.isMaterialCompleted = tag.getShort("IsMaterialCompleted");
         this.beerType = tag.getShort("BeerType");

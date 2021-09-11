@@ -1,9 +1,8 @@
 package lekavar.lma.drinkbeer.block;
 
-import lekavar.lma.drinkbeer.DrinkBeer;
 import lekavar.lma.drinkbeer.block.entity.BeerBarrelEntity;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.screen.NamedScreenHandlerFactory;
@@ -24,6 +23,7 @@ import org.jetbrains.annotations.Nullable;
 public class BeerBarrelBlock extends BlockWithEntity implements BlockEntityProvider {
     public final static VoxelShape SHAPE = createCuboidShape(1, 0, 1, 15, 15, 15);
 
+    //block
     public BeerBarrelBlock(AbstractBlock.Settings settings) {
         super(settings);
         setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
@@ -48,16 +48,16 @@ public class BeerBarrelBlock extends BlockWithEntity implements BlockEntityProvi
         return (BlockState) this.getDefaultState().with(HorizontalFacingBlock.FACING, ctx.getPlayerFacing());
     }
 
+    //entity
     @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new BeerBarrelEntity(pos, state);
+    public @Nullable BlockEntity createBlockEntity(net.minecraft.world.BlockView world) {
+        return new BeerBarrelEntity();
     }
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
             NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(world, pos);
-
             if (screenHandlerFactory != null) {
                 player.openHandledScreen(screenHandlerFactory);
             }
@@ -86,14 +86,5 @@ public class BeerBarrelBlock extends BlockWithEntity implements BlockEntityProvi
     @Override
     public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
         return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
-    }
-
-    @Nullable
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(world, type, DrinkBeer.BEER_BARREL_ENTITY);
-    }
-    @Nullable
-    protected static <T extends BlockEntity> BlockEntityTicker<T> checkType(World world, BlockEntityType<T> givenType, BlockEntityType<? extends BeerBarrelEntity> expectedType) {
-        return world.isClient ? null : checkType(givenType, expectedType, BeerBarrelEntity::tick);
     }
 }

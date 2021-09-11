@@ -4,12 +4,14 @@ import net.minecraft.block.Block;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class BeerMugHaarsIceyPaleLagerItem extends BeerMugBlockItem {
+public class BeerMugHaarsIceyPaleLagerItem extends BeerMugBlockItem{
     public BeerMugHaarsIceyPaleLagerItem(Block block, Settings settings) {
         super(block,settings);
     }

@@ -17,7 +17,7 @@ public class BeerMugBlockItem extends BlockItem {
 
         public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
             ItemStack itemStack = super.finishUsing(stack, world, user);
-            if(user instanceof PlayerEntity && ((PlayerEntity)user).isCreative()){
+            if(user instanceof PlayerEntity && ((PlayerEntity)user).abilities.creativeMode){
                 return itemStack;
             }
             else{
