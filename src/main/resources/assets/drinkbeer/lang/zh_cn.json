@@ -1,0 +1,19 @@
+{
+  "itemGroup.drinkbeer.beer": "啤酒",
+  "itemGroup.drinkbeer.general": "喝啤酒啦通用方块",
+
+  "block.drinkbeer.beer_mug": "矿工麦酒",
+  "block.drinkbeer.beer_mug_blaze_stout": "烈焰黑啤",
+  "block.drinkbeer.beer_mug_blaze_milk_stout": "烈焰牛奶黑啤",
+  "block.drinkbeer.beer_mug_apple_lambic": "苹果拉比克",
+  "block.drinkbeer.beer_mug_sweet_berry_kriek": "甜浆果克里克",
+  "block.drinkbeer.beer_mug_haars_icey_pale_lager": "哈尔的冰拉格",
+  "block.drinkbeer.empty_beer_mug": "空啤酒杯",
+  "block.drinkbeer.beer_barrel": "啤酒桶",
+
+  "item.drinkbeer.beer_mug.tooltip": "急迫 1:00",
+  "item.drinkbeer.beer_mug_blaze_stout.tooltip":"防火 1:30",
+  "item.drinkbeer.beer_mug_blaze_milk_stout.tooltip":"防火 2:00",
+  "item.drinkbeer.beer_mug_apple_lambic.tooltip":"生命恢复 0:15",
+  "item.drinkbeer.beer_mug_sweet_berry_kriek.tooltip":"生命恢复 0:20"
+}

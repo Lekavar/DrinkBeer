@@ -1,0 +1,49 @@
+{
+  "variants": {
+    "amount=1,facing=north": {
+      "model": "drinkbeer:block/beer_mug_haars_icey_pale_lager"
+    },
+    "amount=1,facing=east": {
+      "model": "drinkbeer:block/beer_mug_haars_icey_pale_lager",
+      "y": 90
+    },
+    "amount=1,facing=south": {
+      "model": "drinkbeer:block/beer_mug_haars_icey_pale_lager",
+      "y": 180
+    },
+    "amount=1,facing=west": {
+      "model": "drinkbeer:block/beer_mug_haars_icey_pale_lager",
+      "y": 270
+    },
+    "amount=2,facing=north": {
+      "model": "drinkbeer:block/beer_mug_haars_icey_pale_lager_double"
+    },
+    "amount=2,facing=east": {
+      "model": "drinkbeer:block/beer_mug_haars_icey_pale_lager_double",
+      "y": 90
+    },
+    "amount=2,facing=south": {
+      "model": "drinkbeer:block/beer_mug_haars_icey_pale_lager_double",
+      "y": 180
+    },
+    "amount=2,facing=west": {
+      "model": "drinkbeer:block/beer_mug_haars_icey_pale_lager_double",
+      "y": 270
+    },
+    "amount=3,facing=north": {
+      "model": "drinkbeer:block/beer_mug_haars_icey_pale_lager_triple"
+    },
+    "amount=3,facing=east": {
+      "model": "drinkbeer:block/beer_mug_haars_icey_pale_lager_triple",
+      "y": 90
+    },
+    "amount=3,facing=south": {
+      "model": "drinkbeer:block/beer_mug_haars_icey_pale_lager_triple",
+      "y": 180
+    },
+    "amount=3,facing=west": {
+      "model": "drinkbeer:block/beer_mug_haars_icey_pale_lager_triple",
+      "y": 270
+    }
+  }
+}

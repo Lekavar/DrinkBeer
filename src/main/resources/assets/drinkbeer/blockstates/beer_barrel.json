@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "drinkbeer:block/beer_barrel"
+    },
+    "facing=east": {
+      "model": "drinkbeer:block/beer_barrel",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "drinkbeer:block/beer_barrel",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "drinkbeer:block/beer_barrel",
+      "y": 270
+    }
+  }
+}

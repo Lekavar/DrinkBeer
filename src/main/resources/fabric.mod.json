@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "drinkbeer",
+  "version": "2.1",
+
+  "name": "Drink Beer",
+  "description": "Add placeable beer mug and drink it!",
+  "authors": [
+    "Lekavar"
+  ],
+  "contact": {
+  },
+
+  "license": "All Rights Reserved",
+  "icon": "assets/drinkbeer/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "lekavar.lma.drinkbeer.DrinkBeer"
+    ],
+    "client": [
+      "lekavar.lma.drinkbeer.client.DrinkBeerClient"
+    ]
+  },
+  "mixins": [
+    "modid.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.17.x",
+    "java": ">=16"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

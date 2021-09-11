@@ -1,0 +1,49 @@
+{
+  "variants": {
+    "amount=1,facing=north": {
+      "model": "drinkbeer:block/beer_mug"
+    },
+    "amount=1,facing=east": {
+      "model": "drinkbeer:block/beer_mug",
+      "y": 90
+    },
+    "amount=1,facing=south": {
+      "model": "drinkbeer:block/beer_mug",
+      "y": 180
+    },
+    "amount=1,facing=west": {
+      "model": "drinkbeer:block/beer_mug",
+      "y": 270
+    },
+    "amount=2,facing=north": {
+      "model": "drinkbeer:block/beer_mug_double"
+    },
+    "amount=2,facing=east": {
+      "model": "drinkbeer:block/beer_mug_double",
+      "y": 90
+    },
+    "amount=2,facing=south": {
+      "model": "drinkbeer:block/beer_mug_double",
+      "y": 180
+    },
+    "amount=2,facing=west": {
+      "model": "drinkbeer:block/beer_mug_double",
+      "y": 270
+    },
+    "amount=3,facing=north": {
+      "model": "drinkbeer:block/beer_mug_triple"
+    },
+    "amount=3,facing=east": {
+      "model": "drinkbeer:block/beer_mug_triple",
+      "y": 90
+    },
+    "amount=3,facing=south": {
+      "model": "drinkbeer:block/beer_mug_triple",
+      "y": 180
+    },
+    "amount=3,facing=west": {
+      "model": "drinkbeer:block/beer_mug_triple",
+      "y": 270
+    }
+  }
+}
