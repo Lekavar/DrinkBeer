@@ -9,7 +9,7 @@
   "block.drinkbeer.beer_mug_sweet_berry_kriek": "Sweet Berry Kriek",
   "block.drinkbeer.beer_mug_haars_icey_pale_lager": "Haar's Icey Pale Lager",
   "block.drinkbeer.empty_beer_mug": "Empty Beer Mug",
-  "block.drinkbeer.beer_barrel": "Beer Barrel",
+  "block.drinkbeer.beer_barrel": "Keg",
 
   "item.drinkbeer.beer_mug.tooltip": "Haste 1:00",
   "item.drinkbeer.beer_mug_blaze_stout.tooltip":"Fire Resistance 1:30",
