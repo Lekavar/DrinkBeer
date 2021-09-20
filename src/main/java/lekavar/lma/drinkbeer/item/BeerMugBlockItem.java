@@ -7,7 +7,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 
 public class BeerMugBlockItem extends BlockItem {
@@ -26,4 +27,9 @@ public class BeerMugBlockItem extends BlockItem {
                 return itemStack;
             }
         }
+
+    @Override
+    public SoundEvent getEatSound() {
+        return DrinkBeer.DRINKING_BEER_EVENT;
+    }
 }

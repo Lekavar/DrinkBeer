@@ -15,6 +15,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -52,6 +53,10 @@ public class DrinkBeer implements ModInitializer {
         BEER_BARREL_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(BEER_BARREL_ID, BeerBarrelScreenHandler::new);
     }
 
+    //sounds
+    public static final Identifier DRINKING_BEER = new Identifier("drinkbeer:drinking_beer");
+    public static SoundEvent DRINKING_BEER_EVENT = new SoundEvent(DRINKING_BEER);
+
     @Override
     public void onInitialize() {
         //beer
@@ -75,5 +80,8 @@ public class DrinkBeer implements ModInitializer {
         BEER_BARREL_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "drinkbeer:beer_barrel_entity", BlockEntityType.Builder.create(BeerBarrelEntity::new, BEER_BARREL).build(null));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_barrel"), BEER_BARREL);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_barrel"), new BlockItem(BEER_BARREL, new Item.Settings().group(DRINK_BEER_GENERAL)));
+
+        //sounds
+        Registry.register(Registry.SOUND_EVENT, DrinkBeer.DRINKING_BEER, DRINKING_BEER_EVENT);
     }
 }
