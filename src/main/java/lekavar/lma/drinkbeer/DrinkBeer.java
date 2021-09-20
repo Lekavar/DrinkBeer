@@ -57,6 +57,8 @@ public class DrinkBeer implements ModInitializer {
     //sounds
     public static final Identifier DRINKING_BEER = new Identifier("drinkbeer:drinking_beer");
     public static SoundEvent DRINKING_BEER_EVENT = new SoundEvent(DRINKING_BEER);
+    public static final Identifier POURING = new Identifier("drinkbeer:pouring");
+    public static SoundEvent POURING_EVENT = new SoundEvent(POURING);
 
     @Override
     public void onInitialize() {
@@ -84,5 +86,6 @@ public class DrinkBeer implements ModInitializer {
 
         //sounds
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.DRINKING_BEER, DRINKING_BEER_EVENT);
+        Registry.register(Registry.SOUND_EVENT, DrinkBeer.POURING, POURING_EVENT);
     }
 }

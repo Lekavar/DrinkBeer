@@ -16,6 +16,9 @@ import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 
 import java.util.*;
 
@@ -117,6 +120,10 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
             }
 
             public void onTakeItem(PlayerEntity player, ItemStack stack) {
+                if (!player.world.isClient) {
+                    Vec3d playerPos = player.getPos();
+                    player.world.playSound(null, new BlockPos(playerPos.getX(),playerPos.getY(),playerPos.getZ()), DrinkBeer.POURING_EVENT, SoundCategory.BLOCKS, 1f, 1f);
+                }
                 resetBeerBarrel();
             }
 

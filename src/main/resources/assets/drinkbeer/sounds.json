@@ -3,5 +3,10 @@
     "sounds": [
       "drinkbeer:drinking_beer"
     ]
+  },
+  "pouring": {
+    "sounds": [
+	  "drinkbeer:pouring"
+    ]
   }
 }
