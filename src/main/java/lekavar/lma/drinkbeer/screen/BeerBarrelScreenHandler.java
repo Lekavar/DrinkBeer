@@ -111,15 +111,13 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
 
             public boolean canTakeItems(PlayerEntity playerEntity) {
                 if (isBrewing() && !isBrewingTimeRemain()) {
-                    resetBeerBarrel();
                     return true;
                 } else
                     return false;
             }
 
             public ItemStack onTakeItem(PlayerEntity player, ItemStack stack) {
-
-
+                resetBeerBarrel();
                 return super.onTakeItem(player, stack);
             }
 
