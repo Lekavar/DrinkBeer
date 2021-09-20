@@ -9,6 +9,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
@@ -79,11 +81,17 @@ public class BeerMugBlock extends HorizontalFacingBlock {
                     if (!isCreative) {
                         player.getStackInHand(hand).setCount(mugInHandCount - 1);
                     }
+                    if (!world.isClient) {
+                        world.playSound(null, pos, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS, 1f, 1f);
+                    }
                     return ActionResult.SUCCESS;
                 case 2:
                     world.setBlockState(pos, state.with(AMOUNT, 3));
                     if (!isCreative) {
                         player.getStackInHand(hand).setCount(mugInHandCount - 1);
+                    }
+                    if (!world.isClient) {
+                        world.playSound(null, pos, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS, 1f, 1f);
                     }
                     return ActionResult.SUCCESS;
                 default:
