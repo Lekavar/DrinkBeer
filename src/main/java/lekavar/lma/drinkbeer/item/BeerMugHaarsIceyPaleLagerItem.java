@@ -18,6 +18,6 @@ public class BeerMugHaarsIceyPaleLagerItem extends BeerMugBlockItem{
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        //tooltip.add( new TranslatableText("item.drinkbeer.beer_mug_apple_lambic.tooltip").formatted(Formatting.BLUE) );
+        tooltip.add( new TranslatableText("item.drinkbeer.beer_mug_haars_icey_pale_lager.tooltip").formatted(Formatting.BLUE) );
     }
 }
