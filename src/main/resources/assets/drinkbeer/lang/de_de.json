@@ -1,0 +1,19 @@
+{
+  "itemGroup.drinkbeer.beer": "Bier",
+  "itemGroup.drinkbeer.general": "DrinkBeer Allgemeine Blöcke",
+
+  "block.drinkbeer.beer_mug": "Miner Pale Ale",
+  "block.drinkbeer.beer_mug_blaze_stout": "Lohen-Schrei",
+  "block.drinkbeer.beer_mug_blaze_milk_stout": "Lohen-Milch-Schrei",
+  "block.drinkbeer.beer_mug_apple_lambic": "Apfel-Lambic",
+  "block.drinkbeer.beer_mug_sweet_berry_kriek": "Süßer Kirsch-Kriek",
+  "block.drinkbeer.beer_mug_haars_icey_pale_lager": "Haar's Icey Pale Lager",
+  "block.drinkbeer.empty_beer_mug": "Leerer Bier Krug",
+  "block.drinkbeer.beer_barrel": "Bier Fass",
+
+  "item.drinkbeer.beer_mug.tooltip": "Eile 1:00",
+  "item.drinkbeer.beer_mug_blaze_stout.tooltip":"Feuerresistenz 1:30",
+  "item.drinkbeer.beer_mug_blaze_milk_stout.tooltip":"Feuerresistenz 2:00",
+  "item.drinkbeer.beer_mug_apple_lambic.tooltip":"Regeneration 0:15",
+  "item.drinkbeer.beer_mug_sweet_berry_kriek.tooltip":"Regeneration 0:20"
+}
