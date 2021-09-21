@@ -6,6 +6,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -28,6 +29,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -99,6 +101,16 @@ public class BeerMugBlock extends HorizontalFacingBlock {
             }
         } else {
             return ActionResult.FAIL;
+        }
+    }
+
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        try {
+            Item item = world.getBlockState(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())).getBlock().asItem();
+            return !item.getGroup().equals(DrinkBeer.DRINK_BEER);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return true;
         }
     }
 }
