@@ -5,6 +5,7 @@ import lekavar.lma.drinkbeer.block.BeerMugBlock;
 import lekavar.lma.drinkbeer.block.entity.BeerBarrelEntity;
 import lekavar.lma.drinkbeer.screen.BeerBarrelScreenHandler;
 import lekavar.lma.drinkbeer.item.*;
+import lekavar.lma.drinkbeer.statuseffects.DrunkFrostWalkerStatusEffect;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -12,6 +13,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityT
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
@@ -60,6 +62,9 @@ public class DrinkBeer implements ModInitializer {
     public static final Identifier POURING = new Identifier("drinkbeer:pouring");
     public static SoundEvent POURING_EVENT = new SoundEvent(POURING);
 
+    //statusEffects
+    public static final StatusEffect DRUNK_FROST_WALKER = new DrunkFrostWalkerStatusEffect();
+
     @Override
     public void onInitialize() {
         //beer
@@ -74,7 +79,7 @@ public class DrinkBeer implements ModInitializer {
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug_sweet_berry_kriek"), BEER_MUG_SWEET_BERRY_KRIEK);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_sweet_berry_kriek"), new BeerMugSweetBerryKriekItem(BEER_MUG_SWEET_BERRY_KRIEK, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(4).statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION,400),1).alwaysEdible().build()).maxCount(16)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug_haars_icey_pale_lager"), BEER_MUG_HAARS_ICEY_PALE_LAGER);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_haars_icey_pale_lager"), new BeerMugHaarsIceyPaleLagerItem(BEER_MUG_HAARS_ICEY_PALE_LAGER, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(4).alwaysEdible().build()).maxCount(16)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_haars_icey_pale_lager"), new BeerMugHaarsIceyPaleLagerItem(BEER_MUG_HAARS_ICEY_PALE_LAGER, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(4).statusEffect(new StatusEffectInstance(DrinkBeer.DRUNK_FROST_WALKER,1200),1).alwaysEdible().build()).maxCount(16)));
 
         //general
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "empty_beer_mug"), EMPTY_BEER_MUG);
@@ -87,5 +92,8 @@ public class DrinkBeer implements ModInitializer {
         //sounds
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.DRINKING_BEER, DRINKING_BEER_EVENT);
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.POURING, POURING_EVENT);
+
+        //statusEffects
+        Registry.register(Registry.STATUS_EFFECT, new Identifier("drinkbeer", "drunk_frost_walker"), DRUNK_FROST_WALKER);
     }
 }

@@ -317,9 +317,9 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         }
     }
 
-    public int getBrewingTimeInResultSlot(){
+    public int getBrewingTimeInResultSlot() {
         Item beerItem = this.resultSlot.getStack().getItem();
-        if(beerItem!=Items.AIR) {
+        if (beerItem != Items.AIR) {
             Map<Item, Integer> brewingTimeMap = createBrewingTimeMap();
             return brewingTimeMap.get(beerItem);
         }
@@ -335,6 +335,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         map.put(Items.SUGAR, "sugar");
         map.put(Items.APPLE, "apple");
         map.put(Items.SWEET_BERRIES, "sweet_berrires");
+        map.put(Items.BLUE_ICE, "blue_ice");
         return map;
     }
 
@@ -345,6 +346,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         map.put(DrinkBeer.BEER_MUG_BLAZE_MILK_STOUT.asItem(), 18000);
         map.put(DrinkBeer.BEER_MUG_APPLE_LAMBIC.asItem(), 24000);
         map.put(DrinkBeer.BEER_MUG_SWEET_BERRY_KRIEK.asItem(), 24000);
+        map.put(DrinkBeer.BEER_MUG_HAARS_ICEY_PALE_LAGER.asItem(), 24000);
         return map;
     }
 
@@ -355,6 +357,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         map.put(3, DrinkBeer.BEER_MUG_BLAZE_MILK_STOUT.asItem());
         map.put(4, DrinkBeer.BEER_MUG_APPLE_LAMBIC.asItem());
         map.put(5, DrinkBeer.BEER_MUG_SWEET_BERRY_KRIEK.asItem());
+        map.put(6, DrinkBeer.BEER_MUG_HAARS_ICEY_PALE_LAGER.asItem());
         return map;
     }
 
@@ -379,6 +382,11 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
                     }
                 }
 
+            }
+        } else if (map.containsKey(Items.WHEAT)) {
+            if (map.get(Items.WHEAT) == 3) {
+                if (map.containsKey(Items.BLUE_ICE))
+                    return new ItemStack(DrinkBeer.BEER_MUG_HAARS_ICEY_PALE_LAGER.asItem(), 4);
             }
         }
         //adding new recipes ends here
