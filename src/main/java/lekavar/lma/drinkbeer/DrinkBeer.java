@@ -43,6 +43,7 @@ public class DrinkBeer implements ModInitializer {
     public static final Block BEER_MUG_APPLE_LAMBIC = new BeerMugBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block BEER_MUG_SWEET_BERRY_KRIEK = new BeerMugBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block BEER_MUG_HAARS_ICEY_PALE_LAGER = new BeerMugBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block BEER_MUG_PUMPKIN_KVASS = new BeerMugBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
 
     //general
     public static final Block EMPTY_BEER_MUG = new BeerMugBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
@@ -80,6 +81,8 @@ public class DrinkBeer implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_sweet_berry_kriek"), new BeerMugSweetBerryKriekItem(BEER_MUG_SWEET_BERRY_KRIEK, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(4).statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION,400),1).alwaysEdible().build()).maxCount(16)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug_haars_icey_pale_lager"), BEER_MUG_HAARS_ICEY_PALE_LAGER);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_haars_icey_pale_lager"), new BeerMugHaarsIceyPaleLagerItem(BEER_MUG_HAARS_ICEY_PALE_LAGER, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(4).statusEffect(new StatusEffectInstance(DrinkBeer.DRUNK_FROST_WALKER,1200),1).alwaysEdible().build()).maxCount(16)));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug_pumpkin_kvass"), BEER_MUG_PUMPKIN_KVASS);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_pumpkin_kvass"), new BeerMugBlockItem(BEER_MUG_PUMPKIN_KVASS, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(9).alwaysEdible().build()).maxCount(16)));
 
         //general
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "empty_beer_mug"), EMPTY_BEER_MUG);

@@ -336,6 +336,8 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         map.put(Items.APPLE, "apple");
         map.put(Items.SWEET_BERRIES, "sweet_berrires");
         map.put(Items.BLUE_ICE, "blue_ice");
+        map.put(Items.BREAD, "bread");
+        map.put(Items.PUMPKIN, "pumpkin");
         return map;
     }
 
@@ -347,6 +349,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         map.put(DrinkBeer.BEER_MUG_APPLE_LAMBIC.asItem(), 24000);
         map.put(DrinkBeer.BEER_MUG_SWEET_BERRY_KRIEK.asItem(), 24000);
         map.put(DrinkBeer.BEER_MUG_HAARS_ICEY_PALE_LAGER.asItem(), 24000);
+        map.put(DrinkBeer.BEER_MUG_PUMPKIN_KVASS.asItem(), 12000);
         return map;
     }
 
@@ -358,6 +361,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         map.put(4, DrinkBeer.BEER_MUG_APPLE_LAMBIC.asItem());
         map.put(5, DrinkBeer.BEER_MUG_SWEET_BERRY_KRIEK.asItem());
         map.put(6, DrinkBeer.BEER_MUG_HAARS_ICEY_PALE_LAGER.asItem());
+        map.put(7, DrinkBeer.BEER_MUG_PUMPKIN_KVASS.asItem());
         return map;
     }
 
@@ -381,7 +385,12 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
                         }
                     }
                 }
-
+                else if(map.containsKey(Items.BREAD)){
+                    if (map.get(Items.BREAD) == 2) {
+                        if (map.containsKey(Items.PUMPKIN))
+                            return new ItemStack(DrinkBeer.BEER_MUG_PUMPKIN_KVASS.asItem(), 4);
+                    }
+                }
             }
         } else if (map.containsKey(Items.WHEAT)) {
             if (map.get(Items.WHEAT) == 3) {
