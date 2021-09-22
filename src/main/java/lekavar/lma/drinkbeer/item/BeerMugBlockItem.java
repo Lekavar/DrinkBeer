@@ -42,7 +42,9 @@ public class BeerMugBlockItem extends BlockItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         String name = this.asItem().toString();
-        tooltip.add(new TranslatableText("item.drinkbeer."+ name +".tooltip").formatted(Formatting.BLUE));
+        if(this.asItem()!= DrinkBeer.BEER_MUG_PUMPKIN_KVASS.asItem()) {
+            tooltip.add(new TranslatableText("item.drinkbeer." + name + ".tooltip").formatted(Formatting.BLUE));
+        }
         Text hunger = Text.method_30163(String.valueOf(asItem().getFoodComponent().getHunger()));
         tooltip.add( new TranslatableText("drinkbeer.restores_hunger").formatted(Formatting.BLUE).append(hunger));
     }
