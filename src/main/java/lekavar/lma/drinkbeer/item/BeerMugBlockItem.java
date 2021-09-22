@@ -2,6 +2,7 @@ package lekavar.lma.drinkbeer.item;
 
 import lekavar.lma.drinkbeer.DrinkBeer;
 import net.minecraft.block.Block;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
@@ -9,7 +10,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class BeerMugBlockItem extends BlockItem {
         public BeerMugBlockItem(Block block,Item.Settings settings) {
@@ -31,5 +38,13 @@ public class BeerMugBlockItem extends BlockItem {
     @Override
     public SoundEvent getEatSound() {
         return DrinkBeer.DRINKING_BEER_EVENT;
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        String name = this.asItem().toString();
+        tooltip.add(new TranslatableText("item.drinkbeer."+ name +".tooltip").formatted(Formatting.BLUE));
+        Text hunger = Text.of(String.valueOf(asItem().getFoodComponent().getHunger()));
+        tooltip.add( new TranslatableText("drinkbeer.restores_hunger").formatted(Formatting.BLUE).append(hunger));
     }
 }
