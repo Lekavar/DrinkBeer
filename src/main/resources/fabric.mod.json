@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "drinkbeer",
-  "version": "2.1",
+  "version": "2.2",
 
   "name": "Drink Beer",
   "description": "Add placeable beer mug and drink it!",
@@ -11,7 +11,7 @@
   "contact": {
   },
 
-  "license": "All Rights Reserved",
+  "license": "GNU AFFERO GENERAL PUBLIC LICENSE version3.0",
   "icon": "assets/drinkbeer/icon.png",
 
   "environment": "*",
