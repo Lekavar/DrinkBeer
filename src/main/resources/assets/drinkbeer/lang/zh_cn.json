@@ -18,5 +18,6 @@
   "item.drinkbeer.beer_mug_sweet_berry_kriek.tooltip":"生命恢复 0:20",
   "item.drinkbeer.beer_mug_haars_icey_pale_lager.tooltip": "醉酒的冰霜行者 1:00",
 
+  "drinkbeer.restores_hunger": "饥饿值回复: ",
   "effect.drinkbeer.drunk_frost_walker": "醉酒的冰霜行者"
 }

@@ -18,5 +18,6 @@
   "item.drinkbeer.beer_mug_sweet_berry_kriek.tooltip":"Regeneration 0:20",
   "item.drinkbeer.beer_mug_haars_icey_pale_lager.tooltip": "Drunk Frost Walker 1:00",
 
+  "drinkbeer.restores_hunger": "Restores Hunger: ",
   "effect.drinkbeer.drunk_frost_walker": "Drunk Frost Walker"
 }
