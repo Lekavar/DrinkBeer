@@ -23,9 +23,6 @@
       "lekavar.lma.drinkbeer.client.DrinkBeerClient"
     ]
   },
-  "mixins": [
-    "modid.mixins.json"
-  ],
 
   "depends": {
     "fabricloader": ">=0.10.3",
