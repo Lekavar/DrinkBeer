@@ -1,0 +1,25 @@
+{
+  "itemGroup.drinkbeer.beer": "DrinkBeer: Пиво",
+  "itemGroup.drinkbeer.general": "DrinkBeer: Общие блоки",
+
+  "block.drinkbeer.beer_mug": "Шахтерский пейл-эль",
+  "block.drinkbeer.beer_mug_blaze_stout": "Пламенный стаут",
+  "block.drinkbeer.beer_mug_blaze_milk_stout": "Пламенный молочный стаут",
+  "block.drinkbeer.beer_mug_apple_lambic": "Яблочный ламбик",
+  "block.drinkbeer.beer_mug_sweet_berry_kriek": "Сладкий ягодный крик",
+  "block.drinkbeer.beer_mug_haars_icey_pale_lager": "Ледяной светлый лагер",
+  "block.drinkbeer.beer_mug_pumpkin_kvass": "Тыквенный квас",
+
+  "block.drinkbeer.empty_beer_mug": "Пустая пивная кружка",
+  "block.drinkbeer.beer_barrel": "Бочонок",
+
+  "item.drinkbeer.beer_mug.tooltip": "Спешка 1:00",
+  "item.drinkbeer.beer_mug_blaze_stout.tooltip": "Огнестойкость 1:30",
+  "item.drinkbeer.beer_mug_blaze_milk_stout.tooltip": "Огнестойкость 2:00",
+  "item.drinkbeer.beer_mug_apple_lambic.tooltip": "Регенерация 0:15",
+  "item.drinkbeer.beer_mug_sweet_berry_kriek.tooltip": "Регенерация 0:20",
+  "item.drinkbeer.beer_mug_haars_icey_pale_lager.tooltip": "Пьяная морозная поступь 1:00",
+
+  "drinkbeer.restores_hunger": "Восстанавливает голод: ",
+  "effect.drinkbeer.drunk_frost_walker": "Пьяная морозная поступь"
+}
