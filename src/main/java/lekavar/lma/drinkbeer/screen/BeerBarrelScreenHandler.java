@@ -340,6 +340,10 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         map.put(Items.BLUE_ICE, "blue_ice");
         map.put(Items.BREAD, "bread");
         map.put(Items.PUMPKIN, "pumpkin");
+        map.put(Items.EGG, "egg");
+        map.put(Items.BEETROOT, "beetroot");
+        map.put(Items.MILK_BUCKET, "milk_bucket");
+        map.put(Items.SUGAR_CANE, "sugar_cane");
         return map;
     }
 
@@ -352,6 +356,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         map.put(DrinkBeer.BEER_MUG_SWEET_BERRY_KRIEK.asItem(), 24000);
         map.put(DrinkBeer.BEER_MUG_HAARS_ICEY_PALE_LAGER.asItem(), 24000);
         map.put(DrinkBeer.BEER_MUG_PUMPKIN_KVASS.asItem(), 12000);
+        map.put(DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem(), 12000);
         return map;
     }
 
@@ -364,6 +369,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         map.put(5, DrinkBeer.BEER_MUG_SWEET_BERRY_KRIEK.asItem());
         map.put(6, DrinkBeer.BEER_MUG_HAARS_ICEY_PALE_LAGER.asItem());
         map.put(7, DrinkBeer.BEER_MUG_PUMPKIN_KVASS.asItem());
+        map.put(8, DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem());
         return map;
     }
 
@@ -386,8 +392,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
                             return new ItemStack(DrinkBeer.BEER_MUG_BLAZE_MILK_STOUT.asItem(), 4);
                         }
                     }
-                }
-                else if(map.containsKey(Items.BREAD)){
+                } else if (map.containsKey(Items.BREAD)) {
                     if (map.get(Items.BREAD) == 2) {
                         if (map.containsKey(Items.PUMPKIN))
                             return new ItemStack(DrinkBeer.BEER_MUG_PUMPKIN_KVASS.asItem(), 4);
@@ -398,6 +403,14 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
             if (map.get(Items.WHEAT) == 3) {
                 if (map.containsKey(Items.BLUE_ICE))
                     return new ItemStack(DrinkBeer.BEER_MUG_HAARS_ICEY_PALE_LAGER.asItem(), 4);
+            }
+        } else if (map.containsKey(Items.MILK_BUCKET)) {
+            if(map.containsKey(Items.SUGAR_CANE)){
+                if(map.containsKey(Items.EGG)){
+                    if(map.containsKey(Items.BEETROOT)){
+                        return new ItemStack(DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem(), 4);
+                    }
+                }
             }
         }
         //adding new recipes ends here

@@ -1,0 +1,59 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "drinkbeer:beer_mug_frothy_pink_eggnog"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "drinkbeer:beer_mug_frothy_pink_eggnog",
+          "properties": {
+            "amount": "1"
+          }
+        }
+      ]
+    },
+    {
+      "rolls": 2,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "drinkbeer:beer_mug_frothy_pink_eggnog"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "drinkbeer:beer_mug_frothy_pink_eggnog",
+          "properties": {
+            "amount": "2"
+          }
+        }
+      ]
+    },
+    {
+      "rolls": 3,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "drinkbeer:beer_mug_frothy_pink_eggnog"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "drinkbeer:beer_mug_frothy_pink_eggnog",
+          "properties": {
+            "amount": "3"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "variants": {
+    "amount=1,facing=north": {
+      "model": "drinkbeer:block/beer_mug_frothy_pink_eggnog"
+    },
+    "amount=1,facing=east": {
+      "model": "drinkbeer:block/beer_mug_frothy_pink_eggnog",
+      "y": 90
+    },
+    "amount=1,facing=south": {
+      "model": "drinkbeer:block/beer_mug_frothy_pink_eggnog",
+      "y": 180
+    },
+    "amount=1,facing=west": {
+      "model": "drinkbeer:block/beer_mug_frothy_pink_eggnog",
+      "y": 270
+    },
+    "amount=2,facing=north": {
+      "model": "drinkbeer:block/beer_mug_frothy_pink_eggnog_double"
+    },
+    "amount=2,facing=east": {
+      "model": "drinkbeer:block/beer_mug_frothy_pink_eggnog_double",
+      "y": 90
+    },
+    "amount=2,facing=south": {
+      "model": "drinkbeer:block/beer_mug_frothy_pink_eggnog_double",
+      "y": 180
+    },
+    "amount=2,facing=west": {
+      "model": "drinkbeer:block/beer_mug_frothy_pink_eggnog_double",
+      "y": 270
+    },
+    "amount=3,facing=north": {
+      "model": "drinkbeer:block/beer_mug_frothy_pink_eggnog_triple"
+    },
+    "amount=3,facing=east": {
+      "model": "drinkbeer:block/beer_mug_frothy_pink_eggnog_triple",
+      "y": 90
+    },
+    "amount=3,facing=south": {
+      "model": "drinkbeer:block/beer_mug_frothy_pink_eggnog_triple",
+      "y": 180
+    },
+    "amount=3,facing=west": {
+      "model": "drinkbeer:block/beer_mug_frothy_pink_eggnog_triple",
+      "y": 270
+    }
+  }
+}
