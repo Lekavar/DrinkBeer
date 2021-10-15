@@ -331,7 +331,6 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
     public static Map<Item, String> createMaterialMap() {
         Map<Item, String> map = Maps.newLinkedHashMap();
         map.put(Items.WATER_BUCKET, "water_bucket");
-        map.put(Items.MILK_BUCKET, "milk_bucket");
         map.put(Items.BLAZE_POWDER, "blaze_powder");
         map.put(Items.WHEAT, "wheat");
         map.put(Items.SUGAR, "sugar");
