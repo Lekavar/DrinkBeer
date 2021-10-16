@@ -27,10 +27,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.GameMode;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
+import net.minecraft.world.*;
 
 import java.util.List;
 
@@ -106,11 +103,16 @@ public class BeerMugBlock extends HorizontalFacingBlock {
 
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         try {
-            Item item = world.getBlockState(new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ())).getBlock().asItem();
-            return !item.getGroup().equals(DrinkBeer.DRINK_BEER);
+            Item item = world.getBlockState(pos.offset(Direction.DOWN, 1)).getBlock().asItem();
+            return !item.getGroup().equals(DrinkBeer.DRINK_BEER)||!item.equals(Items.AIR);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return true;
         }
+    }
+
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState newState, WorldAccess world, BlockPos pos, BlockPos posFrom) {
+        Item item = world.getBlockState(pos.offset(Direction.DOWN, 1)).getBlock().asItem();
+        return canPlaceAt(state,world,pos) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, newState, world, pos, posFrom);
     }
 }
