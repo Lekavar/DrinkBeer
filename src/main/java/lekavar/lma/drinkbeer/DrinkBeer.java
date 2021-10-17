@@ -2,6 +2,7 @@ package lekavar.lma.drinkbeer;
 
 import lekavar.lma.drinkbeer.block.BeerBarrelBlock;
 import lekavar.lma.drinkbeer.block.BeerMugBlock;
+import lekavar.lma.drinkbeer.block.CallBellBlock;
 import lekavar.lma.drinkbeer.block.entity.BeerBarrelEntity;
 import lekavar.lma.drinkbeer.screen.BeerBarrelScreenHandler;
 import lekavar.lma.drinkbeer.item.*;
@@ -12,6 +13,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -50,12 +52,14 @@ public class DrinkBeer implements ModInitializer {
 
     public static BlockEntityType<BeerBarrelEntity> BEER_BARREL_ENTITY;
     public static final Block BEER_BARREL = new BeerBarrelBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
-
     public static final Identifier BEER_BARREL_ID = new Identifier("drinkbeer", "beer_barrel");
     public static final ScreenHandlerType<BeerBarrelScreenHandler> BEER_BARREL_SCREEN_HANDLER;
     static {
         BEER_BARREL_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(BEER_BARREL_ID, BeerBarrelScreenHandler::new);
     }
+
+    public static final Block IRON_CALL_BELL = new CallBellBlock(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
+    public static final Block GOLDEN_CALL_BELL = new CallBellBlock(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
 
     //sounds
     public static final Identifier DRINKING_BEER = new Identifier("drinkbeer:drinking_beer");
@@ -64,6 +68,10 @@ public class DrinkBeer implements ModInitializer {
     public static SoundEvent POURING_EVENT = new SoundEvent(POURING);
     public static final Identifier POURING_CHRISTMAS = new Identifier("drinkbeer:pouring_christmas");
     public static SoundEvent POURING_CHRISTMAS_EVENT = new SoundEvent(POURING_CHRISTMAS);
+    public static final Identifier IRON_CALL_BELL_TINKLE = new Identifier("drinkbeer:iron_call_bell_tinkle");
+    public static SoundEvent IRON_CALL_BELL_TINKLE_EVENT = new SoundEvent(IRON_CALL_BELL_TINKLE);
+    public static final Identifier GOLDEN_CALL_BELL_TINKLE = new Identifier("drinkbeer:golden_call_bell_tinkle");
+    public static SoundEvent GOLDEN_CALL_BELL_TINKLE_EVENT = new SoundEvent(GOLDEN_CALL_BELL_TINKLE);
 
     //status effects
     public static final StatusEffect DRUNK_FROST_WALKER = new DrunkFrostWalkerStatusEffect();
@@ -96,10 +104,17 @@ public class DrinkBeer implements ModInitializer {
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_barrel"), BEER_BARREL);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_barrel"), new BlockItem(BEER_BARREL, new Item.Settings().group(DRINK_BEER_GENERAL)));
 
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "iron_call_bell"), IRON_CALL_BELL);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "iron_call_bell"), new BlockItem(IRON_CALL_BELL, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(64)));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "golden_call_bell"), GOLDEN_CALL_BELL);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "golden_call_bell"), new BlockItem(GOLDEN_CALL_BELL, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(64)));
+
         //sounds
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.DRINKING_BEER, DRINKING_BEER_EVENT);
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.POURING, POURING_EVENT);
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.POURING_CHRISTMAS, POURING_CHRISTMAS_EVENT);
+        Registry.register(Registry.SOUND_EVENT, DrinkBeer.IRON_CALL_BELL_TINKLE, IRON_CALL_BELL_TINKLE_EVENT);
+        Registry.register(Registry.SOUND_EVENT, DrinkBeer.GOLDEN_CALL_BELL_TINKLE, GOLDEN_CALL_BELL_TINKLE_EVENT);
 
         //status effects
         Registry.register(Registry.STATUS_EFFECT, new Identifier("drinkbeer", "drunk_frost_walker"), DRUNK_FROST_WALKER);
