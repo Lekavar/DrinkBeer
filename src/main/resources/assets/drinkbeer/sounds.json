@@ -8,5 +8,10 @@
     "sounds": [
 	  "drinkbeer:pouring"
     ]
+  },
+  "pouring_christmas":{
+  "sounds": [
+	  "drinkbeer:pouring_christmas"
+    ]
   }
 }
