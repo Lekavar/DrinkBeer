@@ -102,17 +102,16 @@ public class BeerMugBlock extends HorizontalFacingBlock {
     }
 
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        Item item = world.getBlockState(pos.offset(Direction.DOWN, 1)).getBlock().asItem();
         try {
-            Item item = world.getBlockState(pos.offset(Direction.DOWN, 1)).getBlock().asItem();
-            return !item.getGroup().equals(DrinkBeer.DRINK_BEER)||!item.equals(Items.AIR);
+            return !item.getGroup().equals(DrinkBeer.DRINK_BEER);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return true;
+            //System.out.println(e.getMessage());
+            return !item.equals(Items.AIR);
         }
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState newState, WorldAccess world, BlockPos pos, BlockPos posFrom) {
-        Item item = world.getBlockState(pos.offset(Direction.DOWN, 1)).getBlock().asItem();
-        return canPlaceAt(state,world,pos) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, newState, world, pos, posFrom);
+        return canPlaceAt(state, world, pos) ? super.getStateForNeighborUpdate(state, direction, newState, world, pos, posFrom) : Blocks.AIR.getDefaultState();
     }
 }
