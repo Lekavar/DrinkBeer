@@ -13,6 +13,8 @@
 
   "block.drinkbeer.empty_beer_mug": "空啤酒杯",
   "block.drinkbeer.beer_barrel": "啤酒桶",
+  "block.drinkbeer.iron_call_bell": "铁唤餐铃",
+  "block.drinkbeer.golden_call_bell": "金唤餐铃",
 
   "item.drinkbeer.beer_mug.tooltip": "急迫 1:00",
   "item.drinkbeer.beer_mug_blaze_stout.tooltip":"防火 1:30",

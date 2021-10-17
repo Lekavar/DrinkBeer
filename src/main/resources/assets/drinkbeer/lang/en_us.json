@@ -13,6 +13,8 @@
 
   "block.drinkbeer.empty_beer_mug": "Empty Beer Mug",
   "block.drinkbeer.beer_barrel": "Keg",
+  "block.drinkbeer.iron_call_bell": "Iron Call Bell",
+  "block.drinkbeer.golden_call_bell": "Golden Call Bell",
 
   "item.drinkbeer.beer_mug.tooltip": "Haste 1:00",
   "item.drinkbeer.beer_mug_blaze_stout.tooltip":"Fire Resistance 1:30",
