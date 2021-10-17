@@ -121,7 +121,10 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
             }
 
             public void onTakeItem(PlayerEntity player, ItemStack stack) {
-                if (!player.world.isClient) {
+                if (stack.getItem().equals(DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem())) {
+                    player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_CHRISTMAS_EVENT, SoundCategory.BLOCKS, 0.6f, 1f);
+                    player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_EVENT, SoundCategory.BLOCKS, 1f, 1f);
+                } else {
                     player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_EVENT, SoundCategory.BLOCKS, 1f, 1f);
                 }
                 resetBeerBarrel();

@@ -63,8 +63,10 @@ public class DrinkBeer implements ModInitializer {
     public static SoundEvent DRINKING_BEER_EVENT = new SoundEvent(DRINKING_BEER);
     public static final Identifier POURING = new Identifier("drinkbeer:pouring");
     public static SoundEvent POURING_EVENT = new SoundEvent(POURING);
+    public static final Identifier POURING_CHRISTMAS = new Identifier("drinkbeer:pouring_christmas");
+    public static SoundEvent POURING_CHRISTMAS_EVENT = new SoundEvent(POURING_CHRISTMAS);
 
-    //statusEffects
+    //status effects
     public static final StatusEffect DRUNK_FROST_WALKER = new DrunkFrostWalkerStatusEffect();
 
     @Override
@@ -98,8 +100,9 @@ public class DrinkBeer implements ModInitializer {
         //sounds
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.DRINKING_BEER, DRINKING_BEER_EVENT);
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.POURING, POURING_EVENT);
+        Registry.register(Registry.SOUND_EVENT, DrinkBeer.POURING_CHRISTMAS, POURING_CHRISTMAS_EVENT);
 
-        //statusEffects
+        //status effects
         Registry.register(Registry.STATUS_EFFECT, new Identifier("drinkbeer", "drunk_frost_walker"), DRUNK_FROST_WALKER);
     }
 }
