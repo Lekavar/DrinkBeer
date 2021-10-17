@@ -4,6 +4,7 @@ import lekavar.lma.drinkbeer.DrinkBeer;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.server.command.GiveCommand;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
@@ -31,6 +33,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 
+import javax.swing.plaf.basic.BasicComboBoxUI;
 import java.util.List;
 
 public class BeerMugBlock extends HorizontalFacingBlock {
@@ -98,6 +101,29 @@ public class BeerMugBlock extends HorizontalFacingBlock {
                 default:
                     return ActionResult.FAIL;
             }
+        } else if (itemStack.isEmpty()) {
+            if (!world.isClient()){
+                ItemStack takeBackBeer = new ItemStack(state.getBlock().asItem());
+                player.giveItemStack(takeBackBeer);
+            }
+            int amount = state.get(AMOUNT);
+            switch (amount) {
+                case 3:
+                case 2:
+                    world.setBlockState(pos, state.with(AMOUNT, amount - 1));
+                    if (!world.isClient()) {
+                        world.playSound(null, pos, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.AMBIENT, 0.5f, 0.5f);
+                    }
+                    return ActionResult.SUCCESS;
+                case 1:
+                    world.setBlockState(pos, Blocks.AIR.getDefaultState(), 0);
+                    if (!world.isClient()) {
+                        world.playSound(null, pos, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.AMBIENT, 0.5f, 0.5f);
+                    }
+                    return ActionResult.SUCCESS;
+                default:
+                    return ActionResult.FAIL;
+            }
         } else {
             return ActionResult.FAIL;
         }
@@ -115,5 +141,10 @@ public class BeerMugBlock extends HorizontalFacingBlock {
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState newState, WorldAccess world, BlockPos pos, BlockPos posFrom) {
         return canPlaceAt(state, world, pos) ? super.getStateForNeighborUpdate(state, direction, newState, world, pos, posFrom) : Blocks.AIR.getDefaultState();
+    }
+
+    @Override
+    public PistonBehavior getPistonBehavior(BlockState state) {
+        return PistonBehavior.DESTROY;
     }
 }
