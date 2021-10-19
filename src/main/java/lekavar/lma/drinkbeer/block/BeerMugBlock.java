@@ -45,7 +45,7 @@ public class BeerMugBlock extends HorizontalFacingBlock {
     public static final IntProperty AMOUNT = IntProperty.of("amount", 1, 3);
 
     public BeerMugBlock(AbstractBlock.Settings settings) {
-        super(settings);
+        super(settings.noCollision());
         setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(AMOUNT, 1));
     }
 
