@@ -2,6 +2,7 @@ package lekavar.lma.drinkbeer;
 
 import lekavar.lma.drinkbeer.block.BeerBarrelBlock;
 import lekavar.lma.drinkbeer.block.BeerMugBlock;
+import lekavar.lma.drinkbeer.block.BeerRecipeBoardBlock;
 import lekavar.lma.drinkbeer.block.CallBellBlock;
 import lekavar.lma.drinkbeer.block.entity.BeerBarrelEntity;
 import lekavar.lma.drinkbeer.screen.BeerBarrelScreenHandler;
@@ -61,6 +62,9 @@ public class DrinkBeer implements ModInitializer {
     public static final Block IRON_CALL_BELL = new CallBellBlock(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
     public static final Block GOLDEN_CALL_BELL = new CallBellBlock(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
 
+    public static final Block RECIPE_BOARD_BEER_MUG = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block RECIPE_BOARD_BEER_MUG_BLAZE_STOUT = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+
     //sounds
     public static final Identifier DRINKING_BEER = new Identifier("drinkbeer:drinking_beer");
     public static SoundEvent DRINKING_BEER_EVENT = new SoundEvent(DRINKING_BEER);
@@ -108,6 +112,11 @@ public class DrinkBeer implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "iron_call_bell"), new BlockItem(IRON_CALL_BELL, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(64)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "golden_call_bell"), GOLDEN_CALL_BELL);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "golden_call_bell"), new BlockItem(GOLDEN_CALL_BELL, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(64)));
+
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug"), RECIPE_BOARD_BEER_MUG);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug"), new BlockItem(RECIPE_BOARD_BEER_MUG, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_blaze_stout"), RECIPE_BOARD_BEER_MUG_BLAZE_STOUT);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_blaze_stout"), new BlockItem(RECIPE_BOARD_BEER_MUG_BLAZE_STOUT, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
 
         //sounds
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.DRINKING_BEER, DRINKING_BEER_EVENT);
