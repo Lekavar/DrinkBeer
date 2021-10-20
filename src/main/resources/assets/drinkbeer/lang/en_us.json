@@ -19,6 +19,8 @@
   "block.drinkbeer.recipe_board": "Miner Pale Ale Recipe Board",
   "block.drinkbeer.recipe_board_beer_mug_blaze_stout": "Blaze Stout Recipe Board",
   "block.drinkbeer.recipe_board_beer_mug_blaze_milk_stout": "Blaze Milk Stout Recipe Board",
+  "block.drinkbeer.recipe_board_beer_mug_apple_lambic": "Apple Lambic Recipe Board",
+  "block.drinkbeer.recipe_board_beer_mug_sweet_berry_kriek": "Sweet Berry Kriek Recipe Board",
 
   "item.drinkbeer.beer_mug.tooltip": "Haste 1:00",
   "item.drinkbeer.beer_mug_blaze_stout.tooltip":"Fire Resistance 1:30",
