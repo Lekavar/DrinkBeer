@@ -21,6 +21,7 @@
   "block.drinkbeer.recipe_board_beer_mug_blaze_milk_stout": "烈焰牛奶黑啤配方板",
   "block.drinkbeer.recipe_board_beer_mug_apple_lambic": "苹果拉比克配方板",
   "block.drinkbeer.recipe_board_beer_mug_sweet_berry_kriek": "甜浆果克里克配方板",
+  "block.drinkbeer.recipe_board_beer_mug_haars_icey_pale_lager": "哈尔的冰拉格配方板",
 
   "item.drinkbeer.beer_mug.tooltip": "急迫 1:00",
   "item.drinkbeer.beer_mug_blaze_stout.tooltip":"防火 1:30",
