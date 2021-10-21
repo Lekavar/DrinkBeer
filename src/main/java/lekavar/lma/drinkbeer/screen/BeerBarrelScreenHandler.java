@@ -341,7 +341,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         map.put(Items.SUGAR, "sugar");
         map.put(Items.APPLE, "apple");
         map.put(Items.SWEET_BERRIES, "sweet_berrires");
-        map.put(Items.BLUE_ICE, "blue_ice");
+        map.put(Items.ICE, "ice");
         map.put(Items.BREAD, "bread");
         map.put(Items.PUMPKIN, "pumpkin");
         map.put(Items.EGG, "egg");
@@ -405,7 +405,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
             }
         } else if (map.containsKey(Items.WHEAT)) {
             if (map.get(Items.WHEAT) == 3) {
-                if (map.containsKey(Items.BLUE_ICE))
+                if (map.containsKey(Items.ICE))
                     return new ItemStack(DrinkBeer.BEER_MUG_HAARS_ICEY_PALE_LAGER.asItem(), 4);
             }
         } else if (map.containsKey(Items.MILK_BUCKET)) {
