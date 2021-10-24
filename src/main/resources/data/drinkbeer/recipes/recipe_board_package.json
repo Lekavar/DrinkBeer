@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XYX",
+    "ZZZ",
+    "XYX"
+  ],
+  "key": {
+    "X": {
+      "tag": "minecraft:logs"
+    },
+    "Y": {
+      "item": "minecraft:paper"
+    },
+    "Z": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "drinkbeer:recipe_board_package",
+    "count": 1
+  }
+}

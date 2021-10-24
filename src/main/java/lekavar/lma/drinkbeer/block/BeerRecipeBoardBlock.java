@@ -62,24 +62,4 @@ public class BeerRecipeBoardBlock extends HorizontalFacingBlock {
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return (BlockState) this.getDefaultState().with(FACING, ctx.getPlayerFacing());
     }
-
-    //TODO 放置规则
-    /*public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        Item item = world.getBlockState(pos.offset(Direction.DOWN, 1)).getBlock().asItem();
-        try {
-            return !item.getGroup().equals(DrinkBeer.DRINK_BEER);
-        } catch (Exception e) {
-            //System.out.println(e.getMessage());
-            return !item.equals(Items.AIR);
-        }
-    }
-
-    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState newState, WorldAccess world, BlockPos pos, BlockPos posFrom) {
-        return canPlaceAt(state, world, pos) ? super.getStateForNeighborUpdate(state, direction, newState, world, pos, posFrom) : Blocks.AIR.getDefaultState();
-    }
-
-    @Override
-    public PistonBehavior getPistonBehavior(BlockState state) {
-        return PistonBehavior.DESTROY;
-    }*/
 }

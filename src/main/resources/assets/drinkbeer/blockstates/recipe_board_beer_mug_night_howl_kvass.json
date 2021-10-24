@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "drinkbeer:block/recipe_board_beer_mug_night_howl_kvass"
+    },
+    "facing=east": {
+      "model": "drinkbeer:block/recipe_board_beer_mug_night_howl_kvass",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "drinkbeer:block/recipe_board_beer_mug_night_howl_kvass",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "drinkbeer:block/recipe_board_beer_mug_night_howl_kvass",
+      "y": 270
+    }
+  }
+}

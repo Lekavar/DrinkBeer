@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "drinkbeer:block/recipe_board_package"
+    },
+    "facing=east": {
+      "model": "drinkbeer:block/recipe_board_package",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "drinkbeer:block/recipe_board_package",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "drinkbeer:block/recipe_board_package",
+      "y": 270
+    }
+  }
+}
