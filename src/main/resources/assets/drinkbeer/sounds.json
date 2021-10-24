@@ -23,5 +23,30 @@
   "sounds": [
 	  "drinkbeer:golden_call_bell_tinkle"
     ]
+  },
+  "night_howl0":{
+  "sounds": [
+	  "drinkbeer:night_howl0"
+    ]
+  },
+  "night_howl1":{
+  "sounds": [
+	  "drinkbeer:night_howl1"
+    ]
+  },
+  "night_howl2":{
+  "sounds": [
+	  "drinkbeer:night_howl2"
+    ]
+  },
+  "night_howl3":{
+  "sounds": [
+	  "drinkbeer:night_howl3"
+    ]
+  },
+  "unpacking":{
+  "sounds": [
+	  "drinkbeer:unpacking"
+    ]
   }
 }

@@ -5,11 +5,15 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -18,13 +22,16 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import javax.swing.plaf.basic.BasicComboBoxUI;
 import java.util.List;
+import java.util.Random;
 
 import static java.lang.Math.pow;
 import static net.minecraft.util.math.MathHelper.sqrt;
 
 public class BeerMugBlockItem extends BlockItem {
     private final static float MAX_PLACE_DISTANCE = (float) 2;
+    private final static int BASE_NIGHT_VISION_TIME = 2400;
 
     public BeerMugBlockItem(Block block, Item.Settings settings) {
         super(block, settings);
@@ -32,11 +39,20 @@ public class BeerMugBlockItem extends BlockItem {
 
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         ItemStack itemStack = super.finishUsing(stack, world, user);
+        //Give Night Vision status effect after drinking Night Howl Kvass
+        //Duration is longest when the moon is full, shortest when new
+        if (stack.getItem() == DrinkBeer.BEER_MUG_NIGHT_HOWL_KVASS.asItem()) {
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, getNightVisionTime(world.getMoonPhase())));
+            if (!world.isClient) {
+                world.playSound(null, user.getBlockPos(), DrinkBeer.NIGHT_HOWL_EVENT[new Random().nextInt(4)], SoundCategory.PLAYERS, 1.2f, 1f);
+            }
+        }
         if (user instanceof PlayerEntity && ((PlayerEntity) user).abilities.creativeMode) {
             return itemStack;
         } else {
             ItemStack emptyMugItemStack = new ItemStack(DrinkBeer.EMPTY_BEER_MUG.asItem(), 1);
-            ((PlayerEntity) user).giveItemStack(emptyMugItemStack);
+            if (!((PlayerEntity) user).giveItemStack(emptyMugItemStack))
+                ((PlayerEntity) user).dropItem(emptyMugItemStack, false);
             return itemStack;
         }
     }
@@ -67,5 +83,9 @@ public class BeerMugBlockItem extends BlockItem {
 
     private float getDistance(Vec3d p1, Vec3d p2) {
         return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2) + pow(p1.z - p2.z, 2));
+    }
+
+    private int getNightVisionTime(int moonPhase) {
+        return BASE_NIGHT_VISION_TIME + (moonPhase == 0 ? Math.abs(moonPhase - 1 - 4) * 1200 : Math.abs(moonPhase - 4) * 1200);
     }
 }

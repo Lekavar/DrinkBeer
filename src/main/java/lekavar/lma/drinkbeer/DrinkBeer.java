@@ -1,9 +1,6 @@
 package lekavar.lma.drinkbeer;
 
-import lekavar.lma.drinkbeer.block.BeerBarrelBlock;
-import lekavar.lma.drinkbeer.block.BeerMugBlock;
-import lekavar.lma.drinkbeer.block.BeerRecipeBoardBlock;
-import lekavar.lma.drinkbeer.block.CallBellBlock;
+import lekavar.lma.drinkbeer.block.*;
 import lekavar.lma.drinkbeer.block.entity.BeerBarrelEntity;
 import lekavar.lma.drinkbeer.screen.BeerBarrelScreenHandler;
 import lekavar.lma.drinkbeer.item.*;
@@ -45,7 +42,8 @@ public class DrinkBeer implements ModInitializer {
     public static final Block BEER_MUG_SWEET_BERRY_KRIEK = new BeerMugBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block BEER_MUG_HAARS_ICEY_PALE_LAGER = new BeerMugBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block BEER_MUG_PUMPKIN_KVASS = new BeerMugBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
-    public static final Block BEER_MUG_FROTHY_PINK_EGGNOG = new BeerMugBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    //public static final Block BEER_MUG_FROTHY_PINK_EGGNOG = new BeerMugBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block BEER_MUG_NIGHT_HOWL_KVASS = new BeerMugBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
 
     //general
     public static final Block EMPTY_BEER_MUG = new BeerMugBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
@@ -54,6 +52,7 @@ public class DrinkBeer implements ModInitializer {
     public static final Block BEER_BARREL = new BeerBarrelBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final Identifier BEER_BARREL_ID = new Identifier("drinkbeer", "beer_barrel");
     public static final ScreenHandlerType<BeerBarrelScreenHandler> BEER_BARREL_SCREEN_HANDLER;
+
     static {
         BEER_BARREL_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(BEER_BARREL_ID, BeerBarrelScreenHandler::new);
     }
@@ -67,6 +66,10 @@ public class DrinkBeer implements ModInitializer {
     public static final Block RECIPE_BOARD_BEER_MUG_APPLE_LAMBIC = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block RECIPE_BOARD_BEER_MUG_SWEET_BERRY_KRIEK = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+
+    public static final Block RECIPE_BOARD_PACKAGE = new RecipeBoardPackageBlock(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
 
     //sounds
     public static final Identifier DRINKING_BEER = new Identifier("drinkbeer:drinking_beer");
@@ -79,6 +82,18 @@ public class DrinkBeer implements ModInitializer {
     public static SoundEvent IRON_CALL_BELL_TINKLE_EVENT = new SoundEvent(IRON_CALL_BELL_TINKLE);
     public static final Identifier GOLDEN_CALL_BELL_TINKLE = new Identifier("drinkbeer:golden_call_bell_tinkle");
     public static SoundEvent GOLDEN_CALL_BELL_TINKLE_EVENT = new SoundEvent(GOLDEN_CALL_BELL_TINKLE);
+    public static final Identifier UNPACKING = new Identifier("drinkbeer:unpacking");
+    public static SoundEvent UNPACKING_EVENT = new SoundEvent(UNPACKING);
+
+    public static final Identifier NIGHT_HOWL0 = new Identifier("drinkbeer:night_howl0");
+    public static SoundEvent NIGHT_HOWL0_EVENT = new SoundEvent(NIGHT_HOWL0);
+    public static final Identifier NIGHT_HOWL1 = new Identifier("drinkbeer:night_howl1");
+    public static SoundEvent NIGHT_HOWL1_EVENT = new SoundEvent(NIGHT_HOWL1);
+    public static final Identifier NIGHT_HOWL2 = new Identifier("drinkbeer:night_howl2");
+    public static SoundEvent NIGHT_HOWL2_EVENT = new SoundEvent(NIGHT_HOWL2);
+    public static final Identifier NIGHT_HOWL3 = new Identifier("drinkbeer:night_howl3");
+    public static SoundEvent NIGHT_HOWL3_EVENT = new SoundEvent(NIGHT_HOWL3);
+    public static SoundEvent[] NIGHT_HOWL_EVENT = {NIGHT_HOWL0_EVENT, NIGHT_HOWL1_EVENT, NIGHT_HOWL2_EVENT, NIGHT_HOWL3_EVENT};
 
     //status effects
     public static final StatusEffect DRUNK_FROST_WALKER = new DrunkFrostWalkerStatusEffect();
@@ -87,21 +102,23 @@ public class DrinkBeer implements ModInitializer {
     public void onInitialize() {
         //beer
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug"), BEER_MUG);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug"), new BeerMugBlockItem(BEER_MUG, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(2).statusEffect(new StatusEffectInstance(StatusEffects.HASTE,1200),1).alwaysEdible().build()).maxCount(16)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug"), new BeerMugBlockItem(BEER_MUG, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(2).statusEffect(new StatusEffectInstance(StatusEffects.HASTE, 1200), 1).alwaysEdible().build()).maxCount(16)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug_blaze_stout"), BEER_MUG_BLAZE_STOUT);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_blaze_stout"), new BeerMugBlockItem(BEER_MUG_BLAZE_STOUT, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(2).statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE,1800),1).alwaysEdible().build()).maxCount(16)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_blaze_stout"), new BeerMugBlockItem(BEER_MUG_BLAZE_STOUT, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(2).statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 1800), 1).alwaysEdible().build()).maxCount(16)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug_blaze_milk_stout"), BEER_MUG_BLAZE_MILK_STOUT);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_blaze_milk_stout"), new BeerMugBlockItem(BEER_MUG_BLAZE_MILK_STOUT, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(2).statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE,2400),1).alwaysEdible().build()).maxCount(16)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_blaze_milk_stout"), new BeerMugBlockItem(BEER_MUG_BLAZE_MILK_STOUT, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(2).statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 2400), 1).alwaysEdible().build()).maxCount(16)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug_apple_lambic"), BEER_MUG_APPLE_LAMBIC);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_apple_lambic"), new BeerMugBlockItem(BEER_MUG_APPLE_LAMBIC, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(3).statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION,300),1).alwaysEdible().build()).maxCount(16)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_apple_lambic"), new BeerMugBlockItem(BEER_MUG_APPLE_LAMBIC, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(3).statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 300), 1).alwaysEdible().build()).maxCount(16)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug_sweet_berry_kriek"), BEER_MUG_SWEET_BERRY_KRIEK);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_sweet_berry_kriek"), new BeerMugBlockItem(BEER_MUG_SWEET_BERRY_KRIEK, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(3).statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION,400),1).alwaysEdible().build()).maxCount(16)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_sweet_berry_kriek"), new BeerMugBlockItem(BEER_MUG_SWEET_BERRY_KRIEK, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(3).statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 400), 1).alwaysEdible().build()).maxCount(16)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug_haars_icey_pale_lager"), BEER_MUG_HAARS_ICEY_PALE_LAGER);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_haars_icey_pale_lager"), new BeerMugBlockItem(BEER_MUG_HAARS_ICEY_PALE_LAGER, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(1).statusEffect(new StatusEffectInstance(DrinkBeer.DRUNK_FROST_WALKER,1200),1).alwaysEdible().build()).maxCount(16)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_haars_icey_pale_lager"), new BeerMugBlockItem(BEER_MUG_HAARS_ICEY_PALE_LAGER, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(1).statusEffect(new StatusEffectInstance(DrinkBeer.DRUNK_FROST_WALKER, 1200), 1).alwaysEdible().build()).maxCount(16)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug_pumpkin_kvass"), BEER_MUG_PUMPKIN_KVASS);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_pumpkin_kvass"), new BeerMugBlockItem(BEER_MUG_PUMPKIN_KVASS, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(9).alwaysEdible().build()).maxCount(16)));
-        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug_frothy_pink_eggnog"), BEER_MUG_FROTHY_PINK_EGGNOG);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_frothy_pink_eggnog"), new BeerMugBlockItem(BEER_MUG_FROTHY_PINK_EGGNOG, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(2).alwaysEdible().build()).maxCount(16)));
+        //Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug_frothy_pink_eggnog"), BEER_MUG_FROTHY_PINK_EGGNOG);
+        //Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_frothy_pink_eggnog"), new BeerMugBlockItem(BEER_MUG_FROTHY_PINK_EGGNOG, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(2).alwaysEdible().build()).maxCount(16)));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug_night_howl_kvass"), BEER_MUG_NIGHT_HOWL_KVASS);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_night_howl_kvass"), new BeerMugBlockItem(BEER_MUG_NIGHT_HOWL_KVASS, new Item.Settings().group(DRINK_BEER).food(new FoodComponent.Builder().hunger(4).alwaysEdible().build()).maxCount(16)));
 
         //general
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "empty_beer_mug"), EMPTY_BEER_MUG);
@@ -128,6 +145,13 @@ public class DrinkBeer implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_sweet_berry_kriek"), new BlockItem(RECIPE_BOARD_BEER_MUG_SWEET_BERRY_KRIEK, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_haars_icey_pale_lager"), RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_haars_icey_pale_lager"), new BlockItem(RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_pumpkin_kvass"), RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_pumpkin_kvass"), new BlockItem(RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_night_howl_kvass"), RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_night_howl_kvass"), new BlockItem(RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_package"), RECIPE_BOARD_PACKAGE);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_package"), new BlockItem(RECIPE_BOARD_PACKAGE, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
 
         //sounds
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.DRINKING_BEER, DRINKING_BEER_EVENT);
@@ -135,6 +159,11 @@ public class DrinkBeer implements ModInitializer {
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.POURING_CHRISTMAS, POURING_CHRISTMAS_EVENT);
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.IRON_CALL_BELL_TINKLE, IRON_CALL_BELL_TINKLE_EVENT);
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.GOLDEN_CALL_BELL_TINKLE, GOLDEN_CALL_BELL_TINKLE_EVENT);
+        Registry.register(Registry.SOUND_EVENT, DrinkBeer.NIGHT_HOWL0, NIGHT_HOWL0_EVENT);
+        Registry.register(Registry.SOUND_EVENT, DrinkBeer.NIGHT_HOWL1, NIGHT_HOWL1_EVENT);
+        Registry.register(Registry.SOUND_EVENT, DrinkBeer.NIGHT_HOWL2, NIGHT_HOWL2_EVENT);
+        Registry.register(Registry.SOUND_EVENT, DrinkBeer.NIGHT_HOWL3, NIGHT_HOWL3_EVENT);
+        Registry.register(Registry.SOUND_EVENT, DrinkBeer.UNPACKING, UNPACKING_EVENT);
 
         //status effects
         Registry.register(Registry.STATUS_EFFECT, new Identifier("drinkbeer", "drunk_frost_walker"), DRUNK_FROST_WALKER);
