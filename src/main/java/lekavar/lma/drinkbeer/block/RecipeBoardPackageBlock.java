@@ -65,15 +65,13 @@ public class RecipeBoardPackageBlock extends HorizontalFacingBlock {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient()) {
             world.playSound(null, pos, UNPACKING_EVENT, SoundCategory.BLOCKS, 0.8f, 1f);
-            world.removeBlock(pos, false);
-            world.emitGameEvent(player, GameEvent.BLOCK_DESTROY, pos);
-            for (Block recipeBoardBlock : RECIPE_BOARD_PACKAGE_CONTENT) {
-                ItemStack recipeBoardItemStack = new ItemStack(recipeBoardBlock.asItem(), 1);
-                if (player.isCreative() || !player.giveItemStack(recipeBoardItemStack))
-                    player.dropItem(recipeBoardItemStack, false);
-            }
-            return ActionResult.SUCCESS;
         }
-        return ActionResult.FAIL;
+        for (Block recipeBoardBlock : RECIPE_BOARD_PACKAGE_CONTENT) {
+            ItemStack recipeBoardItemStack = new ItemStack(recipeBoardBlock.asItem(), 1);
+            if (player.isCreative() || !player.giveItemStack(recipeBoardItemStack))
+                player.dropItem(recipeBoardItemStack, false);
+        }
+        world.removeBlock(pos, false);
+        return ActionResult.SUCCESS;
     }
 }
