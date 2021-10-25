@@ -61,6 +61,8 @@ public class DrinkBeer implements ModInitializer {
     public static final Block IRON_CALL_BELL = new CallBellBlock(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
     public static final Block GOLDEN_CALL_BELL = new CallBellBlock(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
 
+    public static final Block RECIPE_BOARD_PACKAGE = new RecipeBoardPackageBlock(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
+
     public static final Block RECIPE_BOARD_BEER_MUG = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block RECIPE_BOARD_BEER_MUG_BLAZE_STOUT = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block RECIPE_BOARD_BEER_MUG_BLAZE_MILK_STOUT = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
@@ -69,8 +71,10 @@ public class DrinkBeer implements ModInitializer {
     public static final Block RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
-
-    public static final Block RECIPE_BOARD_PACKAGE = new RecipeBoardPackageBlock(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
+    public static final Block[] RECIPE_BOARD_PACKAGE_CONTENT = {RECIPE_BOARD_BEER_MUG, RECIPE_BOARD_BEER_MUG_BLAZE_STOUT,
+            RECIPE_BOARD_BEER_MUG_BLAZE_MILK_STOUT, RECIPE_BOARD_BEER_MUG_APPLE_LAMBIC,
+            RECIPE_BOARD_BEER_MUG_SWEET_BERRY_KRIEK, RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER,
+            RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS, RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS};
 
     //sounds
     public static final Identifier DRINKING_BEER = new Identifier("drinkbeer:drinking_beer");
@@ -134,6 +138,9 @@ public class DrinkBeer implements ModInitializer {
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "golden_call_bell"), GOLDEN_CALL_BELL);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "golden_call_bell"), new BlockItem(GOLDEN_CALL_BELL, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(64)));
 
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_package"), RECIPE_BOARD_PACKAGE);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_package"), new BlockItem(RECIPE_BOARD_PACKAGE, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug"), RECIPE_BOARD_BEER_MUG);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug"), new BlockItem(RECIPE_BOARD_BEER_MUG, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_blaze_stout"), RECIPE_BOARD_BEER_MUG_BLAZE_STOUT);
@@ -150,9 +157,6 @@ public class DrinkBeer implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_pumpkin_kvass"), new BlockItem(RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_night_howl_kvass"), RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_night_howl_kvass"), new BlockItem(RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
-
-        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_package"), RECIPE_BOARD_PACKAGE);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_package"), new BlockItem(RECIPE_BOARD_PACKAGE, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
 
         //sounds
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.DRINKING_BEER, DRINKING_BEER_EVENT);

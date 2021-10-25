@@ -33,7 +33,6 @@ import net.minecraft.world.*;
 import java.util.List;
 
 public class BeerMugBlock extends HorizontalFacingBlock {
-
     public final static VoxelShape ONE_MUG_SHAPE = createCuboidShape(4, 0, 4, 12, 6, 12);
     public final static VoxelShape TWO_MUGS_SHAPE = createCuboidShape(2, 0, 2, 14, 6, 14);
     public final static VoxelShape THREE_MUGS_SHAPE = createCuboidShape(1, 0, 1, 15, 6, 15);
