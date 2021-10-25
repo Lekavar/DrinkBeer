@@ -24,11 +24,6 @@ public class RecipeBoardPackageBlock extends HorizontalFacingBlock {
     public final static VoxelShape NORTH_SHAPE = createCuboidShape(0, 1, 1, 16, 10, 15);
     public final static VoxelShape EAST_SHAPE = createCuboidShape(1, 0, 0, 15, 10, 16);
 
-    public static final Block[] RECIPE_BOARD_PACKAGE_CONTENT = {RECIPE_BOARD_BEER_MUG, RECIPE_BOARD_BEER_MUG_BLAZE_STOUT,
-            RECIPE_BOARD_BEER_MUG_BLAZE_MILK_STOUT, RECIPE_BOARD_BEER_MUG_APPLE_LAMBIC,
-            RECIPE_BOARD_BEER_MUG_SWEET_BERRY_KRIEK, RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER,
-            RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS, RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS};
-
     public RecipeBoardPackageBlock(AbstractBlock.Settings settings) {
         super(settings.nonOpaque());
         setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));

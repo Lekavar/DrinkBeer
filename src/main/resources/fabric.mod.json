@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "id": "drinkbeer",
-  "version": "2.2",
+  "version": "2.3",
 
   "name": "Drink Beer",
-  "description": "Add placeable beer mug and drink it!",
+  "description": "Brewing placeable and drinkable beers in Minecraft!",
   "authors": [
     "Lekavar"
   ],
