@@ -42,7 +42,7 @@ public class BeerMugBlockItem extends BlockItem {
         //Give Night Vision status effect after drinking Night Howl Kvass
         //Duration is longest when the moon is full, shortest when new
         if (stack.getItem() == DrinkBeer.BEER_MUG_NIGHT_HOWL_KVASS.asItem()) {
-            user.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, getNightVisionTime(world.getMoonPhase())));
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, getNightVisionTime(getMoonPhase(world))));
             if (!world.isClient) {
                 world.playSound(null, user.getBlockPos(), DrinkBeer.NIGHT_HOWL_EVENT[new Random().nextInt(4)], SoundCategory.PLAYERS, 1.2f, 1f);
             }
@@ -87,5 +87,11 @@ public class BeerMugBlockItem extends BlockItem {
 
     private int getNightVisionTime(int moonPhase) {
         return BASE_NIGHT_VISION_TIME + (moonPhase == 0 ? Math.abs(moonPhase - 1 - 4) * 1200 : Math.abs(moonPhase - 4) * 1200);
+    }
+
+    private int getMoonPhase(World world){
+        long timeOfDay = world.getLevelProperties().getTimeOfDay();
+        int moonPhase = (int)(timeOfDay / 24000L % 8L + 8L) % 8;
+        return moonPhase;
     }
 }
