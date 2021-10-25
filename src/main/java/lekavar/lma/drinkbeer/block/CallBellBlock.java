@@ -34,9 +34,9 @@ public class CallBellBlock extends Block {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
             if (state.getBlock() == DrinkBeer.IRON_CALL_BELL) {
-                world.playSound(null, pos, DrinkBeer.IRON_CALL_BELL_TINKLE_EVENT, SoundCategory.BLOCKS, 1.2f, 1f);
+                world.playSound(null, pos, DrinkBeer.IRON_CALL_BELL_TINKLE_EVENT, SoundCategory.BLOCKS, 1.5f, 1f);
             }else if(state.getBlock() == DrinkBeer.GOLDEN_CALL_BELL) {
-                world.playSound(null, pos, DrinkBeer.GOLDEN_CALL_BELL_TINKLE_EVENT, SoundCategory.BLOCKS, 1.2f, 1f);
+                world.playSound(null, pos, DrinkBeer.GOLDEN_CALL_BELL_TINKLE_EVENT, SoundCategory.BLOCKS, 1.8f, 1f);
             }
         }
         return ActionResult.SUCCESS;
