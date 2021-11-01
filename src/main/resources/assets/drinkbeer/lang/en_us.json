@@ -37,5 +37,6 @@
   "item.drinkbeer.beer_mug_night_howl_kvass.tooltip": "Night Vision 2:00-7:00 (is proportional to the moon's fullness)",
 
   "drinkbeer.restores_hunger": "Restores Hunger: ",
-  "effect.drinkbeer.drunk_frost_walker": "Drunk Frost Walker"
+  "effect.drinkbeer.drunk_frost_walker": "Drunk Frost Walker",
+  "effect.drinkbeer.drunk": "Drunk"
 }

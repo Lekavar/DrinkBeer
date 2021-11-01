@@ -1,6 +1,7 @@
 package lekavar.lma.drinkbeer.item;
 
 import lekavar.lma.drinkbeer.DrinkBeer;
+import lekavar.lma.drinkbeer.statuseffects.DrunkStatusEffect;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;
@@ -34,6 +35,9 @@ public class BeerMugBlockItem extends BlockItem {
 
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         ItemStack itemStack = super.finishUsing(stack, world, user);
+        //Give Drunk status effect
+        int drunkAmplifier = DrunkStatusEffect.getDrunkAmplifier(user);
+        user.addStatusEffect(new StatusEffectInstance(DrinkBeer.DRUNK, DrunkStatusEffect.getDrunkDuratioin(drunkAmplifier), drunkAmplifier));
         //Give Night Vision status effect after drinking Night Howl Kvass
         //Duration is longest when the moon is full, shortest when new
         if (stack.getItem() == DrinkBeer.BEER_MUG_NIGHT_HOWL_KVASS.asItem()) {
@@ -42,12 +46,17 @@ public class BeerMugBlockItem extends BlockItem {
                 world.playSound(null, user.getBlockPos(), DrinkBeer.NIGHT_HOWL_EVENT[new Random().nextInt(4)], SoundCategory.PLAYERS, 1.2f, 1f);
             }
         }
+        //Give empty mug back
         if (user instanceof PlayerEntity && ((PlayerEntity) user).isCreative()) {
             return itemStack;
         } else {
             ItemStack emptyMugItemStack = new ItemStack(DrinkBeer.EMPTY_BEER_MUG.asItem(), 1);
-            if (!((PlayerEntity) user).giveItemStack(emptyMugItemStack))
-                ((PlayerEntity) user).dropItem(emptyMugItemStack, false);
+            if (user instanceof PlayerEntity) {
+                if (!((PlayerEntity) user).giveItemStack(emptyMugItemStack))
+                    ((PlayerEntity) user).dropItem(emptyMugItemStack, false);
+            } else {
+                user.dropStack(emptyMugItemStack);
+            }
             return itemStack;
         }
     }
@@ -77,7 +86,7 @@ public class BeerMugBlockItem extends BlockItem {
     }
 
     private float getDistance(Vec3d p1, Vec3d p2) {
-        return (float)sqrt((pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2) + pow(p1.z - p2.z, 2)));
+        return (float) sqrt((pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2) + pow(p1.z - p2.z, 2)));
     }
 
     private int getNightVisionTime(int moonPhase) {

@@ -121,12 +121,12 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
             }
 
             public void onTakeItem(PlayerEntity player, ItemStack stack) {
-//                if (stack.getItem().equals(DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem())) {
-//                    player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_CHRISTMAS_EVENT, SoundCategory.BLOCKS, 0.6f, 1f);
-//                    player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_EVENT, SoundCategory.BLOCKS, 1f, 1f);
-//                } else {
+                if (stack.getItem().equals(DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem())) {
+                    player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_CHRISTMAS_EVENT, SoundCategory.BLOCKS, 0.6f, 1f);
                     player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_EVENT, SoundCategory.BLOCKS, 1f, 1f);
-//                }
+                } else {
+                    player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_EVENT, SoundCategory.BLOCKS, 1f, 1f);
+                }
                 resetBeerBarrel();
             }
 
@@ -359,7 +359,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         map.put(DrinkBeer.BEER_MUG_SWEET_BERRY_KRIEK.asItem(), 24000);
         map.put(DrinkBeer.BEER_MUG_HAARS_ICEY_PALE_LAGER.asItem(), 24000);
         map.put(DrinkBeer.BEER_MUG_PUMPKIN_KVASS.asItem(), 12000);
-        //map.put(DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem(), 12000);
+        map.put(DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem(), 12000);
         map.put(DrinkBeer.BEER_MUG_NIGHT_HOWL_KVASS.asItem(), 18000);
         return map;
     }
@@ -373,7 +373,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         map.put(5, DrinkBeer.BEER_MUG_SWEET_BERRY_KRIEK.asItem());
         map.put(6, DrinkBeer.BEER_MUG_HAARS_ICEY_PALE_LAGER.asItem());
         map.put(7, DrinkBeer.BEER_MUG_PUMPKIN_KVASS.asItem());
-        //map.put(8, DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem());
+        map.put(8, DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem());
         map.put(9, DrinkBeer.BEER_MUG_NIGHT_HOWL_KVASS.asItem());
         return map;
     }
@@ -411,7 +411,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
                 if (map.containsKey(Items.ICE)||map.containsKey(Items.BLUE_ICE)||map.containsKey(Items.PACKED_ICE))
                     return new ItemStack(DrinkBeer.BEER_MUG_HAARS_ICEY_PALE_LAGER.asItem(), 4);
             }
-        } /*else if (map.containsKey(Items.MILK_BUCKET)) {
+        } else if (map.containsKey(Items.MILK_BUCKET)) {
             if (map.containsKey(Items.SUGAR_CANE)) {
                 if (map.containsKey(Items.EGG)) {
                     if (map.containsKey(Items.BEETROOT)) {
@@ -419,7 +419,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
                     }
                 }
             }
-        }*/
+        }
         //adding new recipes ends here
         return ItemStack.EMPTY;
     }

@@ -1,0 +1,25 @@
+{
+  "itemGroup.drinkbeer.beer": "Öl",
+  "itemGroup.drinkbeer.general": "DrinkBeer Allmäna blocks",
+
+  "block.drinkbeer.beer_mug": "Gruvarbetarens Lättöl",
+  "block.drinkbeer.beer_mug_blaze_stout": "Flammans öl",
+  "block.drinkbeer.beer_mug_blaze_milk_stout": "Eldens mjölk-öl",
+  "block.drinkbeer.beer_mug_apple_lambic": "Äppel-öl",
+  "block.drinkbeer.beer_mug_sweet_berry_kriek": "Söta bär öl",
+  "block.drinkbeer.beer_mug_haars_icey_pale_lager": "Haar's isöl",
+  "block.drinkbeer.beer_mug_pumpkin_kvass": "Pumpa öl",
+
+  "block.drinkbeer.empty_beer_mug": "Tom öl mugg",
+  "block.drinkbeer.beer_barrel": "Kagge",
+
+  "item.drinkbeer.beer_mug.tooltip": "Hastighet 1:00",
+  "item.drinkbeer.beer_mug_blaze_stout.tooltip":"Eld modstånd 1:30",
+  "item.drinkbeer.beer_mug_blaze_milk_stout.tooltip":"Eld motstånd 2:00",
+  "item.drinkbeer.beer_mug_apple_lambic.tooltip":"Regeneration 0:15",
+  "item.drinkbeer.beer_mug_sweet_berry_kriek.tooltip":"Regeneration 0:20",
+  "item.drinkbeer.beer_mug_haars_icey_pale_lager.tooltip": "Berusad frostgångare 1:00",
+
+  "drinkbeer.restores_hunger": "Återställer hunger: ",
+  "effect.drinkbeer.drunk_frost_walker": "Berusad frostgångare"
+}
