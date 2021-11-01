@@ -1,6 +1,7 @@
 package lekavar.lma.drinkbeer.item;
 
 import lekavar.lma.drinkbeer.DrinkBeer;
+import lekavar.lma.drinkbeer.statuseffects.DrunkStatusEffect;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;
@@ -22,7 +23,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.plaf.basic.BasicComboBoxUI;
 import java.util.List;
 import java.util.Random;
 
@@ -39,6 +39,9 @@ public class BeerMugBlockItem extends BlockItem {
 
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         ItemStack itemStack = super.finishUsing(stack, world, user);
+        //Give Drunk status effect
+        int drunkAmplifier = DrunkStatusEffect.getDrunkAmplifier(user);
+        user.addStatusEffect(new StatusEffectInstance(DrinkBeer.DRUNK, DrunkStatusEffect.getDrunkDuratioin(drunkAmplifier), drunkAmplifier));
         //Give Night Vision status effect after drinking Night Howl Kvass
         //Duration is longest when the moon is full, shortest when new
         if (stack.getItem() == DrinkBeer.BEER_MUG_NIGHT_HOWL_KVASS.asItem()) {
@@ -47,12 +50,17 @@ public class BeerMugBlockItem extends BlockItem {
                 world.playSound(null, user.getBlockPos(), DrinkBeer.NIGHT_HOWL_EVENT[new Random().nextInt(4)], SoundCategory.PLAYERS, 1.2f, 1f);
             }
         }
+        //Give empty mug back
         if (user instanceof PlayerEntity && ((PlayerEntity) user).abilities.creativeMode) {
             return itemStack;
         } else {
             ItemStack emptyMugItemStack = new ItemStack(DrinkBeer.EMPTY_BEER_MUG.asItem(), 1);
-            if (!((PlayerEntity) user).giveItemStack(emptyMugItemStack))
-                ((PlayerEntity) user).dropItem(emptyMugItemStack, false);
+            if (user instanceof PlayerEntity) {
+                if (!((PlayerEntity) user).giveItemStack(emptyMugItemStack))
+                    ((PlayerEntity) user).dropItem(emptyMugItemStack, false);
+            } else {
+                user.dropStack(emptyMugItemStack);
+            }
             return itemStack;
         }
     }
@@ -89,9 +97,9 @@ public class BeerMugBlockItem extends BlockItem {
         return BASE_NIGHT_VISION_TIME + (moonPhase == 0 ? Math.abs(moonPhase - 1 - 4) * 1200 : Math.abs(moonPhase - 4) * 1200);
     }
 
-    private int getMoonPhase(World world){
+    private int getMoonPhase(World world) {
         long timeOfDay = world.getLevelProperties().getTimeOfDay();
-        int moonPhase = (int)(timeOfDay / 24000L % 8L + 8L) % 8;
+        int moonPhase = (int) (timeOfDay / 24000L % 8L + 8L) % 8;
         return moonPhase;
     }
 }
