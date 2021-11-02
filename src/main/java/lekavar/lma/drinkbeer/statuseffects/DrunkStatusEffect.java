@@ -11,7 +11,7 @@ import java.awt.*;
 
 public class DrunkStatusEffect extends StatusEffect {
     public final static int MAX_DRUNK_AMPLIFIER = 4;
-    private static int BASE_DURATION;
+    private final static int BASE_DURATION = 1200;
     private final static boolean visible = false;
     private static int[] drunkDurations = {3600, 3000, 2400, 1800, 1200};
     private static int[] nauseaDurations = {160, 160, 200, 300, 1200};
@@ -20,7 +20,6 @@ public class DrunkStatusEffect extends StatusEffect {
 
     public DrunkStatusEffect() {
         super(StatusEffectType.HARMFUL, new Color(255, 222, 173, 255).getRGB());
-        BASE_DURATION = 1200;
     }
 
     @Override
