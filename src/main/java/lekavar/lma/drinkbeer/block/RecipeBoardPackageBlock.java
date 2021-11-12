@@ -32,10 +32,8 @@ public class RecipeBoardPackageBlock extends HorizontalFacingBlock {
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
         Direction dir = state.get(FACING);
         return switch (dir) {
-            case NORTH -> NORTH_SHAPE;
-            case SOUTH -> NORTH_SHAPE;
-            case EAST -> EAST_SHAPE;
-            case WEST -> EAST_SHAPE;
+            case NORTH, SOUTH -> NORTH_SHAPE;
+            case EAST, WEST -> EAST_SHAPE;
             default -> NORTH_SHAPE;
         };
     }
