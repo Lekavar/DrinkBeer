@@ -1,16 +1,12 @@
 package lekavar.lma.drinkbeer.statuseffects;
 
 import lekavar.lma.drinkbeer.DrinkBeer;
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.enchantment.FrostWalkerEnchantment;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectType;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 

@@ -1,7 +1,7 @@
 package lekavar.lma.drinkbeer.block.entity;
 
 import lekavar.lma.drinkbeer.DrinkBeer;
-import lekavar.lma.drinkbeer.ImplementedInventory;
+import lekavar.lma.drinkbeer.inventory.ImplementedInventory;
 import lekavar.lma.drinkbeer.screen.BeerBarrelScreenHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -21,10 +21,11 @@ import net.minecraft.util.collection.DefaultedList;
 
 public class BeerBarrelEntity extends BlockEntity implements ImplementedInventory, NamedScreenHandlerFactory, Tickable {
     private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(6, ItemStack.EMPTY);
-    private int remainingBrewTime;
+    private int remainingBrewingTime;
     private int isMaterialCompleted;
-    private int beerType;
+    private int beerId;
     private int isBrewing;
+    private int beerResultNum;
 
     public DefaultedList<ItemStack> getItems() {
         return inventory;
@@ -35,13 +36,15 @@ public class BeerBarrelEntity extends BlockEntity implements ImplementedInventor
         public int get(int index) {
             switch(index) {
                 case 0:
-                    return remainingBrewTime;
+                    return remainingBrewingTime;
                 case 1:
                     return isMaterialCompleted;
                 case 2:
-                    return beerType;
+                    return beerId;
                 case 3:
                     return isBrewing;
+                case 4:
+                    return beerResultNum;
                 default:
                     return 0;
             }
@@ -51,29 +54,32 @@ public class BeerBarrelEntity extends BlockEntity implements ImplementedInventor
         public void set(int index, int value) {
             switch(index) {
                 case 0:
-                    remainingBrewTime = value;
+                    remainingBrewingTime = value;
                     break;
                 case 1:
                     isMaterialCompleted = value;
                     break;
                 case 2:
-                    beerType = value;
+                    beerId = value;
                     break;
                 case 3:
                     isBrewing = value;
+                    break;
+                case 4:
+                    beerResultNum = value;
             }
         }
 
         @Override
         public int size() {
-            return 4;
+            return 5;
         }
     };
 
     @Override
     public void tick() {
         if (!world.isClient)
-            remainingBrewTime = remainingBrewTime > 0 ? --remainingBrewTime : 0;
+            remainingBrewingTime = remainingBrewingTime > 0 ? --remainingBrewingTime : 0;
     }
 
     public BeerBarrelEntity() {
@@ -93,10 +99,11 @@ public class BeerBarrelEntity extends BlockEntity implements ImplementedInventor
     @Override
     public CompoundTag toTag(CompoundTag tag) {
         Inventories.toTag(tag, this.inventory);
-        tag.putShort("RemainingBrewTime", (short)this.remainingBrewTime);
+        tag.putShort("RemainingBrewTime", (short)this.remainingBrewingTime);
         tag.putShort("IsMaterialCompleted", (short)this.isMaterialCompleted);
-        tag.putShort("BeerType", (short)this.beerType);
+        tag.putShort("BeerType", (short)this.beerId);
         tag.putShort("IsBrewing", (short)this.isBrewing);
+        tag.putShort("BeerResultNum", (short)this.beerResultNum);
 
         return super.toTag(tag);
     }
@@ -105,9 +112,10 @@ public class BeerBarrelEntity extends BlockEntity implements ImplementedInventor
     public void fromTag(BlockState state, CompoundTag tag) {
         super.fromTag(state, tag);
         Inventories.fromTag(tag, inventory);
-        this.remainingBrewTime = tag.getShort("RemainingBrewTime");
+        this.remainingBrewingTime = tag.getShort("RemainingBrewTime");
         this.isMaterialCompleted = tag.getShort("IsMaterialCompleted");
-        this.beerType = tag.getShort("BeerType");
+        this.beerId = tag.getShort("BeerType");
         this.isBrewing = tag.getShort("IsBrewing");
+        this.beerResultNum = tag.getShort("BeerResultNum");
     }
 }

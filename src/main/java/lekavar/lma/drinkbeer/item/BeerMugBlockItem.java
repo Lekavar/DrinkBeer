@@ -6,14 +6,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
@@ -32,9 +28,15 @@ import static net.minecraft.util.math.MathHelper.sqrt;
 public class BeerMugBlockItem extends BlockItem {
     private final static float MAX_PLACE_DISTANCE = (float) 2;
     private final static int BASE_NIGHT_VISION_TIME = 2400;
+    private final boolean hasStatusEffectTooltip;
 
-    public BeerMugBlockItem(Block block, Item.Settings settings) {
-        super(block, settings);
+    public BeerMugBlockItem(Block block, @Nullable StatusEffectInstance statusEffectInstance, int hunger, boolean hasStatusEffectTooltip) {
+        super(block, new Item.Settings().group(DrinkBeer.DRINK_BEER).maxCount(16)
+                .food(statusEffectInstance != null
+                        ? new FoodComponent.Builder().hunger(hunger).statusEffect(statusEffectInstance, 1).alwaysEdible().build()
+                        : new FoodComponent.Builder().hunger(hunger).alwaysEdible().build())
+        );
+        this.hasStatusEffectTooltip = hasStatusEffectTooltip;
     }
 
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
@@ -73,7 +75,7 @@ public class BeerMugBlockItem extends BlockItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         String name = this.asItem().toString();
-        if (this.asItem() != DrinkBeer.BEER_MUG_PUMPKIN_KVASS.asItem()) {
+        if (this.hasStatusEffectTooltip) {
             tooltip.add(new TranslatableText("item.drinkbeer." + name + ".tooltip").formatted(Formatting.BLUE));
         }
         Text hunger = Text.method_30163(String.valueOf(asItem().getFoodComponent().getHunger()));

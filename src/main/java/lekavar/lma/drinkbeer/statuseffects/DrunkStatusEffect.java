@@ -13,10 +13,10 @@ public class DrunkStatusEffect extends StatusEffect {
     public final static int MAX_DRUNK_AMPLIFIER = 4;
     private final static int BASE_DURATION = 1200;
     private final static boolean visible = false;
-    private static int[] drunkDurations = {3600, 3000, 2400, 1800, 1200};
-    private static int[] nauseaDurations = {160, 160, 200, 300, 1200};
-    private static int[] slownessDurations = {0, 80, 160, 200, 600};
-    private static int[] harmulStatusEffectsIntervals = {200, 160, 200, 300, 20};
+    private static final int[] drunkDurations = {3600, 3000, 2400, 1800, 1200};
+    private static final int[] nauseaDurations = {160, 160, 200, 300, 1200};
+    private static final int[] slownessDurations = {0, 80, 160, 200, 600};
+    private static final int[] harmulStatusEffectsIntervals = {200, 160, 200, 300, 20};
 
     public DrunkStatusEffect() {
         super(StatusEffectType.HARMFUL, new Color(255, 222, 173, 255).getRGB());
