@@ -16,8 +16,7 @@ public class BeerRecipeManager {
         BeerRecipe tBeerRecipe = match(inputMaterialMap);
         //Check bonus(from armors,status effects...)
         if (tBeerRecipe != null) {
-            tBeerRecipe.setBeerResultNum(tBeerRecipe.getBeerResultNum() * 2);
-            tBeerRecipe.setBrewingTime(tBeerRecipe.getBrewingTime() * 3);
+            //Do something
         }
 
         beerRecipeResult = tBeerRecipe;
