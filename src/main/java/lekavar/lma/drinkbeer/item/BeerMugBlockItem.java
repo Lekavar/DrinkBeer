@@ -28,9 +28,15 @@ import static java.lang.Math.sqrt;
 public class BeerMugBlockItem extends BlockItem {
     private final static float MAX_PLACE_DISTANCE = (float) 2;
     private final static int BASE_NIGHT_VISION_TIME = 2400;
+    private final boolean hasStatusEffectTooltip;
 
-    public BeerMugBlockItem(Block block, Item.Settings settings) {
-        super(block, settings);
+    public BeerMugBlockItem(Block block, @Nullable StatusEffectInstance statusEffectInstance, int hunger, boolean hasStatusEffectTooltip) {
+        super(block, new Item.Settings().group(DrinkBeer.DRINK_BEER).maxCount(16)
+                .food(statusEffectInstance != null
+                        ? new FoodComponent.Builder().hunger(hunger).statusEffect(statusEffectInstance, 1).alwaysEdible().build()
+                        : new FoodComponent.Builder().hunger(hunger).alwaysEdible().build())
+        );
+        this.hasStatusEffectTooltip = hasStatusEffectTooltip;
     }
 
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
@@ -69,7 +75,7 @@ public class BeerMugBlockItem extends BlockItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         String name = this.asItem().toString();
-        if (this.asItem() != DrinkBeer.BEER_MUG_PUMPKIN_KVASS.asItem()) {
+        if (this.hasStatusEffectTooltip) {
             tooltip.add(new TranslatableText("item.drinkbeer." + name + ".tooltip").formatted(Formatting.BLUE));
         }
         Text hunger = Text.of(String.valueOf(asItem().getFoodComponent().getHunger()));

@@ -1,6 +1,5 @@
 package lekavar.lma.drinkbeer.block;
 
-import lekavar.lma.drinkbeer.DrinkBeer;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -16,10 +15,9 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.event.GameEvent;
 
-import static lekavar.lma.drinkbeer.DrinkBeer.*;
-import static lekavar.lma.drinkbeer.DrinkBeer.RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS;
+import static lekavar.lma.drinkbeer.DrinkBeer.RECIPE_BOARD_PACKAGE_CONTENT;
+import static lekavar.lma.drinkbeer.DrinkBeer.UNPACKING_EVENT;
 
 public class RecipeBoardPackageBlock extends HorizontalFacingBlock {
     public final static VoxelShape NORTH_SHAPE = createCuboidShape(0, 1, 1, 16, 10, 15);
@@ -33,18 +31,13 @@ public class RecipeBoardPackageBlock extends HorizontalFacingBlock {
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
         Direction dir = state.get(FACING);
-        switch (dir) {
-            case NORTH:
-                return NORTH_SHAPE;
-            case SOUTH:
-                return NORTH_SHAPE;
-            case EAST:
-                return EAST_SHAPE;
-            case WEST:
-                return EAST_SHAPE;
-            default:
-                return NORTH_SHAPE;
-        }
+        return switch (dir) {
+            case NORTH -> NORTH_SHAPE;
+            case SOUTH -> NORTH_SHAPE;
+            case EAST -> EAST_SHAPE;
+            case WEST -> EAST_SHAPE;
+            default -> NORTH_SHAPE;
+        };
     }
 
     @Override

@@ -1,9 +1,11 @@
 package lekavar.lma.drinkbeer.screen;
 
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.google.common.collect.Maps;
 import lekavar.lma.drinkbeer.DrinkBeer;
+import lekavar.lma.drinkbeer.manager.BeerRecipeManager;
+import lekavar.lma.drinkbeer.util.BeerRecipe;
+import lekavar.lma.drinkbeer.util.Beers;
+import lekavar.lma.drinkbeer.util.BrewingLeftover;
+import lekavar.lma.drinkbeer.util.BrewingMaterial;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,12 +21,10 @@ import net.minecraft.screen.slot.Slot;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 
 import java.util.*;
 
 public class BeerBarrelScreenHandler extends ScreenHandler {
-    private final ScreenHandlerContext context;
     private final Inventory input;
     private final Inventory output;
     private List<ItemStack> getBackResultList;
@@ -35,6 +35,9 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
     private final Slot emptyMugSlot;
     private final Slot resultSlot;
     PropertyDelegate propertyDelegate;
+    BeerRecipe beerRecipe;
+
+    private final ScreenHandlerContext context;
     private Runnable inventoryChangeListener;
     private PlayerEntity player;
 
@@ -43,16 +46,15 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
     }
 
     public BeerBarrelScreenHandler(int syncId, PlayerInventory playerInventory, final ScreenHandlerContext context) {
-        this(syncId, playerInventory, context, new ArrayPropertyDelegate(4));
+        this(syncId, playerInventory, context, new ArrayPropertyDelegate(5));
     }
 
     public BeerBarrelScreenHandler(int syncId, PlayerInventory playerInventory, final ScreenHandlerContext context, PropertyDelegate propertyDelegate) {
         super(DrinkBeer.BEER_BARREL_SCREEN_HANDLER, syncId);
-        this.inventoryChangeListener = () -> {
-        };
+
+        this.beerRecipe = null;
         this.propertyDelegate = propertyDelegate;
         this.addProperties(propertyDelegate);
-        this.player = playerInventory.player;
         this.input = new SimpleInventory(5) {
             public void markDirty() {
                 super.markDirty();
@@ -66,77 +68,62 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
                 BeerBarrelScreenHandler.this.inventoryChangeListener.run();
             }
         };
+
+        this.inventoryChangeListener = () -> {
+        };
         this.context = context;
-        //Our inventory
+        this.player = playerInventory.player;
+
+        //Init input slots
         this.materialSlot1 = this.addSlot(new Slot(input, 0, 28, 26) {
             public boolean canInsert(ItemStack stack) {
-                if (!isBrewing()) {
-                    return createMaterialMap().containsKey(stack.getItem());
-                } else
-                    return false;
+                return canInsertMaterialSlot(stack);
             }
         });
         this.materialSlot2 = this.addSlot(new Slot(input, 1, 46, 26) {
             public boolean canInsert(ItemStack stack) {
-                if (!isBrewing()) {
-                    return createMaterialMap().containsKey(stack.getItem());
-                } else
-                    return false;
+                return canInsertMaterialSlot(stack);
             }
         });
         this.materialSlot3 = this.addSlot(new Slot(input, 2, 28, 44) {
             public boolean canInsert(ItemStack stack) {
-                if (!isBrewing()) {
-                    return createMaterialMap().containsKey(stack.getItem());
-                } else
-                    return false;
+                return canInsertMaterialSlot(stack);
             }
         });
         this.materialSlot4 = this.addSlot(new Slot(input, 3, 46, 44) {
             public boolean canInsert(ItemStack stack) {
-                if (!isBrewing()) {
-                    return createMaterialMap().containsKey(stack.getItem());
-                } else
-                    return false;
+                return canInsertMaterialSlot(stack);
             }
         });
         this.emptyMugSlot = this.addSlot(new Slot(input, 4, 73, 50) {
             public boolean canInsert(ItemStack stack) {
-                if (stack.getItem().asItem() == DrinkBeer.EMPTY_BEER_MUG.asItem() && isMaterialCompleted() && !isBrewing())
-                    return true;
-                else
-                    return false;
+                return canInsertEmptyMugSlot(stack);
             }
         });
+        //Init result slot
         this.resultSlot = this.addSlot(new Slot(output, 0, 128, 34) {
             public boolean canInsert(ItemStack stack) {
                 return false;
             }
 
             public boolean canTakeItems(PlayerEntity playerEntity) {
-                if (isBrewing() && !isBrewingTimeRemain()) {
-                    return true;
-                } else
-                    return false;
+                return canTakeItemsResultSlot();
             }
 
             public void onTakeItem(PlayerEntity player, ItemStack stack) {
-                if (stack.getItem().equals(DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem())) {
-                    player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_CHRISTMAS_EVENT, SoundCategory.BLOCKS, 0.6f, 1f);
-                    player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_EVENT, SoundCategory.BLOCKS, 1f, 1f);
-                } else {
-                    player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_EVENT, SoundCategory.BLOCKS, 1f, 1f);
-                }
+                playPouringSound(player, stack);
                 resetBeerBarrel();
+                super.onTakeItem(player, stack);
             }
 
         });
-        if (this.propertyDelegate.get(2) != 0) {
-            BiMap<Integer, Item> beerTypeMap = createBeerTypeMap();
-            ItemStack resultItemStack = new ItemStack(beerTypeMap.get(this.propertyDelegate.get(2)), 4);
+        if (getBeerId() != 0) {
+            Beers beer = Beers.byId(getBeerId());
+            ItemStack resultItemStack = new ItemStack(beer.getBeerItem(), this.getBeerResultNum());
             this.resultSlot.setStack(resultItemStack);
         }
-        //The player inventory
+
+        //Init player inventory
         int m;
         int l;
         for (m = 0; m < 3; ++m) {
@@ -144,47 +131,44 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
                 this.addSlot(new Slot(playerInventory, l + m * 9 + 9, 8 + l * 18, 84 + m * 18));
             }
         }
-        //The player Hotbar
+        //Init player hot bar
         for (m = 0; m < 9; ++m) {
             this.addSlot(new Slot(playerInventory, m, 8 + m * 18, 142));
         }
     }
 
     public void resetBeerBarrel() {
-        this.propertyDelegate.set(1, 0);
-        this.propertyDelegate.set(2, 0);
-        this.propertyDelegate.set(3, 0);
+        setIsMaterialCompleted(false);
+        setBeerId(Beers.EMPTY_ID);
+        setIsBrewing(false);
+        setBeerResultNum(0);
+    }
+
+    public void startBrewing(BeerRecipe beerRecipe) {
+        setRemainingBrewingTime(beerRecipe.getBrewingTime());
+        setBeerId(Beers.byItem(beerRecipe.getBeerResult()).getId());
+        setIsBrewing(true);
+        setBeerResultNum(beerRecipe.getBeerResultNum());
     }
 
     public boolean isBrewing() {
-        return this.propertyDelegate.get(3) == 1 ? true : false;
+        return getIsBrewing() == 1;
     }
 
     public boolean isBrewingTimeRemain() {
-        return this.propertyDelegate.get(0) > 0 ? true : false;
+        return getRemainingBrewingTime() > 0;
     }
 
     public boolean isMaterialCompleted() {
-        if (this.propertyDelegate.get(1) == 0)
-            return false;
-        else
-            return true;
-    }
-
-    public int getSyncedNumber() {
-        return propertyDelegate.get(0);
+        return !(getIsMaterialCompleted() == 0);
     }
 
     public List<ItemStack> getBackResult() {
         Map<Item, Integer> map = new HashMap<>();
-        ItemStack materialItemStack1 = this.materialSlot1.getStack();
-        ItemStack materialItemStack2 = this.materialSlot2.getStack();
-        ItemStack materialItemStack3 = this.materialSlot3.getStack();
-        ItemStack materialItemStack4 = this.materialSlot4.getStack();
-        Item materialItem1 = materialItemStack1.getItem();
-        Item materialItem2 = materialItemStack2.getItem();
-        Item materialItem3 = materialItemStack3.getItem();
-        Item materialItem4 = materialItemStack4.getItem();
+        Item materialItem1 = this.materialSlot1.getStack().getItem();
+        Item materialItem2 = this.materialSlot2.getStack().getItem();
+        Item materialItem3 = this.materialSlot3.getStack().getItem();
+        Item materialItem4 = this.materialSlot4.getStack().getItem();
         map.put(materialItem1, 1);
         if (map.containsKey(materialItem2)) {
             map.put(materialItem2, map.get(materialItem2) + 1);
@@ -203,13 +187,12 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         }
 
         List<ItemStack> getBackResultList = new ArrayList<>();
-        if (map.containsKey(Items.WATER_BUCKET)) {
-            ItemStack itemStackWaterBucket = new ItemStack(Items.BUCKET, map.get(Items.WATER_BUCKET));
-            getBackResultList.add(itemStackWaterBucket);
-        }
-        if (map.containsKey(Items.MILK_BUCKET)) {
-            ItemStack itemStackMilkBucket = new ItemStack(Items.BUCKET, map.get(Items.MILK_BUCKET));
-            getBackResultList.add(itemStackMilkBucket);
+        List<BrewingLeftover> brewingLeftoverList = BrewingLeftover.getBrewingLeftoverList();
+        for (BrewingLeftover brewingLeftover : brewingLeftoverList) {
+            if (map.containsKey(brewingLeftover.getOriItem())) {
+                ItemStack itemStackWaterBucket = new ItemStack(brewingLeftover.getBrewingLeftOverItem(), map.get(brewingLeftover.getOriItem()));
+                getBackResultList.add(itemStackWaterBucket);
+            }
         }
 
         return getBackResultList;
@@ -245,33 +228,18 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         return newStack;
     }
 
-    @Environment(EnvType.CLIENT)
-    public void setInventoryChangeListener(Runnable inventoryChangeListener) {
-        this.inventoryChangeListener = inventoryChangeListener;
-    }
-
-    @Override
-    public void onContentChanged(Inventory inventory) {
-        updateResultSlot();
-        //this.sendContentUpdates();
-    }
-
     public void updateResultSlot() {
         if (isBrewing())
             return;
 
-        this.propertyDelegate.set(1, 0);
+        setIsMaterialCompleted(false);
         this.resultSlot.setStack(ItemStack.EMPTY);
 
-        ItemStack materialItemStack1 = this.materialSlot1.getStack();
-        ItemStack materialItemStack2 = this.materialSlot2.getStack();
-        ItemStack materialItemStack3 = this.materialSlot3.getStack();
-        ItemStack materialItemStack4 = this.materialSlot4.getStack();
+        Item materialItem1 = this.materialSlot1.getStack().getItem();
+        Item materialItem2 = this.materialSlot2.getStack().getItem();
+        Item materialItem3 = this.materialSlot3.getStack().getItem();
+        Item materialItem4 = this.materialSlot4.getStack().getItem();
         Map<Item, Integer> map = new HashMap<>();
-        Item materialItem1 = materialItemStack1.getItem();
-        Item materialItem2 = materialItemStack2.getItem();
-        Item materialItem3 = materialItemStack3.getItem();
-        Item materialItem4 = materialItemStack4.getItem();
         map.put(materialItem1, 1);
         if (map.containsKey(materialItem2)) {
             map.put(materialItem2, map.get(materialItem2) + 1);
@@ -289,139 +257,34 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
             map.put(materialItem4, 1);
         }
 
-        ItemStack resultItemStack = getResult(map);
-        if (!resultItemStack.isEmpty()) {
-            this.resultSlot.setStack(resultItemStack);
-            this.propertyDelegate.set(1, 1);
-        } else {
-            //doNothing
-        }
+        this.beerRecipe = getBeerRecipeResult(map);
+        if (beerRecipe != null) {
+            this.resultSlot.setStack(new ItemStack(beerRecipe.getBeerResult(), beerRecipe.getBeerResultNum()));
+            setIsMaterialCompleted(true);
 
-        if (isMaterialCompleted()) {
+            int requiredEmptyMugNum = beerRecipe.getBeerResultNum();
             ItemStack emptyMugItemStack = this.emptyMugSlot.getStack();
-            if (emptyMugItemStack.getCount() >= 4) {
-                Item beerItem = this.resultSlot.getStack().getItem();
-                BiMap<Item, Integer> beerTypeMap = createBeerTypeMap().inverse();
-                this.propertyDelegate.set(0, getBrewingTimeInResultSlot());
-                this.propertyDelegate.set(2, beerTypeMap.get(beerItem));
-                this.propertyDelegate.set(3, 1);
-
+            if (emptyMugItemStack.getCount() >= requiredEmptyMugNum) {
+                startBrewing(beerRecipe);
 
                 this.getBackResultList = getBackResult();
-
                 BeerBarrelScreenHandler.this.materialSlot1.takeStack(1);
                 BeerBarrelScreenHandler.this.materialSlot2.takeStack(1);
                 BeerBarrelScreenHandler.this.materialSlot3.takeStack(1);
                 BeerBarrelScreenHandler.this.materialSlot4.takeStack(1);
-                BeerBarrelScreenHandler.this.emptyMugSlot.takeStack(4);
+                BeerBarrelScreenHandler.this.emptyMugSlot.takeStack(requiredEmptyMugNum);
 
                 this.resultSlot.markDirty();
             }
         }
     }
 
-    public int getBrewingTimeInResultSlot() {
-        Item beerItem = this.resultSlot.getStack().getItem();
-        if (beerItem != Items.AIR) {
-            Map<Item, Integer> brewingTimeMap = createBrewingTimeMap();
-            return brewingTimeMap.get(beerItem);
-        }
-        return 0;
+    public int getCurrentBrewingTime() {
+        return this.beerRecipe != null ? beerRecipe.getBrewingTime() : 0;
     }
 
-    public static Map<Item, String> createMaterialMap() {
-        Map<Item, String> map = Maps.newLinkedHashMap();
-        map.put(Items.WATER_BUCKET, "water_bucket");
-        map.put(Items.MILK_BUCKET, "milk_bucket");
-        map.put(Items.BLAZE_POWDER, "blaze_powder");
-        map.put(Items.WHEAT, "wheat");
-        map.put(Items.SUGAR, "sugar");
-        map.put(Items.APPLE, "apple");
-        map.put(Items.SWEET_BERRIES, "sweet_berrires");
-        map.put(Items.ICE, "ice");
-        map.put(Items.BLUE_ICE, "blue_ice");
-        map.put(Items.PACKED_ICE,"packed_ice");
-        map.put(Items.BREAD, "bread");
-        map.put(Items.PUMPKIN, "pumpkin");
-        map.put(Items.EGG, "egg");
-        map.put(Items.BEETROOT, "beetroot");
-        map.put(Items.SUGAR_CANE, "sugar_cane");
-        map.put(Items.BONE,"bone");
-        return map;
-    }
-
-    public static Map<Item, Integer> createBrewingTimeMap() {
-        Map<Item, Integer> map = Maps.newLinkedHashMap();
-        map.put(DrinkBeer.BEER_MUG.asItem(), 24000);
-        map.put(DrinkBeer.BEER_MUG_BLAZE_STOUT.asItem(), 12000);
-        map.put(DrinkBeer.BEER_MUG_BLAZE_MILK_STOUT.asItem(), 18000);
-        map.put(DrinkBeer.BEER_MUG_APPLE_LAMBIC.asItem(), 24000);
-        map.put(DrinkBeer.BEER_MUG_SWEET_BERRY_KRIEK.asItem(), 24000);
-        map.put(DrinkBeer.BEER_MUG_HAARS_ICEY_PALE_LAGER.asItem(), 24000);
-        map.put(DrinkBeer.BEER_MUG_PUMPKIN_KVASS.asItem(), 12000);
-        map.put(DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem(), 12000);
-        map.put(DrinkBeer.BEER_MUG_NIGHT_HOWL_KVASS.asItem(), 18000);
-        return map;
-    }
-
-    public static BiMap<Integer, Item> createBeerTypeMap() {
-        BiMap<Integer, Item> map = HashBiMap.create();
-        map.put(1, DrinkBeer.BEER_MUG.asItem());
-        map.put(2, DrinkBeer.BEER_MUG_BLAZE_STOUT.asItem());
-        map.put(3, DrinkBeer.BEER_MUG_BLAZE_MILK_STOUT.asItem());
-        map.put(4, DrinkBeer.BEER_MUG_APPLE_LAMBIC.asItem());
-        map.put(5, DrinkBeer.BEER_MUG_SWEET_BERRY_KRIEK.asItem());
-        map.put(6, DrinkBeer.BEER_MUG_HAARS_ICEY_PALE_LAGER.asItem());
-        map.put(7, DrinkBeer.BEER_MUG_PUMPKIN_KVASS.asItem());
-        map.put(8, DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem());
-        map.put(9, DrinkBeer.BEER_MUG_NIGHT_HOWL_KVASS.asItem());
-        return map;
-    }
-
-    private ItemStack getResult(Map<Item, Integer> map) {
-        //adding new recipes starts here
-        if (map.containsKey(Items.WATER_BUCKET)) {
-            if (map.get(Items.WATER_BUCKET) == 1) {
-                if (map.containsKey(Items.WHEAT)) {
-                    if (map.get(Items.WHEAT) == 3) {
-                        return new ItemStack(DrinkBeer.BEER_MUG.asItem(), 4);
-                    } else if (map.get(Items.WHEAT) == 2) {
-                        if (map.containsKey(Items.BLAZE_POWDER))
-                            return new ItemStack(DrinkBeer.BEER_MUG_BLAZE_STOUT.asItem(), 4);
-                        if (map.containsKey(Items.APPLE))
-                            return new ItemStack(DrinkBeer.BEER_MUG_APPLE_LAMBIC.asItem(), 4);
-                        if (map.containsKey(Items.SWEET_BERRIES))
-                            return new ItemStack(DrinkBeer.BEER_MUG_SWEET_BERRY_KRIEK.asItem(), 4);
-                    } else if (map.get(Items.WHEAT) == 1) {
-                        if (map.containsKey(Items.BLAZE_POWDER) && map.containsKey(Items.SUGAR)) {
-                            return new ItemStack(DrinkBeer.BEER_MUG_BLAZE_MILK_STOUT.asItem(), 4);
-                        }
-                    }
-                } else if (map.containsKey(Items.BREAD)) {
-                    if (map.get(Items.BREAD) == 2) {
-                        if (map.containsKey(Items.PUMPKIN))
-                            return new ItemStack(DrinkBeer.BEER_MUG_PUMPKIN_KVASS.asItem(), 4);
-                        if (map.containsKey(Items.BONE))
-                            return new ItemStack(DrinkBeer.BEER_MUG_NIGHT_HOWL_KVASS.asItem(), 4);
-                    }
-                }
-            }
-        } else if (map.containsKey(Items.WHEAT)) {
-            if (map.get(Items.WHEAT) == 3) {
-                if (map.containsKey(Items.ICE)||map.containsKey(Items.BLUE_ICE)||map.containsKey(Items.PACKED_ICE))
-                    return new ItemStack(DrinkBeer.BEER_MUG_HAARS_ICEY_PALE_LAGER.asItem(), 4);
-            }
-        } else if (map.containsKey(Items.MILK_BUCKET)) {
-            if (map.containsKey(Items.SUGAR_CANE)) {
-                if (map.containsKey(Items.EGG)) {
-                    if (map.containsKey(Items.BEETROOT)) {
-                        return new ItemStack(DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem(), 4);
-                    }
-                }
-            }
-        }
-        //adding new recipes ends here
-        return ItemStack.EMPTY;
+    private BeerRecipe getBeerRecipeResult(Map<Item, Integer> inputMaterialMap) {
+        return BeerRecipeManager.matchBeerRecipe(inputMaterialMap, player);
     }
 
     public void close(PlayerEntity player) {
@@ -430,7 +293,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
             player.world.playSound(null, new BlockPos(player.getPos()), SoundEvents.BLOCK_BARREL_OPEN, SoundCategory.BLOCKS, 1f, 1f);
         }
         if (this.isMaterialCompleted() && !isBrewing()) {
-            this.propertyDelegate.set(1, 0);
+            setIsMaterialCompleted(false);
             this.resultSlot.markDirty();
         }
         this.context.run((world, blockPos) -> {
@@ -445,5 +308,90 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
                 }
             }
         });
+    }
+
+    public int getRemainingBrewingTime() {
+        return propertyDelegate.get(0);
+    }
+
+    private int getIsMaterialCompleted() {
+        return propertyDelegate.get(1);
+    }
+
+    private int getBeerId() {
+        return propertyDelegate.get(2);
+    }
+
+    private int getIsBrewing() {
+        return propertyDelegate.get(3);
+    }
+
+    private int getBeerResultNum() {
+        return propertyDelegate.get(4);
+    }
+
+    private void setRemainingBrewingTime(int remainingBrewingTime) {
+        this.propertyDelegate.set(0, remainingBrewingTime);
+    }
+
+    private void setIsMaterialCompleted(int isMaterialCompleted) {
+        this.propertyDelegate.set(1, isMaterialCompleted);
+    }
+
+    private void setIsMaterialCompleted(boolean isMaterialCompleted) {
+        setIsMaterialCompleted(isMaterialCompleted ? 1 : 0);
+    }
+
+    private void setBeerId(int beerId) {
+        this.propertyDelegate.set(2, beerId);
+    }
+
+    private void setIsBrewing(int isBrewing) {
+        this.propertyDelegate.set(3, isBrewing);
+    }
+
+    private void setIsBrewing(boolean isBrewing) {
+        setIsBrewing(isBrewing ? 1 : 0);
+    }
+
+    private void setBeerResultNum(int beerResultNum) {
+        this.propertyDelegate.set(4, beerResultNum);
+    }
+
+    private boolean canInsertMaterialSlot(ItemStack stack) {
+        if (!isBrewing()) {
+            return BrewingMaterial.MATERIAL_LIST.contains(stack.getItem());
+        } else
+            return false;
+    }
+
+    private boolean canInsertEmptyMugSlot(ItemStack stack) {
+        return stack.getItem().asItem() == DrinkBeer.EMPTY_BEER_MUG.asItem() && isMaterialCompleted() && !isBrewing();
+    }
+
+    private boolean canTakeItemsResultSlot() {
+        return isBrewing() && !isBrewingTimeRemain();
+    }
+
+    private void playPouringSound(PlayerEntity player, ItemStack stack) {
+        if (!player.world.isClient) {
+            if (stack.getItem().equals(DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem())) {
+                player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_CHRISTMAS_EVENT, SoundCategory.BLOCKS, 0.6f, 1f);
+                player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_EVENT, SoundCategory.BLOCKS, 1f, 1f);
+            } else {
+                player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_EVENT, SoundCategory.BLOCKS, 1f, 1f);
+            }
+        }
+    }
+
+    @Environment(EnvType.CLIENT)
+    public void setInventoryChangeListener(Runnable inventoryChangeListener) {
+        this.inventoryChangeListener = inventoryChangeListener;
+    }
+
+    @Override
+    public void onContentChanged(Inventory inventory) {
+        updateResultSlot();
+        this.sendContentUpdates();
     }
 }

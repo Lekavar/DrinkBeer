@@ -1,7 +1,7 @@
 package lekavar.lma.drinkbeer.block.entity;
 
 import lekavar.lma.drinkbeer.DrinkBeer;
-import lekavar.lma.drinkbeer.ImplementedInventory;
+import lekavar.lma.drinkbeer.inventory.ImplementedInventory;
 import lekavar.lma.drinkbeer.screen.BeerBarrelScreenHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -22,10 +22,11 @@ import net.minecraft.world.World;
 
 public class BeerBarrelEntity extends BlockEntity implements ImplementedInventory, NamedScreenHandlerFactory{
     private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(6, ItemStack.EMPTY);
-    private int remainingBrewTime;
+    private int remainingBrewingTime;
     private int isMaterialCompleted;
-    private int beerType;
+    private int beerId;
     private int isBrewing;
+    private int beerResultNum;
 
     public DefaultedList<ItemStack> getItems() {
         return inventory;
@@ -34,46 +35,36 @@ public class BeerBarrelEntity extends BlockEntity implements ImplementedInventor
     private final PropertyDelegate propertyDelegate = new PropertyDelegate() {
         @Override
         public int get(int index) {
-            switch(index) {
-                case 0:
-                    return remainingBrewTime;
-                case 1:
-                    return isMaterialCompleted;
-                case 2:
-                    return beerType;
-                case 3:
-                    return isBrewing;
-                default:
-                    return 0;
-            }
+            return switch (index) {
+                case 0 -> remainingBrewingTime;
+                case 1 -> isMaterialCompleted;
+                case 2 -> beerId;
+                case 3 -> isBrewing;
+                case 4 -> beerResultNum;
+                default -> 0;
+            };
         }
 
         @Override
         public void set(int index, int value) {
-            switch(index) {
-                case 0:
-                    remainingBrewTime = value;
-                    break;
-                case 1:
-                    isMaterialCompleted = value;
-                    break;
-                case 2:
-                    beerType = value;
-                    break;
-                case 3:
-                    isBrewing = value;
+            switch (index) {
+                case 0 -> remainingBrewingTime = value;
+                case 1 -> isMaterialCompleted = value;
+                case 2 -> beerId = value;
+                case 3 -> isBrewing = value;
+                case 4 -> beerResultNum = value;
             }
         }
 
         @Override
         public int size() {
-            return 4;
+            return 5;
         }
     };
 
     public static void tick(World world, BlockPos pos, BlockState state, BeerBarrelEntity beerBarrelEntity) {
         if (!world.isClient)
-            beerBarrelEntity.remainingBrewTime = beerBarrelEntity.remainingBrewTime > 0 ? --beerBarrelEntity.remainingBrewTime : 0;
+            beerBarrelEntity.remainingBrewingTime = beerBarrelEntity.remainingBrewingTime > 0 ? --beerBarrelEntity.remainingBrewingTime : 0;
     }
 
     public BeerBarrelEntity(BlockPos pos,BlockState state) {
@@ -94,10 +85,11 @@ public class BeerBarrelEntity extends BlockEntity implements ImplementedInventor
     public NbtCompound writeNbt(NbtCompound tag) {
         super.writeNbt(tag);
         Inventories.writeNbt(tag,inventory);
-        tag.putShort("RemainingBrewTime", (short)this.remainingBrewTime);
+        tag.putShort("RemainingBrewTime", (short)this.remainingBrewingTime);
         tag.putShort("IsMaterialCompleted", (short)this.isMaterialCompleted);
-        tag.putShort("BeerType", (short)this.beerType);
+        tag.putShort("BeerType", (short)this.beerId);
         tag.putShort("IsBrewing", (short)this.isBrewing);
+        tag.putShort("BeerResultNum", (short)this.beerResultNum);
 
         return tag;
     }
@@ -106,9 +98,10 @@ public class BeerBarrelEntity extends BlockEntity implements ImplementedInventor
     public void readNbt(NbtCompound tag) {
         super.readNbt(tag);
         Inventories.readNbt(tag, inventory);
-        this.remainingBrewTime = tag.getShort("RemainingBrewTime");
+        this.remainingBrewingTime = tag.getShort("RemainingBrewTime");
         this.isMaterialCompleted = tag.getShort("IsMaterialCompleted");
-        this.beerType = tag.getShort("BeerType");
+        this.beerId = tag.getShort("BeerType");
         this.isBrewing = tag.getShort("IsBrewing");
+        this.beerResultNum = tag.getShort("BeerResultNum");
     }
 }

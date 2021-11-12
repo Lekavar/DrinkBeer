@@ -28,7 +28,7 @@ public class BeerBarrelScreen extends HandledScreen<ScreenHandler> {
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
         drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
-        String str = screenHandler.propertyDelegate.get(3) == 1 ? convertTickToTime(screenHandler.getSyncedNumber()) : convertTickToTime(screenHandler.getBrewingTimeInResultSlot());
+        String str = screenHandler.propertyDelegate.get(3) == 1 ? convertTickToTime(screenHandler.getRemainingBrewingTime()) : convertTickToTime(screenHandler.getCurrentBrewingTime());
         textRenderer.draw(matrices, str, x + 128 - str.length() / 2, y + 54, new Color(64, 64, 64, 255).getRGB());
     }
 
