@@ -164,38 +164,42 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
     }
 
     public List<ItemStack> getBackResult() {
-        Map<Item, Integer> map = new HashMap<>();
-        Item materialItem1 = this.materialSlot1.getStack().getItem();
-        Item materialItem2 = this.materialSlot2.getStack().getItem();
-        Item materialItem3 = this.materialSlot3.getStack().getItem();
-        Item materialItem4 = this.materialSlot4.getStack().getItem();
-        map.put(materialItem1, 1);
-        if (map.containsKey(materialItem2)) {
-            map.put(materialItem2, map.get(materialItem2) + 1);
-        } else {
-            map.put(materialItem2, 1);
-        }
-        if (map.containsKey(materialItem3)) {
-            map.put(materialItem3, map.get(materialItem3) + 1);
-        } else {
-            map.put(materialItem3, 1);
-        }
-        if (map.containsKey(materialItem4)) {
-            map.put(materialItem4, map.get(materialItem4) + 1);
-        } else {
-            map.put(materialItem4, 1);
-        }
+        Map<Item, Integer> inputMaterialMap = new HashMap<>();
+        getInputMaterialMap(inputMaterialMap);
 
         List<ItemStack> getBackResultList = new ArrayList<>();
         List<BrewingLeftover> brewingLeftoverList = BrewingLeftover.getBrewingLeftoverList();
         for (BrewingLeftover brewingLeftover : brewingLeftoverList) {
-            if (map.containsKey(brewingLeftover.getOriItem())) {
-                ItemStack itemStackWaterBucket = new ItemStack(brewingLeftover.getBrewingLeftOverItem(), map.get(brewingLeftover.getOriItem()));
+            if (inputMaterialMap.containsKey(brewingLeftover.getOriItem())) {
+                ItemStack itemStackWaterBucket = new ItemStack(brewingLeftover.getBrewingLeftOverItem(), inputMaterialMap.get(brewingLeftover.getOriItem()));
                 getBackResultList.add(itemStackWaterBucket);
             }
         }
 
         return getBackResultList;
+    }
+
+    private void getInputMaterialMap(Map<Item, Integer> inputMaterial) {
+        Item materialItem1 = this.materialSlot1.getStack().getItem();
+        Item materialItem2 = this.materialSlot2.getStack().getItem();
+        Item materialItem3 = this.materialSlot3.getStack().getItem();
+        Item materialItem4 = this.materialSlot4.getStack().getItem();
+        inputMaterial.put(materialItem1, 1);
+        if (inputMaterial.containsKey(materialItem2)) {
+            inputMaterial.put(materialItem2, inputMaterial.get(materialItem2) + 1);
+        } else {
+            inputMaterial.put(materialItem2, 1);
+        }
+        if (inputMaterial.containsKey(materialItem3)) {
+            inputMaterial.put(materialItem3, inputMaterial.get(materialItem3) + 1);
+        } else {
+            inputMaterial.put(materialItem3, 1);
+        }
+        if (inputMaterial.containsKey(materialItem4)) {
+            inputMaterial.put(materialItem4, inputMaterial.get(materialItem4) + 1);
+        } else {
+            inputMaterial.put(materialItem4, 1);
+        }
     }
 
     @Override
@@ -235,29 +239,10 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         setIsMaterialCompleted(false);
         this.resultSlot.setStack(ItemStack.EMPTY);
 
-        Item materialItem1 = this.materialSlot1.getStack().getItem();
-        Item materialItem2 = this.materialSlot2.getStack().getItem();
-        Item materialItem3 = this.materialSlot3.getStack().getItem();
-        Item materialItem4 = this.materialSlot4.getStack().getItem();
-        Map<Item, Integer> map = new HashMap<>();
-        map.put(materialItem1, 1);
-        if (map.containsKey(materialItem2)) {
-            map.put(materialItem2, map.get(materialItem2) + 1);
-        } else {
-            map.put(materialItem2, 1);
-        }
-        if (map.containsKey(materialItem3)) {
-            map.put(materialItem3, map.get(materialItem3) + 1);
-        } else {
-            map.put(materialItem3, 1);
-        }
-        if (map.containsKey(materialItem4)) {
-            map.put(materialItem4, map.get(materialItem4) + 1);
-        } else {
-            map.put(materialItem4, 1);
-        }
+        Map<Item, Integer> inputMaterialMap = new HashMap<>();
+        getInputMaterialMap(inputMaterialMap);
 
-        this.beerRecipe = getBeerRecipeResult(map);
+        this.beerRecipe = getBeerRecipeResult(inputMaterialMap);
         if (beerRecipe != null) {
             this.resultSlot.setStack(new ItemStack(beerRecipe.getBeerResult(), beerRecipe.getBeerResultNum()));
             setIsMaterialCompleted(true);
@@ -377,10 +362,8 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
         if (!player.world.isClient) {
             if (stack.getItem().equals(DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem())) {
                 player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_CHRISTMAS_EVENT, SoundCategory.BLOCKS, 0.6f, 1f);
-                player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_EVENT, SoundCategory.BLOCKS, 1f, 1f);
-            } else {
-                player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_EVENT, SoundCategory.BLOCKS, 1f, 1f);
             }
+            player.world.playSound(null, new BlockPos(player.getPos()), DrinkBeer.POURING_EVENT, SoundCategory.BLOCKS, 1f, 1f);
         }
     }
 
