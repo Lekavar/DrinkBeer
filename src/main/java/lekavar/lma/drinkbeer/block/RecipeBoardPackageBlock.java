@@ -31,18 +31,11 @@ public class RecipeBoardPackageBlock extends HorizontalFacingBlock {
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
         Direction dir = state.get(FACING);
-        switch (dir) {
-            case NORTH:
-                return NORTH_SHAPE;
-            case SOUTH:
-                return NORTH_SHAPE;
-            case EAST:
-                return EAST_SHAPE;
-            case WEST:
-                return EAST_SHAPE;
-            default:
-                return NORTH_SHAPE;
-        }
+        return switch (dir) {
+            case NORTH, SOUTH -> NORTH_SHAPE;
+            case EAST, WEST -> EAST_SHAPE;
+            default -> NORTH_SHAPE;
+        };
     }
 
     @Override
