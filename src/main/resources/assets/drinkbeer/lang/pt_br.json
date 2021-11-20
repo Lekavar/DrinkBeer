@@ -1,0 +1,42 @@
+{
+  "itemGroup.drinkbeer.beer": "Cerveja",
+  "itemGroup.drinkbeer.general": "Blocos Gerais do DrinkBeer",
+
+  "block.drinkbeer.beer_mug": "Pale Ale Mineira",
+  "block.drinkbeer.beer_mug_blaze_stout": "Cerveja Preta",
+  "block.drinkbeer.beer_mug_blaze_milk_stout": "Cerveja Preta de Blaze",
+  "block.drinkbeer.beer_mug_apple_lambic": "Lambic de Maçã",
+  "block.drinkbeer.beer_mug_sweet_berry_kriek": "Doce Kriek de Cereja",
+  "block.drinkbeer.beer_mug_haars_icey_pale_lager": "Pale Lager Gelada de Haar's",
+  "block.drinkbeer.beer_mug_pumpkin_kvass": "Kvass de Abóbora",
+  "block.drinkbeer.beer_mug_frothy_pink_eggnog": "Eggnog Espumosa Rosa",
+  "block.drinkbeer.beer_mug_night_howl_kvass": "Night Howl Kvass",
+
+  "block.drinkbeer.empty_beer_mug": "Caneca de Cerveja Vazia",
+  "block.drinkbeer.beer_barrel": "Barril de Cerveja",
+  "block.drinkbeer.iron_call_bell": "Campainha de Ferro",
+  "block.drinkbeer.golden_call_bell": "Campainha de Ouro",
+
+  "block.drinkbeer.recipe_board": "Quadro de Receita de Pale Ale Mineira",
+  "block.drinkbeer.recipe_board_beer_mug_blaze_stout": "Quadro de Receita de Cerveja Preta",
+  "block.drinkbeer.recipe_board_beer_mug_blaze_milk_stout": "Quadro de Receita de Cerveja Preta de Blaze",
+  "block.drinkbeer.recipe_board_beer_mug_apple_lambic": "Quadro de Receita de Lambic de Maçã",
+  "block.drinkbeer.recipe_board_beer_mug_sweet_berry_kriek": "Quadro de Receita de Doce Kriek de Cereja",
+  "block.drinkbeer.recipe_board_beer_mug_haars_icey_pale_lager": "Quadro de Receita de Pale Lager Gelada de Haar's",
+  "block.drinkbeer.recipe_board_beer_mug_pumpkin_kvass": "Quadro de Receita de Kvass de Abóbora",
+  "block.drinkbeer.recipe_board_beer_mug_night_howl_kvass": "Quadro de Receita de Night Howl Kvass",
+
+  "block.drinkbeer.recipe_board_package": "Pacote de Quadros de Receitas",
+
+  "item.drinkbeer.beer_mug.tooltip": "Pressa 1:00",
+  "item.drinkbeer.beer_mug_blaze_stout.tooltip":"Resistência ao Fogo 1:30",
+  "item.drinkbeer.beer_mug_blaze_milk_stout.tooltip":"Resistência ao Fogo 2:00",
+  "item.drinkbeer.beer_mug_apple_lambic.tooltip":"Regeneração 0:15",
+  "item.drinkbeer.beer_mug_sweet_berry_kriek.tooltip":"Regeneração 0:20",
+  "item.drinkbeer.beer_mug_haars_icey_pale_lager.tooltip": "Caminhante de Geada Bêbado 1:00",
+  "item.drinkbeer.beer_mug_night_howl_kvass.tooltip": "Visão Noturna 2:00-7:00 (é proporcional à plenitude da lua)",
+
+  "drinkbeer.restores_hunger": "Restaura a Fome: ",
+  "effect.drinkbeer.drunk_frost_walker": "Caminhante de Geada Bêbado",
+  "effect.drinkbeer.drunk": "Bêbado"
+}
