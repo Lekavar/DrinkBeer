@@ -2,10 +2,10 @@ package lekavar.lma.drinkbeer.screen;
 
 import lekavar.lma.drinkbeer.DrinkBeer;
 import lekavar.lma.drinkbeer.manager.BeerRecipeManager;
-import lekavar.lma.drinkbeer.util.BeerRecipe;
-import lekavar.lma.drinkbeer.util.Beers;
-import lekavar.lma.drinkbeer.util.BrewingLeftover;
-import lekavar.lma.drinkbeer.util.BrewingMaterial;
+import lekavar.lma.drinkbeer.util.beer.BeerRecipe;
+import lekavar.lma.drinkbeer.util.beer.Beers;
+import lekavar.lma.drinkbeer.util.beer.BrewingLeftover;
+import lekavar.lma.drinkbeer.util.beer.BrewingMaterial;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.player.PlayerEntity;
@@ -139,7 +139,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
 
     public void resetBeerBarrel() {
         setIsMaterialCompleted(false);
-        setBeerId(Beers.EMPTY_ID);
+        setBeerId(Beers.EMPTY_BEER_ID);
         setIsBrewing(false);
         setBeerResultNum(0);
     }

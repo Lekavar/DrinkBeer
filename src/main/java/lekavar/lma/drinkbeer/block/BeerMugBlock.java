@@ -61,7 +61,9 @@ public class BeerMugBlock extends HorizontalFacingBlock {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ItemStack itemStack = player.getStackInHand(hand);
+        /*Fix: It should be main hand stack*/
+        //ItemStack itemStack itemStack = player.getStackInHand(hand);
+        ItemStack itemStack = player.getMainHandStack();
         if (itemStack.getItem().asItem() == state.getBlock().asItem()) {
             int amount = state.get(AMOUNT);
             int mugInHandCount = player.getStackInHand(hand).getCount();

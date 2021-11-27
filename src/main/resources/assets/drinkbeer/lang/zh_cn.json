@@ -8,25 +8,27 @@
   "block.drinkbeer.beer_mug_apple_lambic": "苹果拉比克",
   "block.drinkbeer.beer_mug_sweet_berry_kriek": "甜浆果克里克",
   "block.drinkbeer.beer_mug_haars_icey_pale_lager": "哈尔的冰拉格",
-  "block.drinkbeer.beer_mug_pumpkin_kvass": "南瓜卡瓦斯",
+  "block.drinkbeer.beer_mug_pumpkin_kvass": "南瓜格瓦斯",
   "block.drinkbeer.beer_mug_frothy_pink_eggnog": "粉红泡沫蛋酒",
-  "block.drinkbeer.beer_mug_night_howl_kvass": "月夜狼嚎卡瓦斯",
+  "block.drinkbeer.beer_mug_night_howl_kvass": "月夜狼嚎格瓦斯",
 
   "block.drinkbeer.empty_beer_mug": "空啤酒杯",
   "block.drinkbeer.beer_barrel": "啤酒桶",
+  "block.drinkbeer.bartending_table_normal" : "调酒桌",
+
   "block.drinkbeer.iron_call_bell": "铁唤餐铃",
   "block.drinkbeer.golden_call_bell": "金唤餐铃",
+  "block.drinkbeer.lekas_call_bell": "莱卡的唤餐铃",
 
+  "block.drinkbeer.recipe_board_package": "配方板套装",
   "block.drinkbeer.recipe_board_beer_mug": "矿工麦酒配方板",
   "block.drinkbeer.recipe_board_beer_mug_blaze_stout": "烈焰黑啤配方板",
   "block.drinkbeer.recipe_board_beer_mug_blaze_milk_stout": "烈焰牛奶黑啤配方板",
   "block.drinkbeer.recipe_board_beer_mug_apple_lambic": "苹果拉比克配方板",
   "block.drinkbeer.recipe_board_beer_mug_sweet_berry_kriek": "甜浆果克里克配方板",
   "block.drinkbeer.recipe_board_beer_mug_haars_icey_pale_lager": "哈尔的冰拉格配方板",
-  "block.drinkbeer.recipe_board_beer_mug_pumpkin_kvass": "南瓜卡瓦斯配方板",
-  "block.drinkbeer.recipe_board_beer_mug_night_howl_kvass": "月夜狼嚎卡瓦斯配方板",
-
-  "block.drinkbeer.recipe_board_package": "配方板套装",
+  "block.drinkbeer.recipe_board_beer_mug_pumpkin_kvass": "南瓜格瓦斯配方板",
+  "block.drinkbeer.recipe_board_beer_mug_night_howl_kvass": "月夜狼嚎格瓦斯配方板",
 
   "item.drinkbeer.beer_mug.tooltip": "急迫 1:00",
   "item.drinkbeer.beer_mug_blaze_stout.tooltip":"防火 1:30",
@@ -38,5 +40,42 @@
 
   "drinkbeer.restores_hunger": "饥饿值回复: ",
   "effect.drinkbeer.drunk_frost_walker": "醉酒的冰霜行者",
-  "effect.drinkbeer.drunk": "醉酒"
+  "effect.drinkbeer.drunk": "醉酒",
+
+  "dinkbeer.location.northon": "北森镇",
+  "drinkbeer.location.twigvalley": "树枝谷",
+
+  "block.drinkbeer.mixed_beer" : "调制酒",
+  "item.drinkbeer.mixed_beer.tooltip_base" : "基酒",
+  "item.drinkbeer.mixed_beer.tooltip_unmixed" : "这杯酒没有基酒",
+  "item.drinkbeer.spice.tooltip_flavor" : "风味",
+  "item.drinkbeer.spice.tooltip_no_flavor" : "这杯酒还没有任何风味",
+  "item.drinkbeer.spice.tooltip" : "香料",
+
+  "block.drinkbeer.spice_blaze_paprika" : "烈焰辣椒粉",
+  "block.drinkbeer.spice_dried_eglia_bud" : "干烙凛花蕾",
+  "block.drinkbeer.spice_smoked_eglia_bud" : "烟熏烙凛花蕾",
+  "block.drinkbeer.spice_amethyst_nigella_seeds" : "紫水晶黑种草草籽",
+  "block.drinkbeer.spice_citrine_nigella_seeds" : "黄水晶黑种草草籽",
+  "block.drinkbeer.spice_ice_mint" : "冰结薄荷",
+  "block.drinkbeer.spice_ice_patchouli" : "冰结广藿香",
+  "block.drinkbeer.spice_storm_shards" : "风暴碎片",
+
+  "drinkbeer.flavor.spicy" : "辛辣的",
+  "drinkbeer.flavor.fiery" : "火辣的",
+  "drinkbeer.flavor.soooo_spicy" : "真是够热辣！",
+  "drinkbeer.flavor.aromatic" : "芳香的",
+  "drinkbeer.flavor.aromatic1" : "芳香的",
+  "drinkbeer.flavor.refreshing" : "清爽的",
+  "drinkbeer.flavor.refreshing1" : "清爽的",
+  "drinkbeer.flavor.stormy" : "风暴的",
+  "drinkbeer.flavor.the_fall_of_the_giant" : "巨人的陨落",
+
+  "drinkbeer.flavor.spicy.tooltip" : "生命-3，状态效果时间+80%",
+  "drinkbeer.flavor.fiery.tooltip" : "生命-4，状态效果时间+100%",
+  "drinkbeer.flavor.aromatic.tooltip" : "状态效果时间+0:40",
+  "drinkbeer.flavor.aromatic1.tooltip" : "状态效果时间+1:00",
+  "drinkbeer.flavor.refreshing.tooltip" : "醉酒等级-1",
+  "drinkbeer.flavor.refreshing1.tooltip" : "醉酒等级-2",
+  "drinkbeer.flavor.stormy.tooltip" : "\"只有风暴才能击倒大树!\""
 }

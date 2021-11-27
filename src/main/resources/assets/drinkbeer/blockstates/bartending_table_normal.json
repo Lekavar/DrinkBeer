@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "type=1,opened=true,facing=north": {
+      "model": "drinkbeer:block/bartending_table_normal_opened_type1"
+    },
+    "type=1,opened=true,facing=east": {
+      "model": "drinkbeer:block/bartending_table_normal_opened_type1",
+      "y": 90
+    },
+    "type=1,opened=true,facing=south": {
+      "model": "drinkbeer:block/bartending_table_normal_opened_type1",
+      "y": 180
+    },
+    "type=1,opened=true,facing=west": {
+      "model": "drinkbeer:block/bartending_table_normal_opened_type1",
+      "y": 270
+    },
+    "type=1,opened=false,facing=north": {
+      "model": "drinkbeer:block/bartending_table_normal_closed_type1"
+    },
+    "type=1,opened=false,facing=east": {
+      "model": "drinkbeer:block/bartending_table_normal_closed_type1",
+      "y": 90
+    },
+    "type=1,opened=false,facing=south": {
+      "model": "drinkbeer:block/bartending_table_normal_closed_type1",
+      "y": 180
+    },
+    "type=1,opened=false,facing=west": {
+      "model": "drinkbeer:block/bartending_table_normal_closed_type1",
+      "y": 270
+    },
+    "type=2,opened=true,facing=north": {
+      "model": "drinkbeer:block/bartending_table_normal_opened_type2"
+    },
+    "type=2,opened=true,facing=east": {
+      "model": "drinkbeer:block/bartending_table_normal_opened_type2",
+      "y": 90
+    },
+    "type=2,opened=true,facing=south": {
+      "model": "drinkbeer:block/bartending_table_normal_opened_type2",
+      "y": 180
+    },
+    "type=2,opened=true,facing=west": {
+      "model": "drinkbeer:block/bartending_table_normal_opened_type2",
+      "y": 270
+    },
+    "type=2,opened=false,facing=north": {
+      "model": "drinkbeer:block/bartending_table_normal_closed_type1"
+    },
+    "type=2,opened=false,facing=east": {
+      "model": "drinkbeer:block/bartending_table_normal_closed_type1",
+      "y": 90
+    },
+    "type=2,opened=false,facing=south": {
+      "model": "drinkbeer:block/bartending_table_normal_closed_type1",
+      "y": 180
+    },
+    "type=2,opened=false,facing=west": {
+      "model": "drinkbeer:block/bartending_table_normal_closed_type1",
+      "y": 270
+    }
+  }
+}

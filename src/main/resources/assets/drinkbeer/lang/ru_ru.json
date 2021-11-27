@@ -7,19 +7,37 @@
   "block.drinkbeer.beer_mug_blaze_milk_stout": "Пламенный молочный стаут",
   "block.drinkbeer.beer_mug_apple_lambic": "Яблочный ламбик",
   "block.drinkbeer.beer_mug_sweet_berry_kriek": "Сладкий ягодный крик",
-  "block.drinkbeer.beer_mug_haars_icey_pale_lager": "Ледяной светлый лагер",
-  "block.drinkbeer.beer_mug_pumpkin_kvass": "Тыквенный квас",
+  "block.drinkbeer.beer_mug_haars_icey_pale_lager": "Ледяной светлый лагер Хаара",
+  "block.drinkbeer.beer_mug_pumpkin_kvass": "Тыквенный Квас",
+  "block.drinkbeer.beer_mug_frothy_pink_eggnog": "Пенистый розовый моголь",
+  "block.drinkbeer.beer_mug_night_howl_kvass": "Квас ночного воя",
+
 
   "block.drinkbeer.empty_beer_mug": "Пустая пивная кружка",
   "block.drinkbeer.beer_barrel": "Бочонок",
+  "block.drinkbeer.iron_call_bell": "Железный звоночек",
+  "block.drinkbeer.golden_call_bell": "Золотой звоночек",
+
+  "block.drinkbeer.recipe_board_beer_mug": "Вывеска с Рецептом: Шахтёрский пейл-эль",
+  "block.drinkbeer.recipe_board_beer_mug_blaze_stout": "Вывеска с Рецептом: Пламенный стаут",
+  "block.drinkbeer.recipe_board_beer_mug_blaze_milk_stout": "Вывеска с Рецептом: Пламенный молочный стаут",
+  "block.drinkbeer.recipe_board_beer_mug_apple_lambic": "Вывеска с Рецептом: Яблочный ламбик",
+  "block.drinkbeer.recipe_board_beer_mug_sweet_berry_kriek": "Вывеска с Рецептом: Сладкий ягодный крик",
+  "block.drinkbeer.recipe_board_beer_mug_haars_icey_pale_lager": "Вывеска с Рецептом: Ледяной светлый лагер Хаара",
+  "block.drinkbeer.recipe_board_beer_mug_pumpkin_kvass": "Вывеска с Рецептом: Тыквенный Квас",
+  "block.drinkbeer.recipe_board_beer_mug_night_howl_kvass": "Вывеска с Рецептом: Квас ночного воя",
+
+  "block.drinkbeer.recipe_board_package": "Коробка с Вывесками",
+
 
   "item.drinkbeer.beer_mug.tooltip": "Спешка 1:00",
   "item.drinkbeer.beer_mug_blaze_stout.tooltip": "Огнестойкость 1:30",
   "item.drinkbeer.beer_mug_blaze_milk_stout.tooltip": "Огнестойкость 2:00",
   "item.drinkbeer.beer_mug_apple_lambic.tooltip": "Регенерация 0:15",
   "item.drinkbeer.beer_mug_sweet_berry_kriek.tooltip": "Регенерация 0:20",
-  "item.drinkbeer.beer_mug_haars_icey_pale_lager.tooltip": "Пьяная морозная поступь 1:00",
+  "item.drinkbeer.beer_mug_haars_icey_pale_lager.tooltip": "Пьяный мороз 1:00",
+  "item.drinkbeer.beer_mug_night_howl_kvass.tooltip": "Ночное Зрение 2:00-7:00 (Зависит от фазы луны)",
 
   "drinkbeer.restores_hunger": "Восстанавливает голод: ",
-  "effect.drinkbeer.drunk_frost_walker": "Пьяная морозная поступь"
+  "effect.drinkbeer.drunk_frost_walker": "Пьяный мороз"
 }

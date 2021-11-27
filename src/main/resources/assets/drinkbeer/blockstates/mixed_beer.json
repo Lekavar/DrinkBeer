@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "drinkbeer:block/mixed_beer_empty"
+    }
+  }
+}

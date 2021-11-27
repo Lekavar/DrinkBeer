@@ -31,7 +31,6 @@ public class DrunkFrostWalkerStatusEffect extends StatusEffect {
 
     @Override
     public void onApplied(LivingEntity entity, AttributeContainer attributes, int amplifier) {
-        int drunkAmplifier = DrunkStatusEffect.getDrunkAmplifier(entity);
-        entity.addStatusEffect(new StatusEffectInstance(DrinkBeer.DRUNK, DrunkStatusEffect.getDrunkDuratioin(drunkAmplifier), drunkAmplifier));
+        DrunkStatusEffect.addStatusEffect(entity);
     }
 }

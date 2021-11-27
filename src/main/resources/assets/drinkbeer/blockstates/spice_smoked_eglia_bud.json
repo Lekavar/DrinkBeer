@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "drinkbeer:block/spice_smoked_eglia_bud"
+    },
+    "facing=east": {
+      "model": "drinkbeer:block/spice_smoked_eglia_bud",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "drinkbeer:block/spice_smoked_eglia_bud",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "drinkbeer:block/spice_smoked_eglia_bud",
+      "y": 270
+    }
+  }
+}

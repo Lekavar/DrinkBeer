@@ -38,5 +38,39 @@
 
   "drinkbeer.restores_hunger": "Restores Hunger: ",
   "effect.drinkbeer.drunk_frost_walker": "Drunk Frost Walker",
-  "effect.drinkbeer.drunk": "Drunk"
+  "effect.drinkbeer.drunk": "Drunk",
+
+  "block.drinkbeer.mixed_beer" : "Mixed Liquor",
+  "item.drinkbeer.mixed_beer.tooltip_base" : "Base Liquor",
+  "item.drinkbeer.mixed_beer.tooltip_unmixed" : "Has no base liquor",
+  "item.drinkbeer.spice.tooltip_flavor" : "Flavor",
+  "item.drinkbeer.spice.tooltip_no_flavor" : "Has no flavor yet",
+  "item.drinkbeer.spice.tooltip" : "Spice",
+
+  "block.drinkbeer.spice_blaze_paprika" : "Blaze Paprika",
+  "block.drinkbeer.spice_dried_eglia_bud" : "Dried Eglia Bud",
+  "block.drinkbeer.spice_smoked_eglia_bud" : "Smoked Eglia Bud",
+  "block.drinkbeer.spice_amethyst_nigella_seeds" : "Amethyst Nigella Seeds",
+  "block.drinkbeer.spice_citrine_nigella_seeds" : "Citrine Nigella Seeds",
+  "block.drinkbeer.spice_ice_mint" : "Ice Mint",
+  "block.drinkbeer.spice_ice_patchouli" : "Ice Patchouli",
+  "block.drinkbeer.spice_storm_shards" : "Storm Shards",
+
+  "drinkbeer.flavor.spicy" : "Spicy",
+  "drinkbeer.flavor.fiery" : "Fiery",
+  "drinkbeer.flavor.soooo_spicy" : "It's so hot！",
+  "drinkbeer.flavor.aromatic" : "Aromatic",
+  "drinkbeer.flavor.aromatic1" : "Aromatic",
+  "drinkbeer.flavor.refreshing" : "Refreshing",
+  "drinkbeer.flavor.refreshing1" : "Refreshing",
+  "drinkbeer.flavor.stormy" : "Stormy",
+  "drinkbeer.flavor.the_fall_of_the_giant" : "The Fall of the Giant",
+
+  "drinkbeer.flavor.spicy.tooltip" : "Health -3, status effects duration +80%",
+  "drinkbeer.flavor.fiery.tooltip" : "Health -4, status effects duration +100%",
+  "drinkbeer.flavor.aromatic.tooltip" : "Status effects duration +0:40",
+  "drinkbeer.flavor.aromatic1.tooltip" : "Status effects duration +1:00",
+  "drinkbeer.flavor.refreshing.tooltip" : "Drunk level -1",
+  "drinkbeer.flavor.refreshing1.tooltip" : "Drunk level -2",
+  "drinkbeer.flavor.stormy.tooltip" : "\"Only a storm can fell a Greatwood\""
 }

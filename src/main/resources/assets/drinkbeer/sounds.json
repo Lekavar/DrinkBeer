@@ -24,6 +24,11 @@
 	  "drinkbeer:golden_call_bell_tinkle"
     ]
   },
+  "lekas_call_bell_tinkle":{
+  "sounds": [
+	  "drinkbeer:lekas_call_bell_tinkle"
+    ]
+  },
   "night_howl0":{
   "sounds": [
 	  "drinkbeer:night_howl0"
@@ -47,6 +52,16 @@
   "unpacking":{
   "sounds": [
 	  "drinkbeer:unpacking"
+    ]
+  },
+  "bartending_table_close":{
+  "sounds": [
+	  "drinkbeer:bartending_table_close"
+    ]
+  },
+  "bartending_table_open":{
+  "sounds": [
+	  "drinkbeer:bartending_table_open"
     ]
   }
 }

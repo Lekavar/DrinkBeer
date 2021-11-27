@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "drinkbeer:block/spice_ice_mint"
+    },
+    "facing=east": {
+      "model": "drinkbeer:block/spice_ice_mint",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "drinkbeer:block/spice_ice_mint",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "drinkbeer:block/spice_ice_mint",
+      "y": 270
+    }
+  }
+}

@@ -6,6 +6,7 @@ import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -17,6 +18,8 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
+
+import java.util.Random;
 
 public class CallBellBlock extends Block {
     public final static VoxelShape SHAPE = createCuboidShape(5.5f, 0, 5.5f, 10.5f, 4, 10.5f);
@@ -35,8 +38,21 @@ public class CallBellBlock extends Block {
         if (!world.isClient) {
             if (state.getBlock() == DrinkBeer.IRON_CALL_BELL) {
                 world.playSound(null, pos, DrinkBeer.IRON_CALL_BELL_TINKLE_EVENT, SoundCategory.BLOCKS, 1.5f, 1f);
-            }else if(state.getBlock() == DrinkBeer.GOLDEN_CALL_BELL) {
+            } else if (state.getBlock() == DrinkBeer.GOLDEN_CALL_BELL) {
                 world.playSound(null, pos, DrinkBeer.GOLDEN_CALL_BELL_TINKLE_EVENT, SoundCategory.BLOCKS, 1.8f, 1f);
+            } else if (state.getBlock() == DrinkBeer.LEKAS_CALL_BELL) {
+                world.playSound(null, pos, DrinkBeer.LEKAS_CALL_BELL_TINKLE_EVENT, SoundCategory.BLOCKS, 0.9f, 1f);
+            }
+        } else {
+            double x = (double) pos.getX() + 0.5D;
+            double y = (double) pos.getY() + 0.2D + new Random().nextDouble() / 4;
+            double z = (double) pos.getZ() + 0.5D;
+            if (state.getBlock() == DrinkBeer.IRON_CALL_BELL) {
+                world.addParticle(ParticleTypes.NOTE, x, y, z, 0.0D, 0.0D, 0.0D);
+            } else if (state.getBlock() == DrinkBeer.GOLDEN_CALL_BELL) {
+                world.addParticle(ParticleTypes.NOTE, x, y, z, 0.0D, 0.0D, 0.0D);
+            } else if (state.getBlock() == DrinkBeer.LEKAS_CALL_BELL) {
+                world.addParticle(DrinkBeer.CALL_BELL_TINKLE_PAW, x, y, z, 0.0D, 0.0D, 0.0D);
             }
         }
         return ActionResult.SUCCESS;

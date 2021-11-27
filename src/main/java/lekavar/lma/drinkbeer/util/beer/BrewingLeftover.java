@@ -1,4 +1,4 @@
-package lekavar.lma.drinkbeer.util;
+package lekavar.lma.drinkbeer.util.beer;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
