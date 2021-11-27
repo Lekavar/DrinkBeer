@@ -1,11 +1,9 @@
 package lekavar.lma.drinkbeer.statuseffects;
 
-import lekavar.lma.drinkbeer.DrinkBeer;
 import net.minecraft.enchantment.FrostWalkerEnchantment;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
@@ -31,7 +29,6 @@ public class DrunkFrostWalkerStatusEffect extends StatusEffect {
 
     @Override
     public void onApplied(LivingEntity entity, AttributeContainer attributes, int amplifier) {
-        int drunkAmplifier = DrunkStatusEffect.getDrunkAmplifier(entity);
-        entity.addStatusEffect(new StatusEffectInstance(DrinkBeer.DRUNK, DrunkStatusEffect.getDrunkDuratioin(drunkAmplifier), drunkAmplifier));
+        DrunkStatusEffect.addStatusEffect(entity);
     }
 }

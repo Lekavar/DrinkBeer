@@ -1,0 +1,35 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "drinkbeer:block/beer_mug_wood"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [73, -69, 0],
+			"translation": [0, 6.25, 6.5]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [73, 69, 0],
+			"translation": [0, 6.25, 6.5]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, -88, 0],
+			"translation": [0, 7, -1.25]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 88, 0],
+			"translation": [0, 7, -1.25]
+		},
+		"ground": {
+			"translation": [0, 3.75, 0]
+		},
+		"gui": {
+			"rotation": [30, 0, 0],
+			"translation": [-1, 6.5, 0],
+			"scale": [1.45, 1.5, 1.2]
+		},
+		"fixed": {
+			"translation": [0, 5.25, -1]
+		}
+	}
+}

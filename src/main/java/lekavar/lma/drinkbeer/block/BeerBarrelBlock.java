@@ -50,7 +50,6 @@ public class BeerBarrelBlock extends BlockWithEntity implements BlockEntityProvi
         return (BlockState) this.getDefaultState().with(HorizontalFacingBlock.FACING, ctx.getPlayerFacing());
     }
 
-    //entity
     @Override
     public @Nullable BlockEntity createBlockEntity(net.minecraft.world.BlockView world) {
         return new BeerBarrelEntity();

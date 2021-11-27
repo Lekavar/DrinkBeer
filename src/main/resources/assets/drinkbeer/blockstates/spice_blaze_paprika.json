@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "drinkbeer:block/spice_blaze_paprika"
+    },
+    "facing=east": {
+      "model": "drinkbeer:block/spice_blaze_paprika",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "drinkbeer:block/spice_blaze_paprika",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "drinkbeer:block/spice_blaze_paprika",
+      "y": 270
+    }
+  }
+}

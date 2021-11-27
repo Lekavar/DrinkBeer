@@ -1,7 +1,7 @@
 package lekavar.lma.drinkbeer.manager;
 
-import lekavar.lma.drinkbeer.util.BeerRecipe;
-import lekavar.lma.drinkbeer.util.Beers;
+import lekavar.lma.drinkbeer.util.beer.BeerRecipe;
+import lekavar.lma.drinkbeer.util.beer.Beers;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 

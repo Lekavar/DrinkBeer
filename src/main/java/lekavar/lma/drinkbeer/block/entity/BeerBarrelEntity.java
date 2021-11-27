@@ -34,39 +34,24 @@ public class BeerBarrelEntity extends BlockEntity implements ImplementedInventor
     private final PropertyDelegate propertyDelegate = new PropertyDelegate() {
         @Override
         public int get(int index) {
-            switch(index) {
-                case 0:
-                    return remainingBrewingTime;
-                case 1:
-                    return isMaterialCompleted;
-                case 2:
-                    return beerId;
-                case 3:
-                    return isBrewing;
-                case 4:
-                    return beerResultNum;
-                default:
-                    return 0;
-            }
+            return switch (index) {
+                case 0 -> remainingBrewingTime;
+                case 1 -> isMaterialCompleted;
+                case 2 -> beerId;
+                case 3 -> isBrewing;
+                case 4 -> beerResultNum;
+                default -> 0;
+            };
         }
 
         @Override
         public void set(int index, int value) {
-            switch(index) {
-                case 0:
-                    remainingBrewingTime = value;
-                    break;
-                case 1:
-                    isMaterialCompleted = value;
-                    break;
-                case 2:
-                    beerId = value;
-                    break;
-                case 3:
-                    isBrewing = value;
-                    break;
-                case 4:
-                    beerResultNum = value;
+            switch (index) {
+                case 0 -> remainingBrewingTime = value;
+                case 1 -> isMaterialCompleted = value;
+                case 2 -> beerId = value;
+                case 3 -> isBrewing = value;
+                case 4 -> beerResultNum = value;
             }
         }
 
