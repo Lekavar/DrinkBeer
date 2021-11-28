@@ -1,10 +1,8 @@
 {
-	"credit": "Made with Blockbench",
 	"ambientocclusion": false,
 	"textures": {
 		"0": "drinkbeer:block/recipe_board_beer_mug_night_howl_kvass",
 		"1": "drinkbeer:block/recipe_board_back_beer_mug_night_howl_kvass",
-		"3": "drinkbeer:block/recipe_board_beer_mug_night_howl_kvass_paw",
 		"particle": "drinkbeer:block/recipe_board_beer_mug_night_howl_kvass"
 	},
 	"elements": [
@@ -193,19 +191,6 @@
 				"up": {"uv": [14.25, 15.5, 14.65, 15.7], "texture": "#0"},
 				"down": {"uv": [14.75, 14.8, 14.15, 16], "texture": "#0"}
 			}
-		},
-		{
-			"name": "paw1",
-			"from": [10.85, 2.2, 1],
-			"to": [11.85, 3.2, 1.01],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8.5625]},
-			"faces": {
-				"east": {"uv": [12, 1, 11, 5], "texture": "#3"},
-				"south": {"uv": [4, 4, 12, 12], "texture": "#3"},
-				"west": {"uv": [12, 1, 11, 5], "texture": "#3"},
-				"up": {"uv": [15, 0, 11, 1], "texture": "#3"},
-				"down": {"uv": [15, 0, 11, 1], "texture": "#3"}
-			}
 		}
 	],
 	"display": {
@@ -259,12 +244,6 @@
 			"origin": [0, 0, 0],
 			"color": 0,
 			"children": [10, 11, 12, 13]
-		},
-		{
-			"name": "other",
-			"origin": [8, 8, 8],
-			"color": 0,
-			"children": [14]
 		}
 	]
 }
