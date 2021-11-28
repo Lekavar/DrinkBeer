@@ -1,0 +1,41 @@
+{
+  "itemGroup.drinkbeer.beer": "Cervesa",
+  "itemGroup.drinkbeer.general": "DrinkBeer Blocs General ",
+
+  "block.drinkbeer.beer_mug": "Cervesa Ale Minera",
+  "block.drinkbeer.beer_mug_blaze_stout": "Aiguardent",
+  "block.drinkbeer.beer_mug_blaze_milk_stout": "Aiguardent de llet",
+  "block.drinkbeer.beer_mug_apple_lambic": "Lambica de poma",
+  "block.drinkbeer.beer_mug_sweet_berry_kriek": "Cervesa de Baies",
+  "block.drinkbeer.beer_mug_haars_icey_pale_lager": "Cervesa gelada Haar",
+  "block.drinkbeer.beer_mug_pumpkin_kvass": "Kvass de carbassa",
+  "block.drinkbeer.beer_mug_frothy_pink_eggnog": "Eggnog rosa",
+  "block.drinkbeer.beer_mug_night_howl_kvass": "Kvass nocturna",
+
+  "block.drinkbeer.empty_beer_mug": "Jerra buida",
+  "block.drinkbeer.beer_barrel": "Keg",
+  "block.drinkbeer.iron_call_bell": "Campaneta metalica",
+  "block.drinkbeer.golden_call_bell": "Campaneta daurada",
+
+  "block.drinkbeer.recipe_board": "Recepta de Cervesa Ale Minera",
+  "block.drinkbeer.recipe_board_beer_mug_blaze_stout": "Recepta d'Aiguardent",
+  "block.drinkbeer.recipe_board_beer_mug_blaze_milk_stout": "Recepta d'Aiguardent de llet",
+  "block.drinkbeer.recipe_board_beer_mug_apple_lambic": "Recepta Lambica de poma",
+  "block.drinkbeer.recipe_board_beer_mug_sweet_berry_kriek": "Recepta de Cervesa de Baies",
+  "block.drinkbeer.recipe_board_beer_mug_haars_icey_pale_lager": "Recepta de Cervesa gelada Haar",
+  "block.drinkbeer.recipe_board_beer_mug_pumpkin_kvass": "Recepta de Kvass de carbassa",
+  "block.drinkbeer.recipe_board_beer_mug_night_howl_kvass": "Recepta de Kvass nocturna",
+
+  "block.drinkbeer.recipe_board_package": "Paquet de posters de receptes",
+
+  "item.drinkbeer.beer_mug.tooltip": "Velocitat 1:00",
+  "item.drinkbeer.beer_mug_blaze_stout.tooltip":"Resistencia al foc 1:30",
+  "item.drinkbeer.beer_mug_blaze_milk_stout.tooltip":"Resistencia al foc 2:00",
+  "item.drinkbeer.beer_mug_apple_lambic.tooltip":"Regeneració 0:15",
+  "item.drinkbeer.beer_mug_sweet_berry_kriek.tooltip":"Regeneració 0:20",
+  "item.drinkbeer.beer_mug_haars_icey_pale_lager.tooltip": "Caminant de gel begut 1:00",
+  "item.drinkbeer.beer_mug_night_howl_kvass.tooltip": "Visió nocturna 2:00-7:00 (es proporcional a la plenitud de la lluna)",
+
+  "drinkbeer.restores_hunger": "Recuperar la gana: ",
+  "effect.drinkbeer.drunk_frost_walker": "Caminant de gel begut"
+}

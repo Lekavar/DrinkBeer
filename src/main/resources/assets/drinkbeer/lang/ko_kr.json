@@ -1,0 +1,41 @@
+{
+  "itemGroup.drinkbeer.beer": "맥주",
+  "itemGroup.drinkbeer.general": "마셔라맥주 일반 블럭",
+
+  "block.drinkbeer.beer_mug": "마이너 페일 에일",
+  "block.drinkbeer.beer_mug_blaze_stout": "블레이즈 스타우트",
+  "block.drinkbeer.beer_mug_blaze_milk_stout": "블레이즈 밀크 스타우트",
+  "block.drinkbeer.beer_mug_apple_lambic": "사과 람빅",
+  "block.drinkbeer.beer_mug_sweet_berry_kriek": "달콤한 열매 크릭",
+  "block.drinkbeer.beer_mug_haars_icey_pale_lager": "차가운 바다 안개의 얼어붙은 페일 라거",
+  "block.drinkbeer.beer_mug_pumpkin_kvass": "호박 크바스",
+  "block.drinkbeer.beer_mug_frothy_pink_eggnog": "프로스티 핑크 에그노그",
+  "block.drinkbeer.beer_mug_night_howl_kvass": "올빼미족 크바스",
+
+  "block.drinkbeer.empty_beer_mug": "빈 맥주 잔",
+  "block.drinkbeer.beer_barrel": "작은 술통",
+  "block.drinkbeer.iron_call_bell": "철 초인종",
+  "block.drinkbeer.golden_call_bell": "금 초인종",
+
+  "block.drinkbeer.recipe_board_beer_mug": "마이너 페일 에일 레시피 보드",
+  "block.drinkbeer.recipe_board_beer_mug_blaze_stout": "블레이즈 스타우트 레시피 보드",
+  "block.drinkbeer.recipe_board_beer_mug_blaze_milk_stout": "블레이즈 밀크 레시피 보드",
+  "block.drinkbeer.recipe_board_beer_mug_apple_lambic": "사과 람빅 레시피 보드",
+  "block.drinkbeer.recipe_board_beer_mug_sweet_berry_kriek": "달콤한 열매 크릭 레시피 보드",
+  "block.drinkbeer.recipe_board_beer_mug_haars_icey_pale_lager": "차가운 바다 안개의 얼어붙은 페일 라거 레시피 보드",
+  "block.drinkbeer.recipe_board_beer_mug_pumpkin_kvass": "호박 크바스 레시피 보드",
+  "block.drinkbeer.recipe_board_beer_mug_night_howl_kvass": "올빼미족 크바스 레시피 보드",
+
+  "block.drinkbeer.recipe_board_package": "레시피 보드 Package",
+
+  "item.drinkbeer.beer_mug.tooltip": "성급함 1:00",
+  "item.drinkbeer.beer_mug_blaze_stout.tooltip":"화염 저항 1:30",
+  "item.drinkbeer.beer_mug_blaze_milk_stout.tooltip":"화염 저항 2:00",
+  "item.drinkbeer.beer_mug_apple_lambic.tooltip":"재생 0:15",
+  "item.drinkbeer.beer_mug_sweet_berry_kriek.tooltip":"재생 0:20",
+  "item.drinkbeer.beer_mug_haars_icey_pale_lager.tooltip": "차가운 술걸음 1:00",
+  "item.drinkbeer.beer_mug_night_howl_kvass.tooltip": "야간 투시 2:00-7:00 (달의 밝기에 따라 달라짐)",
+
+  "drinkbeer.restores_hunger": "허기 회복: ",
+  "effect.drinkbeer.drunk_frost_walker": "차가운 술걸음"
+}
