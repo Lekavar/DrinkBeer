@@ -2,6 +2,7 @@ package lekavar.lma.drinkbeer.client;
 
 import lekavar.lma.drinkbeer.DrinkBeer;
 import lekavar.lma.drinkbeer.manager.MixedBeerManager;
+import lekavar.lma.drinkbeer.renderer.MixedBeerEntityRenderer;
 import lekavar.lma.drinkbeer.screen.BartendingTableScreen;
 import lekavar.lma.drinkbeer.screen.BeerBarrelScreen;
 import net.fabricmc.api.ClientModInitializer;
@@ -28,13 +29,11 @@ public class DrinkBeerClient implements ClientModInitializer {
         //Bartending table's screen handler
         ScreenRegistry.register(DrinkBeer.BARTENDING_TABLE_SCREEN_HANDLER, BartendingTableScreen::new);
         //Mixed beer entity's renderer
-        //TODO Q:实体渲染怎么注册
-       //BlockEntityRendererRegistry.INSTANCE.register(DrinkBeer.MIXED_BEER_ENTITY, MixedBeerEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(DrinkBeer.MIXED_BEER_ENTITY, context -> new MixedBeerEntityRenderer());
         //Mixed beer's model predicate provider
         try {
-            //TODO Q:为什么不能根据beerId变化item model
             FabricModelPredicateProviderRegistry.register(DrinkBeer.MIXED_BEER.asItem(), new Identifier("beer_id"), (stack, world, entity, seed)
-                    -> MixedBeerManager.getBeerId(stack));
+                    -> (float) MixedBeerManager.getBeerId(stack) / 100);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

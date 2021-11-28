@@ -166,8 +166,8 @@ public class MixedBeerOnUsing {
             for (int i=0;i<this.statusEffectList.size();i++) {
                 Pair<StatusEffect, Integer> statusEffect = statusEffectList.get(i);
                 if (statusEffect.getKey().equals(targetStatusEffect)) {
-                    int newDuratin = (int) (statusEffect.getValue() * multiplyValue);
-                    this.statusEffectList.set(i, Pair.of(statusEffect.getKey(), newDuratin));
+                    int newDuration = (int) (statusEffect.getValue() * multiplyValue);
+                    this.statusEffectList.set(i, Pair.of(statusEffect.getKey(), newDuration));
                     return true;
                 }
             }
@@ -184,8 +184,8 @@ public class MixedBeerOnUsing {
         if (!this.statusEffectList.isEmpty()) {
             for (int i=0;i<this.statusEffectList.size();i++) {
                 Pair<StatusEffect, Integer> statusEffect = statusEffectList.get(i);
-                int newDuratin = (int)(statusEffect.getValue() * multiplyValue);
-                this.statusEffectList.set(i,Pair.of(statusEffect.getKey(),newDuratin));
+                int newDuration = (int)(statusEffect.getValue() * multiplyValue);
+                this.statusEffectList.set(i,Pair.of(statusEffect.getKey(),newDuration));
             }
         }
     }
