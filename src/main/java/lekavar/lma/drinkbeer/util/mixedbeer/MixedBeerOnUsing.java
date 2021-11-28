@@ -126,16 +126,17 @@ public class MixedBeerOnUsing {
     /**
      * Add targetStatusEffect into statusEffectList if targetStatusEffect doesn't exist in current statusEffectList.
      * Extend(or reduce) targetStatusEffect's duration if targetStatusEffect exists in current statusEffectList.
+     *
      * @param targetStatusEffect
      * @param duration
      */
     public void addSpecificStatusEffectDuration(StatusEffect targetStatusEffect, int duration) {
         if (!this.statusEffectList.isEmpty()) {
-            for (int i=0;i<this.statusEffectList.size();i++) {
+            for (int i = 0; i < this.statusEffectList.size(); i++) {
                 Pair<StatusEffect, Integer> statusEffect = statusEffectList.get(i);
                 if (statusEffect.getKey().equals(targetStatusEffect)) {
-                    int newDuratin = (int) (statusEffect.getValue() + duration);
-                    this.statusEffectList.set(i, Pair.of(statusEffect.getKey(), newDuratin));
+                    int newDuration = statusEffect.getValue() + duration;
+                    this.statusEffectList.set(i, Pair.of(statusEffect.getKey(), newDuration));
                     return;
                 }
             }
@@ -146,10 +147,10 @@ public class MixedBeerOnUsing {
 
     public void addAllStatusEffectDuration(int duration) {
         if (!this.statusEffectList.isEmpty()) {
-            for (int i=0;i<this.statusEffectList.size();i++) {
+            for (int i = 0; i < this.statusEffectList.size(); i++) {
                 Pair<StatusEffect, Integer> statusEffect = statusEffectList.get(i);
-                int newDuratin = (int)(statusEffect.getValue() + duration);
-                this.statusEffectList.set(i,Pair.of(statusEffect.getKey(),newDuratin));
+                int newDuration = statusEffect.getValue() + duration;
+                this.statusEffectList.set(i, Pair.of(statusEffect.getKey(), newDuration));
             }
         }
     }
@@ -157,17 +158,18 @@ public class MixedBeerOnUsing {
     /**
      * Find specific status effect and multiply it's duration by multiplyValue.
      * This only works when the targetStatusEffect exists in statusEffectList.
+     *
      * @param targetStatusEffect
      * @param multiplyValue
      * @return
      */
     public boolean multiplySpecificStatusEffectDuration(StatusEffect targetStatusEffect, float multiplyValue) {
         if (!this.statusEffectList.isEmpty()) {
-            for (int i=0;i<this.statusEffectList.size();i++) {
+            for (int i = 0; i < this.statusEffectList.size(); i++) {
                 Pair<StatusEffect, Integer> statusEffect = statusEffectList.get(i);
                 if (statusEffect.getKey().equals(targetStatusEffect)) {
-                    int newDuratin = (int) (statusEffect.getValue() * multiplyValue);
-                    this.statusEffectList.set(i, Pair.of(statusEffect.getKey(), newDuratin));
+                    int newDuration = (int) (statusEffect.getValue() * multiplyValue);
+                    this.statusEffectList.set(i, Pair.of(statusEffect.getKey(), newDuration));
                     return true;
                 }
             }
@@ -177,15 +179,15 @@ public class MixedBeerOnUsing {
 
     /**
      * Multiply all durations in statusEffectList by multiplyValue.
+     *
      * @param multiplyValue
-     * @return
      */
     public void multiplyAllStatusEffectDuration(float multiplyValue) {
         if (!this.statusEffectList.isEmpty()) {
-            for (int i=0;i<this.statusEffectList.size();i++) {
+            for (int i = 0; i < this.statusEffectList.size(); i++) {
                 Pair<StatusEffect, Integer> statusEffect = statusEffectList.get(i);
-                int newDuratin = (int)(statusEffect.getValue() * multiplyValue);
-                this.statusEffectList.set(i,Pair.of(statusEffect.getKey(),newDuratin));
+                int newDuration = (int) (statusEffect.getValue() * multiplyValue);
+                this.statusEffectList.set(i, Pair.of(statusEffect.getKey(), newDuration));
             }
         }
     }

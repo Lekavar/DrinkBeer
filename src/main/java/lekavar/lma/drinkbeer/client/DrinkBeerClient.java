@@ -31,9 +31,9 @@ public class DrinkBeerClient implements ClientModInitializer {
         BlockEntityRendererRegistry.INSTANCE.register(DrinkBeer.MIXED_BEER_ENTITY, MixedBeerEntityRenderer::new);
         //Mixed beer's model predicate provider
         try {
-            FabricModelPredicateProviderRegistry.register(DrinkBeer.MIXED_BEER.asItem(), new Identifier("beer_id"), (itemStack, clientWorld, livingEntity) -> MixedBeerManager.getBeerId(itemStack));
-        }
-        catch (Exception e){
+            FabricModelPredicateProviderRegistry.register(DrinkBeer.MIXED_BEER.asItem(), new Identifier("beer_id"), (itemStack, clientWorld, livingEntity)
+                    -> (float) MixedBeerManager.getBeerId(itemStack) / 100);
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         //Particles

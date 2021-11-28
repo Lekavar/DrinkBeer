@@ -9,55 +9,55 @@
     },
     {
       "predicate": {
-        "beer_id": 1
+        "beer_id": 0.01
       },
       "model": "drinkbeer:block/beer_mug"
     },
     {
       "predicate": {
-        "beer_id": 2
+        "beer_id": 0.02
       },
       "model": "drinkbeer:block/beer_mug_blaze_stout"
     },
     {
       "predicate": {
-        "beer_id": 3
+        "beer_id": 0.03
       },
       "model": "drinkbeer:block/beer_mug_blaze_milk_stout"
     },
     {
       "predicate": {
-        "beer_id": 4
+        "beer_id": 0.04
       },
       "model": "drinkbeer:block/beer_mug_apple_lambic"
     },
     {
       "predicate": {
-        "beer_id": 5
+        "beer_id": 0.05
       },
       "model": "drinkbeer:block/beer_mug_sweet_berry_kriek"
     },
     {
       "predicate": {
-        "beer_id": 6
+        "beer_id": 0.06
       },
       "model": "drinkbeer:block//beer_mug_haars_icey_pale_lager"
     },
     {
       "predicate": {
-        "beer_id": 7
+        "beer_id": 0.07
       },
       "model": "drinkbeer:block//beer_mug_pumpkin_kvass"
     },
     {
       "predicate": {
-        "beer_id": 8
+        "beer_id": 0.08
       },
       "model": "drinkbeer:block/beer_mug_frothy_pink_eggnog"
     },
     {
       "predicate": {
-        "beer_id": 9
+        "beer_id": 0.09
       },
       "model": "drinkbeer:block//beer_mug_night_howl_kvass"
     }

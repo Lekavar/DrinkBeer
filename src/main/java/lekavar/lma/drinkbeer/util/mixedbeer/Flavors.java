@@ -13,7 +13,7 @@ public enum Flavors {
     REFRESHING(6, "refreshing", null, DrinkBeer.MIXED_BEER_DEFAULT),
     REFRESHING1(7, "refreshing1", REFRESHING, DrinkBeer.MIXED_BEER_DEFAULT),
     STORMY(8, "stormy", null, DrinkBeer.MIXED_BEER_DEFAULT),
-    THE_FALL_OF_THE_GIANT(9, "the_fall_of_the_giant", null, DrinkBeer.MIXED_BEER_DEFAULT);
+    THE_FALL_OF_THE_GIANT(9, "the_fall_of_the_giant", null, null);
 
     private final int id;
     private final String name;

@@ -182,7 +182,7 @@ public class MixedBeerManager {
     /**
      * Get the number of the target action occurrences before current action.
      * @param index Current action's index in actionList
-     * @param targetAction Which action to fina
+     * @param targetAction Which action to find
      * @param actionList Current mixed beer's actionList
      * @return Number of the target action occurrences before current action
      */
@@ -201,7 +201,7 @@ public class MixedBeerManager {
     /**
      * Whether the target action exists before the current action.
      * @param index Current action's index in actionList
-     * @param targetAction Which action to fina
+     * @param targetAction Which action to find
      * @param actionList Current mixed beer's actionList
      * @return
      */
