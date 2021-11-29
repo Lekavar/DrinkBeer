@@ -50,6 +50,5 @@ public class DrinkBeerClient implements ClientModInitializer {
         //Spices
         BlockRenderLayerMap.INSTANCE.putBlock(DrinkBeer.SPICE_AMETHYST_NIGELLA_SEEDS, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(DrinkBeer.SPICE_CITRINE_NIGELLA_SEEDS, RenderLayer.getTranslucent());
-        BlockRenderLayerMap.INSTANCE.putBlock(DrinkBeer.SPICE_STORM_SHARDS, RenderLayer.getTranslucent());
     }
 }
