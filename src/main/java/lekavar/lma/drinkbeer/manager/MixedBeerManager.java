@@ -16,6 +16,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtHelper;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.world.World;
 
@@ -50,6 +51,7 @@ public class MixedBeerManager {
             tag.put("Spices", listTag);
         }
 
+        resultStack.writeNbt(tag);
         return resultStack;
     }
 
