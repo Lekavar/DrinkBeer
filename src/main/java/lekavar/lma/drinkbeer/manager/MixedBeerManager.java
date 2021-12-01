@@ -50,6 +50,7 @@ public class MixedBeerManager {
             tag.put("Spices", listTag);
         }
 
+        resultStack.toTag(tag);
         return resultStack;
     }
 

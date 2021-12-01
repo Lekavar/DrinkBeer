@@ -81,16 +81,14 @@ public class MixedBeerBlock extends BlockWithEntity {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        //TODO 空手点击取回调制酒 删除无用代码
-        if (!world.isClient()) {
-            /*ItemStack resultStack = MixedBeerManager.genMixedBeerItemStack(new Random().nextInt(9) + 1,
-                    new Random().nextInt(3), new Random().nextInt(10), new Random().nextInt(10), new Random().nextInt(10), new Random().nextInt(3),
-                    0, 1, 2);*/
-            ItemStack resultStack = MixedBeerManager.genMixedBeerItemStack(4, 8, new Random().nextInt(2) == 0 ? 8 : 0, new Random().nextInt(2) == 0 ? 8 : 0);
-            player.giveItemStack(resultStack);
+        ItemStack itemStack = player.getMainHandStack();
+        if (itemStack.isEmpty()) {
+            if (!world.isClient()) {
+                world.removeBlock(pos, false);
+                return ActionResult.SUCCESS;
+            }
         }
-
-        return super.onUse(state, world, pos, player, hand, hit);
+        return ActionResult.FAIL;
     }
 
     @Override
