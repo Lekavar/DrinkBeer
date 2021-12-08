@@ -22,7 +22,7 @@ public class GoodsRarity {
             case SUPER_RARE:
                 return 15;
             case UNIQUE:
-                return 10;
+                return 9;
             default:
                 return 50;
         }
