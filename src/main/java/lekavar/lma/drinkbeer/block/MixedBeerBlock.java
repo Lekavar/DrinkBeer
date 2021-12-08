@@ -2,7 +2,6 @@ package lekavar.lma.drinkbeer.block;
 
 import lekavar.lma.drinkbeer.DrinkBeer;
 import lekavar.lma.drinkbeer.block.entity.MixedBeerEntity;
-import lekavar.lma.drinkbeer.manager.MixedBeerManager;
 import lekavar.lma.drinkbeer.manager.SpiceAndFlavorManager;
 import lekavar.lma.drinkbeer.util.beer.Beers;
 import net.fabricmc.api.EnvType;
@@ -97,7 +96,7 @@ public class MixedBeerBlock extends BlockWithEntity {
             MixedBeerEntity mixedBeerEntity = (MixedBeerEntity) world.getBlockEntity(pos);
             ItemStack mixedBeerItemStack = mixedBeerEntity.getPickStack(state);
 
-            dropStack(world.getWorld(), pos, mixedBeerItemStack);
+            dropStack(world, pos, mixedBeerItemStack);
         } catch (Exception e) {
             System.out.println("Somthing wrong with dropping mixed beer item stack!");
         }

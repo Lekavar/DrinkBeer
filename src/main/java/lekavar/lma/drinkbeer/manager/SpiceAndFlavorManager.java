@@ -115,10 +115,27 @@ public class SpiceAndFlavorManager {
         if (!mixedBeerOnUsing.getFlavorList().isEmpty()) {
             for (Flavors flavor : mixedBeerOnUsing.getFlavorList()) {
                 switch (flavor) {
-                    case SPICY, FIERY -> applySpicyFlavorValue(mixedBeerOnUsing, flavor);
-                    case AROMITIC, AROMITIC1 -> applyAromiticFlavorValue(mixedBeerOnUsing, flavor);
-                    case REFRESHING, REFRESHING1 -> applyRefreshingFlavorValue(mixedBeerOnUsing, flavor);
-                    default -> mixedBeerOnUsing.addAction(flavor);
+                    case SPICY:
+                        applySpicyFlavorValue(mixedBeerOnUsing, flavor);
+                        break;
+                    case FIERY:
+                        applySpicyFlavorValue(mixedBeerOnUsing, flavor);
+                        break;
+                    case AROMITIC:
+                        applyAromiticFlavorValue(mixedBeerOnUsing, flavor);
+                        break;
+                    case AROMITIC1:
+                        applyAromiticFlavorValue(mixedBeerOnUsing, flavor);
+                        break;
+                    case REFRESHING:
+                        applyRefreshingFlavorValue(mixedBeerOnUsing, flavor);
+                        break;
+                    case REFRESHING1:
+                        applyRefreshingFlavorValue(mixedBeerOnUsing, flavor);
+                        break;
+                    default:
+                        mixedBeerOnUsing.addAction(flavor);
+                        break;
                 }
             }
         }
@@ -130,13 +147,19 @@ public class SpiceAndFlavorManager {
             for (int i = 0; i < actionList.size(); i++) {
                 Flavors flavor = actionList.get(i);
                 switch (flavor) {
-                    case SOOOOO_SPICY -> applySoooooSpicyFlavorAction(user);
-                    case STORMY -> {
+                    case SOOOOO_SPICY:
+                        applySoooooSpicyFlavorAction(user);
+                        break;
+                    case STORMY: {
                         if (!MixedBeerManager.hasActionAfter(i, Flavors.STORMY, mixedBeerOnUsing.getActionList())
-                                && !MixedBeerManager.hasActionAfter(i, Flavors.THE_FALL_OF_THE_GIANT, mixedBeerOnUsing.getActionList()))
+                                && !MixedBeerManager.hasActionAfter(i, Flavors.THE_FALL_OF_THE_GIANT, mixedBeerOnUsing.getActionList())) {
                             applyStormyFlavorAction(MixedBeerManager.getActionedTimes(i, Flavors.STORMY, mixedBeerOnUsing.getActionList()), world, user);
+                        }
+                        break;
                     }
-                    case THE_FALL_OF_THE_GIANT -> applyStormyFlavorAction(3, world, user);
+                    case THE_FALL_OF_THE_GIANT:
+                        applyStormyFlavorAction(3, world, user);
+                        break;
                 }
             }
         }
@@ -144,13 +167,15 @@ public class SpiceAndFlavorManager {
 
     public static void applySpicyFlavorValue(MixedBeerOnUsing mixedBeerOnUsing, Flavors flavor) {
         switch (flavor) {
-            case SPICY -> {
+            case SPICY: {
                 mixedBeerOnUsing.addHealth(-3);
                 mixedBeerOnUsing.multiplyAllStatusEffectDuration(1.8f);
+                break;
             }
-            case FIERY -> {
+            case FIERY: {
                 mixedBeerOnUsing.addHealth(-4);
                 mixedBeerOnUsing.multiplyAllStatusEffectDuration(2f);
+                break;
             }
         }
     }
@@ -166,15 +191,23 @@ public class SpiceAndFlavorManager {
 
     public static void applyAromiticFlavorValue(MixedBeerOnUsing mixedBeerOnUsing, Flavors flavor) {
         switch (flavor) {
-            case AROMITIC -> mixedBeerOnUsing.addAllStatusEffectDuration(800);
-            case AROMITIC1 -> mixedBeerOnUsing.addAllStatusEffectDuration(1200);
+            case AROMITIC:
+                mixedBeerOnUsing.addAllStatusEffectDuration(800);
+                break;
+            case AROMITIC1:
+                mixedBeerOnUsing.addAllStatusEffectDuration(1200);
+                break;
         }
     }
 
     public static void applyRefreshingFlavorValue(MixedBeerOnUsing mixedBeerOnUsing, Flavors flavor) {
         switch (flavor) {
-            case REFRESHING -> mixedBeerOnUsing.addDrunkValue(-1);
-            case REFRESHING1 -> mixedBeerOnUsing.addDrunkValue(-2);
+            case REFRESHING:
+                mixedBeerOnUsing.addDrunkValue(-1);
+                break;
+            case REFRESHING1:
+                mixedBeerOnUsing.addDrunkValue(-2);
+                break;
         }
     }
 
@@ -188,25 +221,29 @@ public class SpiceAndFlavorManager {
         Direction direction = user.getMovementDirection();
 
         switch (direction) {
-            case NORTH -> {
+            case NORTH: {
                 xStart = -halfRange;
                 xEnd = halfRange + 1;
                 zStart = -range;
+                break;
             }
-            case SOUTH -> {
+            case SOUTH: {
                 xStart = -halfRange;
                 xEnd = halfRange + 1;
                 zEnd = range;
+                break;
             }
-            case EAST -> {
+            case EAST: {
                 zStart = -halfRange;
                 zEnd = halfRange + 1;
                 xEnd = range;
+                break;
             }
-            case WEST -> {
+            case WEST: {
                 zStart = -halfRange;
                 zEnd = halfRange + 1;
                 xStart = -range;
+                break;
             }
         }
         for (int x = xStart; x < xEnd; x++) {

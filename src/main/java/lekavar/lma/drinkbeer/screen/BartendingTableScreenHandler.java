@@ -148,12 +148,16 @@ public class BartendingTableScreenHandler extends ScreenHandler {
     }
 
     private ItemStack getSpiceItemStackInSpiceSlot(int index) {
-        return switch (index) {
-            case 0 -> spiceInputSlot1 == null ? spiceInputSlot1.getStack().getItem().equals(Items.AIR) || spiceInputSlot1.getStack().equals(ItemStack.EMPTY) ? ItemStack.EMPTY : spiceInputSlot1.getStack() : spiceInputSlot1.getStack();
-            case 1 -> spiceInputSlot2 == null ? spiceInputSlot2.getStack().getItem().equals(Items.AIR) || spiceInputSlot2.getStack().equals(ItemStack.EMPTY) ? ItemStack.EMPTY : spiceInputSlot2.getStack() : spiceInputSlot2.getStack();
-            case 2 -> spiceInputSlot3 == null ? spiceInputSlot3.getStack().getItem().equals(Items.AIR) || spiceInputSlot3.getStack().equals(ItemStack.EMPTY) ? ItemStack.EMPTY : spiceInputSlot3.getStack() : spiceInputSlot3.getStack();
-            default -> ItemStack.EMPTY;
-        };
+        switch (index) {
+            case 0:
+                return spiceInputSlot1 == null ? spiceInputSlot1.getStack().getItem().equals(Items.AIR) || spiceInputSlot1.getStack().equals(ItemStack.EMPTY) ? ItemStack.EMPTY : spiceInputSlot1.getStack() : spiceInputSlot1.getStack();
+            case 1:
+                return spiceInputSlot2 == null ? spiceInputSlot2.getStack().getItem().equals(Items.AIR) || spiceInputSlot2.getStack().equals(ItemStack.EMPTY) ? ItemStack.EMPTY : spiceInputSlot2.getStack() : spiceInputSlot2.getStack();
+            case 2:
+                return spiceInputSlot3 == null ? spiceInputSlot3.getStack().getItem().equals(Items.AIR) || spiceInputSlot3.getStack().equals(ItemStack.EMPTY) ? ItemStack.EMPTY : spiceInputSlot3.getStack() : spiceInputSlot3.getStack();
+            default:
+                return ItemStack.EMPTY;
+        }
     }
 
     /**
