@@ -24,7 +24,7 @@ public class GoodsRarity {
             case UNIQUE:
                 return 9;
             default:
-                return 50;
+                return 48;
         }
     }
 
