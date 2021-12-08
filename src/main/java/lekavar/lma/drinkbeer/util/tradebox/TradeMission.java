@@ -75,7 +75,7 @@ public class TradeMission {
         int basicGoodNum = random.nextInt(3) + 1;
         //Generate num of goods to location
         //1:1/3 2:1/3 3:1/6 4:1/6
-        int goodToLocationNum = basicGoodNum + (basicGoodNum == 3 ? random.nextInt(2) : 0);
+        int goodToLocationNum = basicGoodNum + random.nextInt(2);
         //Generate basic goodToLocationList
         List<Good> basicGoodToLocationList = TradeboxManager.getGoodListByResident(residentId, Good.TO);
         //Generate goodTolocationList
@@ -90,8 +90,7 @@ public class TradeMission {
         });
 
         //Generate num of goods from location
-        //1:1/6 2:1/3 3:1/3 4:1/6
-        int goodFromLocationNum = goodToLocationNum == 4 ? 4 : (basicGoodNum + random.nextInt(2));
+        int goodFromLocationNum = goodToLocationNum == 4 ? 4 : (goodToLocationNum + random.nextInt(2));
         //Generate basic goodFromLocationList
         List<Good> basicGoodFromLocationList = TradeboxManager.getGoodListByResident(residentId, Good.FROM);
         //Generate goodFromlocationList
