@@ -94,9 +94,11 @@ public class TradeBoxScreen extends HandledScreen<ScreenHandler> {
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
         this.addButton(new TexturedButtonWidget(x + 156, y + 5, 15, 15, 197, 0, 0, TRADE_BOX_GUI, (buttonWidget) -> {
-            BlockPos pos = getHitTradeBoxBlockPos();
-            if (pos != null)
-                NetWorking.sendRefreshTradebox(pos);
+            if(screenHandler.isTrading()) {
+                BlockPos pos = getHitTradeBoxBlockPos();
+                if (pos != null)
+                    NetWorking.sendRefreshTradebox(pos);
+            }
         }));
         super.init();
     }
