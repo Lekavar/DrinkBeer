@@ -4,9 +4,14 @@ import lekavar.lma.drinkbeer.block.*;
 import lekavar.lma.drinkbeer.block.entity.BartendingTableEntity;
 import lekavar.lma.drinkbeer.block.entity.BeerBarrelEntity;
 import lekavar.lma.drinkbeer.block.entity.MixedBeerEntity;
+import lekavar.lma.drinkbeer.block.entity.TradeboxEntity;
+import lekavar.lma.drinkbeer.item.BeerMugBlockItem;
+import lekavar.lma.drinkbeer.item.MixedBeerBlockItem;
+import lekavar.lma.drinkbeer.item.SpiceBlockItem;
+import lekavar.lma.drinkbeer.networking.NetWorking;
 import lekavar.lma.drinkbeer.screen.BartendingTableScreenHandler;
 import lekavar.lma.drinkbeer.screen.BeerBarrelScreenHandler;
-import lekavar.lma.drinkbeer.item.*;
+import lekavar.lma.drinkbeer.screen.TradeBoxScreenHandler;
 import lekavar.lma.drinkbeer.statuseffects.DrunkFrostWalkerStatusEffect;
 import lekavar.lma.drinkbeer.statuseffects.DrunkStatusEffect;
 import net.fabricmc.api.ModInitializer;
@@ -15,12 +20,16 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.*;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.SoundEvent;
@@ -76,6 +85,14 @@ public class DrinkBeer implements ModInitializer {
     public static final ScreenHandlerType<BartendingTableScreenHandler> BARTENDING_TABLE_SCREEN_HANDLER;
     static {
         BARTENDING_TABLE_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(BARTENDING_TABLE_ID, BartendingTableScreenHandler::new);
+    }
+    //Trade box
+    public static BlockEntityType<TradeboxEntity> TRADE_BOX_ENTITY;
+    public static final TradeboxBlock TRADE_BOX_NORMAL = new TradeboxBlock((FabricBlockSettings.of(Material.WOOD).hardness(2.0f)));
+    public static final Identifier TRADE_BOX_ID = new Identifier("drinkbeer", "trade_box");
+    public static final ScreenHandlerType<TradeBoxScreenHandler> TRADE_BOX_SCREEN_HANDLER;
+    static {
+        TRADE_BOX_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(TRADE_BOX_ID, TradeBoxScreenHandler::new);
     }
     //Call bells
     public static final Block IRON_CALL_BELL = new CallBellBlock(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
@@ -135,6 +152,10 @@ public class DrinkBeer implements ModInitializer {
     public static SoundEvent BARTENDING_TABLE_OPEN_EVENT = new SoundEvent(BARTENDING_TABLE_OPEN);
     public static final Identifier BARTENDING_TABLE_CLOSE = new Identifier("drinkbeer:bartending_table_close");
     public static SoundEvent BARTENDING_TABLE_CLOSE_EVENT = new SoundEvent(BARTENDING_TABLE_CLOSE);
+    public static final Identifier TRADEBOX_OPEN = new Identifier("drinkbeer:tradebox_open");
+    public static SoundEvent TRADEBOX_OPEN_EVENT = new SoundEvent(TRADEBOX_OPEN);
+    public static final Identifier TRADEBOX_CLOSE = new Identifier("drinkbeer:tradebox_close");
+    public static SoundEvent TRADEBOX_CLOSE_EVENT = new SoundEvent(TRADEBOX_CLOSE);
     //Status effects
     public static final StatusEffect DRUNK_FROST_WALKER = new DrunkFrostWalkerStatusEffect();
     public static final StatusEffect DRUNK = new DrunkStatusEffect();
@@ -183,6 +204,10 @@ public class DrinkBeer implements ModInitializer {
         BARTENDING_TABLE_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "drinkbeer:bartending_table_entity", FabricBlockEntityTypeBuilder.create(BartendingTableEntity::new, BARTENDING_TABLE_NORMAL).build(null));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "bartending_table_normal"), BARTENDING_TABLE_NORMAL);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "bartending_table_normal"), new BlockItem(BARTENDING_TABLE_NORMAL, new Item.Settings().group(DRINK_BEER_GENERAL)));
+        //Trade box
+        TRADE_BOX_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "drinkbeer:trade_box_entity", FabricBlockEntityTypeBuilder.create(TradeboxEntity::new, TRADE_BOX_NORMAL).build(null));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "trade_box_normal"), TRADE_BOX_NORMAL);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "trade_box_normal"), new BlockItem(TRADE_BOX_NORMAL, new Item.Settings().group(DRINK_BEER_GENERAL)));
         //Call bells
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "iron_call_bell"), IRON_CALL_BELL);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "iron_call_bell"), new BlockItem(IRON_CALL_BELL, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(64)));
@@ -243,11 +268,16 @@ public class DrinkBeer implements ModInitializer {
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.UNPACKING, UNPACKING_EVENT);
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.BARTENDING_TABLE_OPEN, BARTENDING_TABLE_OPEN_EVENT);
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.BARTENDING_TABLE_CLOSE, BARTENDING_TABLE_CLOSE_EVENT);
+        Registry.register(Registry.SOUND_EVENT, DrinkBeer.TRADEBOX_OPEN, TRADEBOX_OPEN_EVENT);
+        Registry.register(Registry.SOUND_EVENT, DrinkBeer.TRADEBOX_CLOSE, TRADEBOX_CLOSE_EVENT);
         //Status effects
         Registry.register(Registry.STATUS_EFFECT, new Identifier("drinkbeer", "drunk_frost_walker"), DRUNK_FROST_WALKER);
         Registry.register(Registry.STATUS_EFFECT, new Identifier("drinkbeer", "drunk"), DRUNK);
         //Particles
         Registry.register(Registry.PARTICLE_TYPE, new Identifier("drinkbeer", "mixed_beer_default"), MIXED_BEER_DEFAULT);
         Registry.register(Registry.PARTICLE_TYPE, new Identifier("drinkbeer", "call_bell_tinkle_paw"), CALL_BELL_TINKLE_PAW);
+
+        //Net working
+        NetWorking.init();
     }
 }

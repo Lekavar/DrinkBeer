@@ -14,9 +14,14 @@
 
   "block.drinkbeer.empty_beer_mug": "Empty Beer Mug",
   "block.drinkbeer.beer_barrel": "Keg",
+  "block.drinkbeer.bartending_table_normal" : "Bartending Table",
+  "block.drinkbeer.trade_box_normal" : "Tradebox",
+
   "block.drinkbeer.iron_call_bell": "Iron Call Bell",
   "block.drinkbeer.golden_call_bell": "Golden Call Bell",
+  "block.drinkbeer.lekas_call_bell": "Leka's Call Bell",
 
+  "block.drinkbeer.recipe_board_package": "Recipe Board Package",
   "block.drinkbeer.recipe_board": "Miner Pale Ale Recipe Board",
   "block.drinkbeer.recipe_board_beer_mug_blaze_stout": "Blaze Stout Recipe Board",
   "block.drinkbeer.recipe_board_beer_mug_blaze_milk_stout": "Blaze Milk Stout Recipe Board",
@@ -25,8 +30,6 @@
   "block.drinkbeer.recipe_board_beer_mug_haars_icey_pale_lager": "Haar's Icey Pale Lager Recipe Board",
   "block.drinkbeer.recipe_board_beer_mug_pumpkin_kvass": "Pumpkin Kvass Recipe Board",
   "block.drinkbeer.recipe_board_beer_mug_night_howl_kvass": "Night Howl Kvass Recipe Board",
-
-  "block.drinkbeer.recipe_board_package": "Recipe Board Package",
 
   "item.drinkbeer.beer_mug.tooltip": "Haste 1:00",
   "item.drinkbeer.beer_mug_blaze_stout.tooltip":"Fire Resistance 1:30",
@@ -40,9 +43,19 @@
   "effect.drinkbeer.drunk_frost_walker": "Drunk Frost Walker",
   "effect.drinkbeer.drunk": "Drunk",
 
+  "death.attack.drinkbeer.alcohol": "%1$s drank to death",
+
+  "drinkbeer.location.northon": "Northon",
+  "drinkbeer.location.twigvalley": "Twigvalley",
+
+  "drinkbeer.resident.you": "You",
+  "drinkbeer.resident.leka": "Leka",
+  "drinkbeer.resident.haar": "Haar",
+  "drinkbeer.resident.anu": "Anu",
+
   "block.drinkbeer.mixed_beer" : "Mixed Liquor",
-  "item.drinkbeer.mixed_beer.tooltip_base" : "Base Liquor",
-  "item.drinkbeer.mixed_beer.tooltip_unmixed" : "Has no base liquor",
+  "item.drinkbeer.mixed_beer.tooltip_base" : "Base",
+  "item.drinkbeer.mixed_beer.tooltip_unmixed" : "Has no base",
   "item.drinkbeer.spice.tooltip_flavor" : "Flavor",
   "item.drinkbeer.spice.tooltip_no_flavor" : "Has no flavor yet",
   "item.drinkbeer.spice.tooltip" : "Spice",

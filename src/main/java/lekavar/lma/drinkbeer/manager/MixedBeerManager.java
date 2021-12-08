@@ -2,6 +2,7 @@ package lekavar.lma.drinkbeer.manager;
 
 import com.mojang.datafixers.util.Pair;
 import lekavar.lma.drinkbeer.DrinkBeer;
+import lekavar.lma.drinkbeer.entity.damage.AlcoholDamage;
 import lekavar.lma.drinkbeer.item.MixedBeerBlockItem;
 import lekavar.lma.drinkbeer.statuseffects.DrunkStatusEffect;
 import lekavar.lma.drinkbeer.statuseffects.NightHowlStatusEffect;
@@ -16,7 +17,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtHelper;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.world.World;
 
@@ -152,7 +152,11 @@ public class MixedBeerManager {
         //Apply health
         if (user instanceof PlayerEntity) {
             if (!((PlayerEntity) user).isCreative()) {
-                user.setHealth(user.getHealth() + mixedBeerOnUsing.getHealth());
+                if (mixedBeerOnUsing.getHealth() < 0) {
+                    user.damage(new AlcoholDamage(), Math.abs(mixedBeerOnUsing.getHealth()));
+                } else {
+                    user.heal(mixedBeerOnUsing.getHealth());
+                }
             }
         } else {
             user.setHealth(user.getHealth() + mixedBeerOnUsing.getHealth());
@@ -183,9 +187,10 @@ public class MixedBeerManager {
 
     /**
      * Get the number of the target action occurrences before current action.
-     * @param index Current action's index in actionList
+     *
+     * @param index        Current action's index in actionList
      * @param targetAction Which action to find
-     * @param actionList Current mixed beer's actionList
+     * @param actionList   Current mixed beer's actionList
      * @return Number of the target action occurrences before current action
      */
     public static int getActionedTimes(int index, Flavors targetAction, List<Flavors> actionList) {
@@ -202,9 +207,10 @@ public class MixedBeerManager {
 
     /**
      * Whether the target action exists before the current action.
-     * @param index Current action's index in actionList
+     *
+     * @param index        Current action's index in actionList
      * @param targetAction Which action to find
-     * @param actionList Current mixed beer's actionList
+     * @param actionList   Current mixed beer's actionList
      * @return
      */
     public static boolean hasActionedBefore(int index, Flavors targetAction, List<Flavors> actionList) {
@@ -213,16 +219,16 @@ public class MixedBeerManager {
 
     /**
      * Whether the target action exists after current action.
-     * @param index Current action's index in actionList
+     *
+     * @param index        Current action's index in actionList
      * @param targetAction Which action to find
-     * @param actionList Current mixed beer's actionList
+     * @param actionList   Current mixed beer's actionList
      * @return
      */
     public static boolean hasActionAfter(int index, Flavors targetAction, List<Flavors> actionList) {
-        if(actionList.size()-1==index){
+        if (actionList.size() - 1 == index) {
             return false;
-        }
-        else{
+        } else {
             for (int i = index + 1; i < actionList.size(); i++) {
                 if (actionList.get(i).equals(targetAction)) {
                     return true;

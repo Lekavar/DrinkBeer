@@ -15,6 +15,7 @@
   "block.drinkbeer.empty_beer_mug": "空啤酒杯",
   "block.drinkbeer.beer_barrel": "啤酒桶",
   "block.drinkbeer.bartending_table_normal" : "调酒桌",
+  "block.drinkbeer.trade_box_normal" : "交易箱",
 
   "block.drinkbeer.iron_call_bell": "铁唤餐铃",
   "block.drinkbeer.golden_call_bell": "金唤餐铃",
@@ -42,8 +43,15 @@
   "effect.drinkbeer.drunk_frost_walker": "醉酒的冰霜行者",
   "effect.drinkbeer.drunk": "醉酒",
 
-  "dinkbeer.location.northon": "北森镇",
+  "death.attack.drinkbeer.alcohol": "%1$s把自己喝死了",
+
+  "drinkbeer.location.northon": "北森镇",
   "drinkbeer.location.twigvalley": "树枝谷",
+
+  "drinkbeer.resident.you": "你",
+  "drinkbeer.resident.leka": "莱卡",
+  "drinkbeer.resident.haar": "哈尔",
+  "drinkbeer.resident.anu": "阿努",
 
   "block.drinkbeer.mixed_beer" : "调制酒",
   "item.drinkbeer.mixed_beer.tooltip_base" : "基酒",
