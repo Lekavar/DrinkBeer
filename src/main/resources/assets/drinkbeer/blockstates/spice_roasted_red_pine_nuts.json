@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "drinkbeer:block/spice_roasted_red_pine_nuts"
+    },
+    "facing=east": {
+      "model": "drinkbeer:block/spice_roasted_red_pine_nuts",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "drinkbeer:block/spice_roasted_red_pine_nuts",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "drinkbeer:block/spice_roasted_red_pine_nuts",
+      "y": 270
+    }
+  }
+}
