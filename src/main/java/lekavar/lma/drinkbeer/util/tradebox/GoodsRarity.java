@@ -16,15 +16,15 @@ public class GoodsRarity {
     public static int getRarityWeight(int rarity) {
         switch (rarity) {
             case NORMAL:
-                return 48;
+                return 49;
             case RARE:
-                return 28;
+                return 30;
             case SUPER_RARE:
                 return 15;
             case UNIQUE:
-                return 9;
+                return 6;
             default:
-                return 48;
+                return 49;
         }
     }
 

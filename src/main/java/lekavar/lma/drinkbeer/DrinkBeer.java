@@ -8,6 +8,7 @@ import lekavar.lma.drinkbeer.block.entity.TradeboxEntity;
 import lekavar.lma.drinkbeer.item.BeerMugBlockItem;
 import lekavar.lma.drinkbeer.item.MixedBeerBlockItem;
 import lekavar.lma.drinkbeer.item.SpiceBlockItem;
+import lekavar.lma.drinkbeer.manager.TradeBoxTestManager;
 import lekavar.lma.drinkbeer.networking.NetWorking;
 import lekavar.lma.drinkbeer.screen.BartendingTableScreenHandler;
 import lekavar.lma.drinkbeer.screen.BeerBarrelScreenHandler;
@@ -120,6 +121,13 @@ public class DrinkBeer implements ModInitializer {
     public static final Block SPICE_ICE_MINT = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block SPICE_ICE_PATCHOULI = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block SPICE_STORM_SHARDS = new SpiceBlock(FabricBlockSettings.of(Material.GLASS).hardness(0.5f));
+    public static final Block SPICE_ROASTED_RED_PINE_NUTS = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block SPICE_GLACE_GOJI_BERRIES = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block SPICE_FROZEN_PERSIMMON = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block SPICE_ROASTED_PECANS = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block SPICE_SILVER_NEEDLE_WHITE_TEA = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block SPICE_GOLDEN_CINNAMON_POWDER = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block SPICE_DRIED_SELAGINELLA = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
 
     /*Other*/
     /*------------------------------------------------------------------------------------------------------------------*/
@@ -250,6 +258,20 @@ public class DrinkBeer implements ModInitializer {
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_ice_patchouli"), SPICE_ICE_PATCHOULI);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_storm_shards"), new SpiceBlockItem(SPICE_STORM_SHARDS, null, 1));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_storm_shards"), SPICE_STORM_SHARDS);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_roasted_red_pine_nuts"), new SpiceBlockItem(SPICE_ROASTED_RED_PINE_NUTS, null, 2));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_roasted_red_pine_nuts"), SPICE_ROASTED_RED_PINE_NUTS);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_glace_goji_berries"), new SpiceBlockItem(SPICE_GLACE_GOJI_BERRIES, null, 1));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_glace_goji_berries"), SPICE_GLACE_GOJI_BERRIES);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_frozen_persimmon"), new SpiceBlockItem(SPICE_FROZEN_PERSIMMON, null, 1));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_frozen_persimmon"), SPICE_FROZEN_PERSIMMON);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_roasted_pecans"), new SpiceBlockItem(SPICE_ROASTED_PECANS, null, 2));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_roasted_pecans"), SPICE_ROASTED_PECANS);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_silver_needle_white_tea"), new SpiceBlockItem(SPICE_SILVER_NEEDLE_WHITE_TEA, null, 2));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_silver_needle_white_tea"), SPICE_SILVER_NEEDLE_WHITE_TEA);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_golden_cinnamon_powder"), new SpiceBlockItem(SPICE_GOLDEN_CINNAMON_POWDER, null, 2));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_golden_cinnamon_powder"), SPICE_GOLDEN_CINNAMON_POWDER);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_dried_selaginella"), new SpiceBlockItem(SPICE_DRIED_SELAGINELLA, null, 2));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_dried_selaginella"), SPICE_DRIED_SELAGINELLA);
 
         /*Other*/
         /*------------------------------------------------------------------------------------------------------------------*/
@@ -278,5 +300,8 @@ public class DrinkBeer implements ModInitializer {
 
         //Net working
         NetWorking.init();
+
+        //Print good list
+        TradeBoxTestManager.PrintGoodList();
     }
 }

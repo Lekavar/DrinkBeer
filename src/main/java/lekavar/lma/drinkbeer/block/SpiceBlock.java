@@ -11,7 +11,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.Items;
 import net.minecraft.particle.DefaultParticleType;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
@@ -29,6 +28,8 @@ import java.util.Random;
 
 public class SpiceBlock extends TransparentBlock {
     public final static VoxelShape DEFAULT_SHAPE = createCuboidShape(5.5, 0, 5.5, 10.5, 2, 10.5);
+    public final static VoxelShape SPICE_FROZEN_PERSIMMON_SHAPE = createCuboidShape(5.5, 0, 5.5, 10.5, 3.5, 10.5);
+    public final static VoxelShape SPICE_DRIED_SELAGINELLA = createCuboidShape(5.5, 0, 5.5, 10.5, 4.5, 10.5);
 
     public SpiceBlock(AbstractBlock.Settings settings) {
         super(settings.nonOpaque());
@@ -42,6 +43,12 @@ public class SpiceBlock extends TransparentBlock {
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
+        if (this.equals(DrinkBeer.SPICE_FROZEN_PERSIMMON)) {
+            return SPICE_FROZEN_PERSIMMON_SHAPE;
+        }
+        if (this.equals(DrinkBeer.SPICE_DRIED_SELAGINELLA)) {
+            return SPICE_DRIED_SELAGINELLA;
+        }
         return DEFAULT_SHAPE;
     }
 

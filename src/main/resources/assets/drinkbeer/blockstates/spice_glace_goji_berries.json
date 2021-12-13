@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "drinkbeer:block/spice_glace_goji_berries"
+    },
+    "facing=east": {
+      "model": "drinkbeer:block/spice_glace_goji_berries",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "drinkbeer:block/spice_glace_goji_berries",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "drinkbeer:block/spice_glace_goji_berries",
+      "y": 270
+    }
+  }
+}

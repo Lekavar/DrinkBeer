@@ -20,7 +20,7 @@ public class Good {
     public final static int TO = 2;
     private final static int MIN_COUNT = 1;
 
-    public Good(){
+    public Good() {
         this.goodItem = Items.AIR;
         this.location = Locations.EMPTY_LOCATION;
         this.resident = Residents.EMPTY_RESIDENT;
@@ -31,12 +31,12 @@ public class Good {
         this.rarity = GoodsRarity.DEFAULT_RARITY;
     }
 
-    public Good set(Block goodBlock,@NotNull Locations location,@NotNull int fromOrToLocation,Residents resident,@NotNull int minCount,@NotNull int maxCount,int rarity){
-        return this.set(goodBlock.asItem(),location,fromOrToLocation,resident,minCount,maxCount,rarity);
+    public Good set(Block goodBlock, @NotNull Locations location, @NotNull int fromOrToLocation, Residents resident, @NotNull int minCount, @NotNull int maxCount, int rarity) {
+        return this.set(goodBlock.asItem(), location, fromOrToLocation, resident, minCount, maxCount, rarity);
     }
 
-    public Good set(Item goodItem,@NotNull Locations location,@NotNull int fromOrToLocation,Residents resident,@NotNull int minCount,@NotNull int maxCount,int rarity){
-        return this.setGoodItem(goodItem).setTradeLocation(location,fromOrToLocation).setResident(resident).setCountRange(minCount,maxCount).setRarity(rarity);
+    public Good set(Item goodItem, @NotNull Locations location, @NotNull int fromOrToLocation, Residents resident, @NotNull int minCount, @NotNull int maxCount, int rarity) {
+        return this.setGoodItem(goodItem).setTradeLocation(location, fromOrToLocation).setResident(resident).setCountRange(minCount, maxCount).setRarity(rarity);
     }
 
     public Good setGoodItem(Item goodItem) {
@@ -48,7 +48,7 @@ public class Good {
         return setGoodItem(goodBlock.asItem());
     }
 
-    public Good setTradeLocation(@NotNull Locations location,@NotNull int fromOrToLocation) {
+    public Good setTradeLocation(@NotNull Locations location, @NotNull int fromOrToLocation) {
         this.location = location;
         this.fromOrToLocation = fromOrToLocation;
         return this;
@@ -59,14 +59,14 @@ public class Good {
         return this;
     }
 
-    public Good setCountRange(@NotNull int minCount,@NotNull int maxCount) {
-        this.minCount = Math.max(minCount,MIN_COUNT);
+    public Good setCountRange(@NotNull int minCount, @NotNull int maxCount) {
+        this.minCount = Math.max(minCount, MIN_COUNT);
         this.maxCount = maxCount;
         return this;
     }
 
     public Good setRarity(int rarity) {
-        this.rarity = Math.min(Math.max(rarity, GoodsRarity.NORMAL),GoodsRarity.UNIQUE);
+        this.rarity = Math.min(Math.max(rarity, GoodsRarity.NORMAL), GoodsRarity.UNIQUE);
         return this;
     }
 
@@ -106,8 +106,8 @@ public class Good {
         return rarity;
     }
 
-    public Good copy(Good good){
-        this.set(good.getGoodItem(),good.getLocation(),good.getFromOrToLocation(),good.getResident(),good.getMinCount(),good.getMaxCount(),good.getRarity());
+    public Good copy(Good good) {
+        this.set(good.getGoodItem(), good.getLocation(), good.getFromOrToLocation(), good.getResident(), good.getMinCount(), good.getMaxCount(), good.getRarity());
         this.setCount(good.getCount());
         return this;
     }

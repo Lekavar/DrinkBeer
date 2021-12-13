@@ -5,7 +5,9 @@ import lekavar.lma.drinkbeer.util.mixedbeer.Flavors;
 import lekavar.lma.drinkbeer.util.mixedbeer.MixedBeerOnUsing;
 import lekavar.lma.drinkbeer.util.mixedbeer.Spices;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
@@ -133,6 +135,18 @@ public class SpiceAndFlavorManager {
                     case REFRESHING1:
                         applyRefreshingFlavorValue(mixedBeerOnUsing, flavor);
                         break;
+                    case NUTTY:
+                        applyNuttyFlavorAction(mixedBeerOnUsing, flavor);
+                    case SWEET:
+                        applySweetFlavorAction(mixedBeerOnUsing, flavor);
+                    case LUSCIOUS:
+                        applySweetFlavorAction(mixedBeerOnUsing, flavor);
+                    case CLOYING:
+                        applySweetFlavorAction(mixedBeerOnUsing, flavor);
+                    case NUTTY1:
+                        applyNuttyFlavorAction(mixedBeerOnUsing, flavor);
+                    case MELLOW:
+                        applyMellowFlavorAction(mixedBeerOnUsing, flavor);
                     default:
                         mixedBeerOnUsing.addAction(flavor);
                         break;
@@ -160,6 +174,12 @@ public class SpiceAndFlavorManager {
                     case THE_FALL_OF_THE_GIANT:
                         applyStormyFlavorAction(3, world, user);
                         break;
+                    case DRYING: {
+                        if (!MixedBeerManager.hasActionAfter(i, Flavors.DRYING, mixedBeerOnUsing.getActionList())) {
+                            applyDryingFlavorAction(MixedBeerManager.getActionedTimes(i, Flavors.DRYING, mixedBeerOnUsing.getActionList()), world, user);
+                        }
+                        break;
+                    }
                 }
             }
         }
@@ -259,4 +279,83 @@ public class SpiceAndFlavorManager {
         }
     }
 
+    public static void applyNuttyFlavorAction(MixedBeerOnUsing mixedBeerOnUsing, Flavors flavor) {
+        switch (flavor) {
+            case NUTTY:
+                mixedBeerOnUsing.addHunger(4);
+                break;
+            case NUTTY1:
+                mixedBeerOnUsing.addHunger(5);
+                break;
+        }
+    }
+
+    public static void applySweetFlavorAction(MixedBeerOnUsing mixedBeerOnUsing, Flavors flavor) {
+        switch (flavor) {
+            case SWEET:
+                mixedBeerOnUsing.addHealth(3);
+                break;
+            case LUSCIOUS:
+                mixedBeerOnUsing.addHealth(4);
+                break;
+            case CLOYING:
+                mixedBeerOnUsing.addHealth(1);
+        }
+    }
+
+    public static void applyMellowFlavorAction(MixedBeerOnUsing mixedBeerOnUsing, Flavors flavor) {
+        switch (flavor) {
+            case MELLOW:
+                mixedBeerOnUsing.addSpecificStatusEffectDuration(StatusEffects.RESISTANCE, 1600);
+                break;
+        }
+    }
+
+    public static void applyDryingFlavorAction(int actionedTimes, World world, LivingEntity user) {
+        int range = 17 + actionedTimes * 4;
+        int halfRange = (range - 1) / 2;
+        int xStart = 0;
+        int xEnd = 0;
+        int zStart = 0;
+        int zEnd = 0;
+        Direction direction = user.getMovementDirection();
+
+        switch (direction) {
+            case NORTH: {
+                xStart = -halfRange;
+                xEnd = halfRange + 1;
+                zStart = -range;
+                break;
+            }
+            case SOUTH: {
+                xStart = -halfRange;
+                xEnd = halfRange + 1;
+                zEnd = range;
+                break;
+            }
+            case EAST: {
+                zStart = -halfRange;
+                zEnd = halfRange + 1;
+                xEnd = range;
+                break;
+            }
+            case WEST: {
+                zStart = -halfRange;
+                zEnd = halfRange + 1;
+                xStart = -range;
+                break;
+            }
+        }
+        for (int x = xStart; x < xEnd; x++) {
+            for (int y = 0; y < range; y++) {
+                for (int z = zStart; z < zEnd; z++) {
+                    BlockPos pos = user.getBlockPos().add(x, y, z);
+                    BlockState blockState = world.getBlockState(pos);
+                    if (blockState.getBlock().equals(Blocks.WATER)) {
+                        world.setBlockState(pos, Blocks.AIR.getDefaultState());
+                    }
+                }
+            }
+        }
+    }
 }

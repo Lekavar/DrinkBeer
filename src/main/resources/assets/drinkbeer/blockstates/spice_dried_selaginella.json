@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "drinkbeer:block/spice_dried_selaginella"
+    },
+    "facing=east": {
+      "model": "drinkbeer:block/spice_dried_selaginella",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "drinkbeer:block/spice_dried_selaginella",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "drinkbeer:block/spice_dried_selaginella",
+      "y": 270
+    }
+  }
+}
