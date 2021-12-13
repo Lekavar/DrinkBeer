@@ -77,10 +77,10 @@ public enum Goods {
     /*----------------------------------------------*/
     TWIGVALLEY_APPLE(new Good().set(Items.APPLE, TWIGVALLEY, TO, null, 1, 1, NORMAL)),
     TWIGVALLEY_FEATHER(new Good().set(Items.FEATHER, TWIGVALLEY, TO, ANU, 2, 3, NORMAL)),
-    TWIGVALLEY_DIRT(new Good().set(Items.DIRT, TWIGVALLEY, TO, ANU, 3, 4, NORMAL)),
+    TWIGVALLEY_DIRT(new Good().set(Items.DIRT, TWIGVALLEY, TO, null, 3, 4, NORMAL)),
 
-    TWIGVALLEY_OAK_LEAVES(new Good().set(Items.OAK_LEAVES, TWIGVALLEY, TO, ANU, 2, 3, RARE)),
-    TWIGVALLEY_DARK_OAK_LEAVES(new Good().set(Items.DARK_OAK_LEAVES, TWIGVALLEY, TO, ANU, 2, 3, RARE));
+    TWIGVALLEY_OAK_LEAVES(new Good().set(Items.OAK_LEAVES, TWIGVALLEY, TO, null, 2, 3, RARE)),
+    TWIGVALLEY_DARK_OAK_LEAVES(new Good().set(Items.DARK_OAK_LEAVES, TWIGVALLEY, TO, null, 2, 3, RARE));
 
     private final Good good;
 
