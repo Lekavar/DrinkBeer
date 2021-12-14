@@ -106,5 +106,5 @@
   "drinkbeer.flavor.luscious.tooltip" : "Health + 4",
   "drinkbeer.flavor.nutty1.tooltip" : "Hunger + 5",
   "drinkbeer.flavor.mellow.tooltip" : "Resistance 1:20",
-  "drinkbeer.flavor.drying.tooltip" : "Absorbwater in front of you"
+  "drinkbeer.flavor.drying.tooltip" : "Absorbs water in front of you"
 }
