@@ -1,8 +1,12 @@
 package lekavar.lma.drinkbeer.util.beer;
 
 import lekavar.lma.drinkbeer.DrinkBeer;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+
+import java.util.Arrays;
+import java.util.Optional;
 
 public enum Beers {
     BEER_MUG(1, DrinkBeer.BEER_MUG.asItem(), true, new BeerRecipe()
@@ -90,5 +94,13 @@ public enum Beers {
 
     public static int size() {
         return values().length;
+    }
+
+    public static Beers byRecipeBoardBlock(Block recipeBoardBlcok) {
+        String beerName = recipeBoardBlcok.getTranslationKey().replace("block.drinkbeer.recipe_board_", "");
+        Optional<Beers> matchedBeer = Arrays.stream(values())
+                .filter(beer -> beer.beerItem.getTranslationKey().equals("block.drinkbeer." + beerName))
+                .findFirst();
+        return matchedBeer.isPresent() ? matchedBeer.get() : null;
     }
 }
