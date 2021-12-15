@@ -26,7 +26,7 @@ public enum Beers {
     BEER_MUG_PUMPKIN_KVASS(7, DrinkBeer.BEER_MUG_PUMPKIN_KVASS.asItem(), false, new BeerRecipe()
             .setBeerResultNum(4).setBrewingTime(12000)
             .addMaterial(2, Items.BREAD).addMaterial(Items.PUMPKIN).addMaterial(Items.WATER_BUCKET)),
-    BEER_MUG_FROTHY_PINK_EGGNOG(8, DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem(), false, new BeerRecipe()
+    BEER_MUG_FROTHY_PINK_EGGNOG(8, DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem(), true, new BeerRecipe()
             .setBeerResultNum(4).setBrewingTime(12000)
             .addMaterial(Items.WHEAT).addMaterial(Items.BEETROOT).addMaterial(Items.EGG).addMaterial(Items.MILK_BUCKET)),
     BEER_MUG_NIGHT_HOWL_KVASS(9, DrinkBeer.BEER_MUG_NIGHT_HOWL_KVASS.asItem(), true, new BeerRecipe()

@@ -5,7 +5,6 @@ import lekavar.lma.drinkbeer.block.MixedBeerBlock;
 import lekavar.lma.drinkbeer.manager.MixedBeerManager;
 import lekavar.lma.drinkbeer.manager.SpiceAndFlavorManager;
 import lekavar.lma.drinkbeer.util.beer.Beers;
-import lekavar.lma.drinkbeer.util.mixedbeer.FlavorCombinations;
 import lekavar.lma.drinkbeer.util.mixedbeer.Flavors;
 import lekavar.lma.drinkbeer.util.mixedbeer.Spices;
 import net.fabricmc.api.EnvType;
@@ -13,7 +12,10 @@ import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.FoodComponent;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
@@ -87,7 +89,7 @@ public class MixedBeerBlockItem extends BeerBlockItem {
     public Text getMixedBeerName(ItemStack stack) {
         int beerId = MixedBeerManager.getBeerId(stack);
         Item beerItem = Beers.byId(beerId).getBeerItem();
-        String beerName = beerId > Beers.EMPTY_BEER_ID ? beerItem.getTranslationKey() : "";
+        String beerName = beerId > Beers.EMPTY_BEER_ID ? beerItem.getTranslationKey() : "block.drinkbeer.empty_beer_mug";
         Text name = new TranslatableText(beerName).append(new TranslatableText(MixedBeerManager.getMixedBeerTranslationKey())).formatted(Formatting.YELLOW);
         return name;
     }

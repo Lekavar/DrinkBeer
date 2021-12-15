@@ -193,7 +193,7 @@ public class DrinkBeer implements ModInitializer {
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug_night_howl_kvass"), BEER_MUG_NIGHT_HOWL_KVASS);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_night_howl_kvass"), new BeerMugBlockItem(BEER_MUG_NIGHT_HOWL_KVASS, null, 4));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug_frothy_pink_eggnog"), BEER_MUG_FROTHY_PINK_EGGNOG);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_frothy_pink_eggnog"), new BeerMugBlockItem(BEER_MUG_FROTHY_PINK_EGGNOG, null, 2));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_frothy_pink_eggnog"), new BeerMugBlockItem(BEER_MUG_FROTHY_PINK_EGGNOG, new StatusEffectInstance(StatusEffects.ABSORPTION, 2400), 2));
         //Mixed beer
         MIXED_BEER_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "drinkbeer:mixed_beer_entity", FabricBlockEntityTypeBuilder.create(MixedBeerEntity::new, MIXED_BEER).build(null));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "mixed_beer"), MIXED_BEER);
