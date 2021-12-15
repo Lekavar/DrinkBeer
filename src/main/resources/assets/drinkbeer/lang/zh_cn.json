@@ -54,7 +54,7 @@
   "drinkbeer.resident.anu": "阿努",
   "drinkbeer.resident.will": "威尔",
 
-  "block.drinkbeer.mixed_beer" : "调制酒",
+  "block.drinkbeer.mixed_beer" : "§r §r",
   "item.drinkbeer.mixed_beer.tooltip_base" : "基酒",
   "item.drinkbeer.mixed_beer.tooltip_unmixed" : "这杯酒没有基酒",
   "item.drinkbeer.spice.tooltip_flavor" : "风味",

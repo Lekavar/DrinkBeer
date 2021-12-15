@@ -1,35 +1,42 @@
 {
+# # # Creative Menu # # #
   "itemGroup.drinkbeer.beer": "DrinkBeer: Пиво",
-  "itemGroup.drinkbeer.general": "DrinkBeer: Общие блоки",
+  "itemGroup.drinkbeer.general": "DrinkBeer: Блоки",
 
-  "block.drinkbeer.beer_mug": "Шахтерский пейл-эль",
-  "block.drinkbeer.beer_mug_blaze_stout": "Пламенный стаут",
-  "block.drinkbeer.beer_mug_blaze_milk_stout": "Пламенный молочный стаут",
-  "block.drinkbeer.beer_mug_apple_lambic": "Яблочный ламбик",
-  "block.drinkbeer.beer_mug_sweet_berry_kriek": "Сладкий ягодный крик",
-  "block.drinkbeer.beer_mug_haars_icey_pale_lager": "Ледяной светлый лагер Хаара",
+# # # Beer # # #
+  "block.drinkbeer.beer_mug": "Шахтерский Пейл-эль",
+  "block.drinkbeer.beer_mug_blaze_stout": "Пламенный Стаут",
+  "block.drinkbeer.beer_mug_blaze_milk_stout": "Пламенный Молочный Стаут",
+  "block.drinkbeer.beer_mug_apple_lambic": "Яблочный Ламбик",
+  "block.drinkbeer.beer_mug_sweet_berry_kriek": "Сладкий Ягодный Крик",
+  "block.drinkbeer.beer_mug_haars_icey_pale_lager": "Ледяной Светлый Лагер Хаара",
   "block.drinkbeer.beer_mug_pumpkin_kvass": "Тыквенный Квас",
-  "block.drinkbeer.beer_mug_frothy_pink_eggnog": "Пенистый розовый моголь",
-  "block.drinkbeer.beer_mug_night_howl_kvass": "Квас ночного воя",
+  "block.drinkbeer.beer_mug_frothy_pink_eggnog": "Пенистый Розовый Моголь",
+  "block.drinkbeer.beer_mug_night_howl_kvass": "Квас Ночного Воя",  
 
-
-  "block.drinkbeer.empty_beer_mug": "Пустая пивная кружка",
+# # # Blocks # # #
+  "block.drinkbeer.empty_beer_mug": "Пустая Пивная Кружка",
   "block.drinkbeer.beer_barrel": "Бочонок",
-  "block.drinkbeer.iron_call_bell": "Железный звоночек",
-  "block.drinkbeer.golden_call_bell": "Золотой звоночек",
+  "block.drinkbeer.bartending_table_normal" : "Стол Бармена",
+  "block.drinkbeer.trade_box_normal" : "Стол Торговли Бартером",
 
-  "block.drinkbeer.recipe_board_beer_mug": "Вывеска с Рецептом: Шахтёрский пейл-эль",
-  "block.drinkbeer.recipe_board_beer_mug_blaze_stout": "Вывеска с Рецептом: Пламенный стаут",
-  "block.drinkbeer.recipe_board_beer_mug_blaze_milk_stout": "Вывеска с Рецептом: Пламенный молочный стаут",
-  "block.drinkbeer.recipe_board_beer_mug_apple_lambic": "Вывеска с Рецептом: Яблочный ламбик",
-  "block.drinkbeer.recipe_board_beer_mug_sweet_berry_kriek": "Вывеска с Рецептом: Сладкий ягодный крик",
-  "block.drinkbeer.recipe_board_beer_mug_haars_icey_pale_lager": "Вывеска с Рецептом: Ледяной светлый лагер Хаара",
-  "block.drinkbeer.recipe_board_beer_mug_pumpkin_kvass": "Вывеска с Рецептом: Тыквенный Квас",
-  "block.drinkbeer.recipe_board_beer_mug_night_howl_kvass": "Вывеска с Рецептом: Квас ночного воя",
-
+# # # Call Bells # # #
+  "block.drinkbeer.iron_call_bell": "Звоночек из Железа",
+  "block.drinkbeer.golden_call_bell": "Звоночек из Золота",
+  "block.drinkbeer.lekas_call_bell": "Звоночек Леки",
+  
+# # # Recipe Boards # # #
   "block.drinkbeer.recipe_board_package": "Коробка с Вывесками",
-
-
+  "block.drinkbeer.recipe_board": "Вывеска с Рецептом: Шахтёрский Пейл-Эль",
+  "block.drinkbeer.recipe_board_beer_mug_blaze_stout": "Вывеска с Рецептом: Пламенный Стаут",
+  "block.drinkbeer.recipe_board_beer_mug_blaze_milk_stout": "Вывеска с Рецептом: Пламенный Молочный Стаут",
+  "block.drinkbeer.recipe_board_beer_mug_apple_lambic": "Вывеска с Рецептом: Яблочный Ламбик",
+  "block.drinkbeer.recipe_board_beer_mug_sweet_berry_kriek": "Вывеска с Рецептом: Сладкий Ягодный Крик",
+  "block.drinkbeer.recipe_board_beer_mug_haars_icey_pale_lager": "Вывеска с Рецептом: Ледяной Светлый Лагер Хаара",
+  "block.drinkbeer.recipe_board_beer_mug_pumpkin_kvass": "Вывеска с Рецептом: Тыквенный Квас",
+  "block.drinkbeer.recipe_board_beer_mug_night_howl_kvass": "Вывеска с Рецептом: Квас Ночного Воя",
+  
+# # # Beer description # # #
   "item.drinkbeer.beer_mug.tooltip": "Спешка 1:00",
   "item.drinkbeer.beer_mug_blaze_stout.tooltip": "Огнестойкость 1:30",
   "item.drinkbeer.beer_mug_blaze_milk_stout.tooltip": "Огнестойкость 2:00",
@@ -38,6 +45,79 @@
   "item.drinkbeer.beer_mug_haars_icey_pale_lager.tooltip": "Пьяный мороз 1:00",
   "item.drinkbeer.beer_mug_night_howl_kvass.tooltip": "Ночное Зрение 2:00-7:00 (Зависит от фазы луны)",
 
+# # # Effects # # #
   "drinkbeer.restores_hunger": "Восстанавливает голод: ",
-  "effect.drinkbeer.drunk_frost_walker": "Пьяный мороз"
+  "effect.drinkbeer.drunk_frost_walker": "Пьяный Ледоход",
+  "effect.drinkbeer.drunk": "Пьяный",
+
+  "death.attack.drinkbeer.alcohol": "%1$s напился до смерти",
+
+# # # Locations # # #
+  "drinkbeer.location.northon": "Нортон",
+  "drinkbeer.location.twigvalley": "Аллея Веток",
+
+# # # Residents # # #
+  "drinkbeer.resident.you": "Вы",
+  "drinkbeer.resident.leka": "Лека",
+  "drinkbeer.resident.haar": "Хаар",
+  "drinkbeer.resident.anu": "Аня",
+  "drinkbeer.resident.will": "Вилл", # Not sure if this a name
+
+# # # Liquor # # #
+  "block.drinkbeer.mixed_beer" : "§r ",
+  "item.drinkbeer.mixed_beer.tooltip_base" : "База",
+  "item.drinkbeer.mixed_beer.tooltip_unmixed" : "Нет базы",
+  "item.drinkbeer.spice.tooltip_flavor" : "Вкус",
+  "item.drinkbeer.spice.tooltip_no_flavor" : "Нет вкуса",
+  "item.drinkbeer.spice.tooltip" : "Пряность",
+
+# # # Plants # # #
+  "block.drinkbeer.spice_blaze_paprika" : "Пламенеющая Паприка",
+  "block.drinkbeer.spice_dried_eglia_bud" : "Сушеный Бутон Эглии",
+  "block.drinkbeer.spice_smoked_eglia_bud" : "Тушённый Бутон Эглии",
+  "block.drinkbeer.spice_amethyst_nigella_seeds" : "Аметистовые Семена Чернушки",
+  "block.drinkbeer.spice_citrine_nigella_seeds" : "Цитриновые Семена Чернушки",
+  "block.drinkbeer.spice_ice_mint" : "Ледяная Мята",
+  "block.drinkbeer.spice_ice_patchouli" : "Ледяной Пачули",
+  "block.drinkbeer.spice_storm_shards" : "Осколки Шторма",
+  "block.drinkbeer.spice_roasted_red_pine_nuts" : "Жареные Кедровые Орехи",
+  "block.drinkbeer.spice_glace_goji_berries" : "Засахаренные Ягоды Годжи",
+  "block.drinkbeer.spice_frozen_persimmon" : "Замороженная Хурма",
+  "block.drinkbeer.spice_roasted_pecans" : "Жаренный Пекан",
+  "block.drinkbeer.spice_silver_needle_white_tea" : "Белый Серебристый Чай",
+  "block.drinkbeer.spice_golden_cinnamon_powder" : "Золотая Корица",
+  "block.drinkbeer.spice_dried_selaginella" : "Плаунок",
+
+# # # Flavor # # #
+  "drinkbeer.flavor.spicy" : "Прянистый ",
+  "drinkbeer.flavor.fiery" : "Пламенный ",
+  "drinkbeer.flavor.soooo_spicy" : "Очень острый! ",
+  "drinkbeer.flavor.aromatic" : "Ароматный ",
+  "drinkbeer.flavor.aromatic1" : "Более Ароматный ",
+  "drinkbeer.flavor.refreshing" : "Опьяняющий ",
+  "drinkbeer.flavor.refreshing1" : "Более Опьяняющий ",
+  "drinkbeer.flavor.stormy" : "Бурный ",
+  "drinkbeer.flavor.the_fall_of_the_giant" : "Падение Гиганта",
+  "drinkbeer.flavor.nutty" : "Пикантный ",
+  "drinkbeer.flavor.nutty1" : "Пикантный ",
+  "drinkbeer.flavor.sweet" : "Сладкий ",
+  "drinkbeer.flavor.luscious" : "Сочный ",
+  "drinkbeer.flavor.cloying" : "Приторный, но вкусный ",
+  "drinkbeer.flavor.mellow" : "Мягкий ",
+  "drinkbeer.flavor.drying" : "Испаряющий ",
+
+# # # Flavors Tooltip # # #
+  "drinkbeer.flavor.spicy.tooltip" : "Здоровье - 3, длительность текущих эффектов + 80%",
+  "drinkbeer.flavor.fiery.tooltip" : "Здоровье - 4, длительность текущих эффектов + 100%",
+  "drinkbeer.flavor.aromatic.tooltip" : "Длительность текущих эффектов + 0:40",
+  "drinkbeer.flavor.aromatic1.tooltip" : "Длительность текущих эффектов + 1:00",
+  "drinkbeer.flavor.refreshing.tooltip" : "Опьянение",
+  "drinkbeer.flavor.refreshing1.tooltip" : "Сильное Опьянение",
+  "drinkbeer.flavor.stormy.tooltip" : "\"Только буря может свергнуть Великий Лес\"",
+  "drinkbeer.flavor.sweet.tooltip" : "Голод + 3",
+  "drinkbeer.flavor.nutty.tooltip" : "Голод + 4",
+  "drinkbeer.flavor.nutty1.tooltip" : "Голод + 5",
+  "drinkbeer.flavor.luscious.tooltip" : "Здоровье + 4",
+  "drinkbeer.flavor.mellow.tooltip" : "Сопротивление 1:20",
+  "drinkbeer.flavor.drying.tooltip" : "Испаряет воду вокруг вас"
 }
