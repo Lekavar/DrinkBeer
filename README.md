@@ -1,2 +1,1 @@
 # DrinkBeer
-[Suspended]
