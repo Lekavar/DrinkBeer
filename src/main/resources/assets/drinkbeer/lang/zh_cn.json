@@ -38,6 +38,7 @@
   "item.drinkbeer.beer_mug_sweet_berry_kriek.tooltip":"生命恢复 0:20",
   "item.drinkbeer.beer_mug_haars_icey_pale_lager.tooltip": "醉酒的冰霜行者 1:00",
   "item.drinkbeer.beer_mug_night_howl_kvass.tooltip": "夜视 2:00-7:00 （与满月程度成正比）",
+  "item.drinkbeer.beer_mug_frothy_pink_eggnog.tooltip": "伤害吸收 2:00",
 
   "drinkbeer.restores_hunger": "饥饿值回复: ",
   "effect.drinkbeer.drunk_frost_walker": "醉酒的冰霜行者",
@@ -54,7 +55,7 @@
   "drinkbeer.resident.anu": "阿努",
   "drinkbeer.resident.will": "威尔",
 
-  "block.drinkbeer.mixed_beer" : "调制酒",
+  "block.drinkbeer.mixed_beer" : "☆",
   "item.drinkbeer.mixed_beer.tooltip_base" : "基酒",
   "item.drinkbeer.mixed_beer.tooltip_unmixed" : "这杯酒没有基酒",
   "item.drinkbeer.spice.tooltip_flavor" : "风味",

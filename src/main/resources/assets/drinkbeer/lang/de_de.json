@@ -15,5 +15,7 @@
   "item.drinkbeer.beer_mug_blaze_stout.tooltip":"Feuerresistenz 1:30",
   "item.drinkbeer.beer_mug_blaze_milk_stout.tooltip":"Feuerresistenz 2:00",
   "item.drinkbeer.beer_mug_apple_lambic.tooltip":"Regeneration 0:15",
-  "item.drinkbeer.beer_mug_sweet_berry_kriek.tooltip":"Regeneration 0:20"
+  "item.drinkbeer.beer_mug_sweet_berry_kriek.tooltip":"Regeneration 0:20",
+
+   "block.drinkbeer.mixed_beer" : "§r ☆"
 }

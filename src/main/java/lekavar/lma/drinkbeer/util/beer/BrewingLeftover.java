@@ -9,7 +9,7 @@ import java.util.List;
 
 public enum BrewingLeftover {
     WATER_BUCKET(Items.WATER_BUCKET, Items.BUCKET),
-    MILK_BUCKET(Items.MILK_BUCKET,Items.MILK_BUCKET);
+    MILK_BUCKET(Items.MILK_BUCKET,Items.BUCKET);
 
     private final Item oriItem;
     private final Item brewingLeftOverItem;
