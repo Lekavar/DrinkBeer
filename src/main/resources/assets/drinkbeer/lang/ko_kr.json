@@ -38,4 +38,8 @@
 
   "drinkbeer.restores_hunger": "허기 회복: ",
   "effect.drinkbeer.drunk_frost_walker": "차가운 술걸음"
+  
+ # # # DO NOT CHANGE # # # Request an image for you language! Write "SPECIAL" in your language in comment under this
+ # # # "SPECIAL" = 
+  "block.drinkbeer.mixed_beer" : "§r ",
 }

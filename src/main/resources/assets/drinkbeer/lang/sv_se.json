@@ -22,4 +22,9 @@
 
   "drinkbeer.restores_hunger": "Återställer hunger: ",
   "effect.drinkbeer.drunk_frost_walker": "Berusad frostgångare"
+  
+ # # # DO NOT CHANGE # # # Request an image for you language! Write "SPECIAL" in your language in comment under this
+ # # # "SPECIAL" = 
+   "block.drinkbeer.mixed_beer" : "§r ",
+
 }

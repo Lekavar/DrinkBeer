@@ -1,0 +1,40 @@
+{
+  "providers": [
+        {
+            "type": "bitmap",
+            "file": "drinkbeer:icons/s_en_sign.png",
+            "ascent": 46,
+            "height": 48,
+            "chars": ["\uE800"]
+        },
+        {
+            "type": "bitmap",
+            "file": "drinkbeer:icons/s_ch_sign.png",
+            "ascent": 44,
+            "height": 48,
+            "chars": ["\uE801"]
+        },
+        {
+            "type": "bitmap",
+            "file": "drinkbeer:icons/s_ru_sign.png",
+            "ascent": 44,
+            "height": 48,
+            "chars": ["\uE802"]
+        },
+        {
+            "type": "bitmap",
+            "file": "drinkbeer:icons/s_all_sign.png",
+            "ascent": 44,
+            "height": 48,
+            "chars": ["\uE803"]
+        },
+
+        {
+            "type": "ttf",
+            "file": "minecraft:negative_spaces.ttf",
+            "shift": [0.0, 0.0],
+            "size": 10.0,
+            "oversample": 1.0
+        }
+  ]
+}
