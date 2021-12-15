@@ -7,6 +7,7 @@ import lekavar.lma.drinkbeer.block.entity.MixedBeerEntity;
 import lekavar.lma.drinkbeer.block.entity.TradeboxEntity;
 import lekavar.lma.drinkbeer.item.BeerMugBlockItem;
 import lekavar.lma.drinkbeer.item.MixedBeerBlockItem;
+import lekavar.lma.drinkbeer.item.RecipeBoardBlockItem;
 import lekavar.lma.drinkbeer.item.SpiceBlockItem;
 import lekavar.lma.drinkbeer.manager.TradeBoxTestManager;
 import lekavar.lma.drinkbeer.networking.NetWorking;
@@ -76,25 +77,31 @@ public class DrinkBeer implements ModInitializer {
     public static final Block BEER_BARREL = new BeerBarrelBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final Identifier BEER_BARREL_ID = new Identifier("drinkbeer", "beer_barrel");
     public static final ScreenHandlerType<BeerBarrelScreenHandler> BEER_BARREL_SCREEN_HANDLER;
+
     static {
         BEER_BARREL_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(BEER_BARREL_ID, BeerBarrelScreenHandler::new);
     }
+
     //Bartending table
     public static BlockEntityType<BartendingTableEntity> BARTENDING_TABLE_ENTITY;
     public static final Block BARTENDING_TABLE_NORMAL = new BartendingTableBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final Identifier BARTENDING_TABLE_ID = new Identifier("drinkbeer", "bartending_table");
     public static final ScreenHandlerType<BartendingTableScreenHandler> BARTENDING_TABLE_SCREEN_HANDLER;
+
     static {
         BARTENDING_TABLE_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(BARTENDING_TABLE_ID, BartendingTableScreenHandler::new);
     }
+
     //Trade box
     public static BlockEntityType<TradeboxEntity> TRADE_BOX_ENTITY;
     public static final TradeboxBlock TRADE_BOX_NORMAL = new TradeboxBlock((FabricBlockSettings.of(Material.WOOD).hardness(2.0f)));
     public static final Identifier TRADE_BOX_ID = new Identifier("drinkbeer", "trade_box");
     public static final ScreenHandlerType<TradeBoxScreenHandler> TRADE_BOX_SCREEN_HANDLER;
+
     static {
         TRADE_BOX_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(TRADE_BOX_ID, TradeBoxScreenHandler::new);
     }
+
     //Call bells
     public static final Block IRON_CALL_BELL = new CallBellBlock(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
     public static final Block GOLDEN_CALL_BELL = new CallBellBlock(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
@@ -227,21 +234,21 @@ public class DrinkBeer implements ModInitializer {
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_package"), RECIPE_BOARD_PACKAGE);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_package"), new BlockItem(RECIPE_BOARD_PACKAGE, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug"), RECIPE_BOARD_BEER_MUG);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug"), new BlockItem(RECIPE_BOARD_BEER_MUG, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_blaze_stout"), RECIPE_BOARD_BEER_MUG_BLAZE_STOUT);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_blaze_stout"), new BlockItem(RECIPE_BOARD_BEER_MUG_BLAZE_STOUT, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_blaze_stout"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_BLAZE_STOUT, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_blaze_milk_stout"), RECIPE_BOARD_BEER_MUG_BLAZE_MILK_STOUT);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_blaze_milk_stout"), new BlockItem(RECIPE_BOARD_BEER_MUG_BLAZE_MILK_STOUT, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_blaze_milk_stout"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_BLAZE_MILK_STOUT, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_apple_lambic"), RECIPE_BOARD_BEER_MUG_APPLE_LAMBIC);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_apple_lambic"), new BlockItem(RECIPE_BOARD_BEER_MUG_APPLE_LAMBIC, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_apple_lambic"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_APPLE_LAMBIC, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_sweet_berry_kriek"), RECIPE_BOARD_BEER_MUG_SWEET_BERRY_KRIEK);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_sweet_berry_kriek"), new BlockItem(RECIPE_BOARD_BEER_MUG_SWEET_BERRY_KRIEK, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_sweet_berry_kriek"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_SWEET_BERRY_KRIEK, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_haars_icey_pale_lager"), RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_haars_icey_pale_lager"), new BlockItem(RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_haars_icey_pale_lager"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_pumpkin_kvass"), RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_pumpkin_kvass"), new BlockItem(RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_pumpkin_kvass"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_night_howl_kvass"), RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_night_howl_kvass"), new BlockItem(RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_night_howl_kvass"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         //Spices
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_blaze_paprika"), new SpiceBlockItem(SPICE_BLAZE_PAPRIKA, null, 1));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_blaze_paprika"), SPICE_BLAZE_PAPRIKA);
