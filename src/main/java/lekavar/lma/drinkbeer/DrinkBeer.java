@@ -116,10 +116,18 @@ public class DrinkBeer implements ModInitializer {
     public static final Block RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
-    public static final Block[] RECIPE_BOARD_PACKAGE_CONTENT = {RECIPE_BOARD_BEER_MUG, RECIPE_BOARD_BEER_MUG_BLAZE_STOUT,
-            RECIPE_BOARD_BEER_MUG_BLAZE_MILK_STOUT, RECIPE_BOARD_BEER_MUG_APPLE_LAMBIC,
-            RECIPE_BOARD_BEER_MUG_SWEET_BERRY_KRIEK, RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER,
-            RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS, RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS};
+    public static final Block RECIPE_BOARD_BEER_MUG_FROTHY_PINK_EGGNOG = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block[] RECIPE_BOARD_PACKAGE_CONTENT = {
+            RECIPE_BOARD_BEER_MUG,
+            RECIPE_BOARD_BEER_MUG_BLAZE_STOUT,
+            RECIPE_BOARD_BEER_MUG_BLAZE_MILK_STOUT,
+            RECIPE_BOARD_BEER_MUG_APPLE_LAMBIC,
+            RECIPE_BOARD_BEER_MUG_SWEET_BERRY_KRIEK,
+            RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER,
+            RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS,
+            RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS,
+            RECIPE_BOARD_BEER_MUG_FROTHY_PINK_EGGNOG
+    };
     //Spices
     public static final Block SPICE_BLAZE_PAPRIKA = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block SPICE_DRIED_EGLIA_BUD = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
@@ -249,6 +257,8 @@ public class DrinkBeer implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_pumpkin_kvass"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_night_howl_kvass"), RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_night_howl_kvass"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_frothy_pink_eggnog"), RECIPE_BOARD_BEER_MUG_FROTHY_PINK_EGGNOG);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_frothy_pink_eggnog"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_FROTHY_PINK_EGGNOG, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         //Spices
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_blaze_paprika"), new SpiceBlockItem(SPICE_BLAZE_PAPRIKA, null, 1));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_blaze_paprika"), SPICE_BLAZE_PAPRIKA);

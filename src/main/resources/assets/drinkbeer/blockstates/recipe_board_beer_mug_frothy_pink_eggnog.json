@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "drinkbeer:block/recipe_board_beer_mug_frothy_pink_eggnog"
+    },
+    "facing=east": {
+      "model": "drinkbeer:block/recipe_board_beer_mug_frothy_pink_eggnog",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "drinkbeer:block/recipe_board_beer_mug_frothy_pink_eggnog",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "drinkbeer:block/recipe_board_beer_mug_frothy_pink_eggnog",
+      "y": 270
+    }
+  }
+}
