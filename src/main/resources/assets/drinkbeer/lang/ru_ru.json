@@ -27,7 +27,7 @@
   
 # # # Recipe Boards # # #
   "block.drinkbeer.recipe_board_package": "Коробка с Вывесками",
-  "block.drinkbeer.recipe_board": "Вывеска с Рецептом: Шахтёрский Пейл-Эль",
+  "block.drinkbeer.recipe_board_beer_mug": "Вывеска с Рецептом: Шахтёрский Пейл-Эль",
   "block.drinkbeer.recipe_board_beer_mug_blaze_stout": "Вывеска с Рецептом: Пламенный Стаут",
   "block.drinkbeer.recipe_board_beer_mug_blaze_milk_stout": "Вывеска с Рецептом: Пламенный Молочный Стаут",
   "block.drinkbeer.recipe_board_beer_mug_apple_lambic": "Вывеска с Рецептом: Яблочный Ламбик",
@@ -35,7 +35,6 @@
   "block.drinkbeer.recipe_board_beer_mug_haars_icey_pale_lager": "Вывеска с Рецептом: Ледяной Светлый Лагер Хаара",
   "block.drinkbeer.recipe_board_beer_mug_pumpkin_kvass": "Вывеска с Рецептом: Тыквенный Квас",
   "block.drinkbeer.recipe_board_beer_mug_night_howl_kvass": "Вывеска с Рецептом: Квас Ночного Воя",
-  "block.drinkbeer.recipe_board_beer_mug_frothy_pink_eggnog": "Вывеска с Рецептом: Пенистый Розовый Моголь",
   
 # # # Beer description # # #
   "item.drinkbeer.beer_mug.tooltip": "Спешка 1:00",
@@ -43,9 +42,8 @@
   "item.drinkbeer.beer_mug_blaze_milk_stout.tooltip": "Огнестойкость 2:00",
   "item.drinkbeer.beer_mug_apple_lambic.tooltip": "Регенерация 0:15",
   "item.drinkbeer.beer_mug_sweet_berry_kriek.tooltip": "Регенерация 0:20",
-  "item.drinkbeer.beer_mug_haars_icey_pale_lager.tooltip": "Пьяный Ледоход 1:00",
+  "item.drinkbeer.beer_mug_haars_icey_pale_lager.tooltip": "Пьяный мороз 1:00",
   "item.drinkbeer.beer_mug_night_howl_kvass.tooltip": "Ночное Зрение 2:00-7:00 (Зависит от фазы луны)",
-  "item.drinkbeer.beer_mug_frothy_pink_eggnog.tooltip": "Поглощение 2:00",
 
 # # # Effects # # #
   "drinkbeer.restores_hunger": "Восстанавливает голод: ",
@@ -63,7 +61,7 @@
   "drinkbeer.resident.leka": "Лека",
   "drinkbeer.resident.haar": "Хаар",
   "drinkbeer.resident.anu": "Аня",
-  "drinkbeer.resident.will": "Вилл",
+  "drinkbeer.resident.will": "Вилл", # Not sure if this a name
 
 # # # Liquor # # #
   "block.drinkbeer.mixed_beer" : "§r ☆",
@@ -71,7 +69,7 @@
   "item.drinkbeer.mixed_beer.tooltip_unmixed" : "Нет базы",
   "item.drinkbeer.spice.tooltip_flavor" : "Вкус",
   "item.drinkbeer.spice.tooltip_no_flavor" : "Нет вкуса",
-  "item.drinkbeer.spice.tooltip" : "Специя",
+  "item.drinkbeer.spice.tooltip" : "Пряность",
 
 # # # Plants # # #
   "block.drinkbeer.spice_blaze_paprika" : "Пламенеющая Паприка",
