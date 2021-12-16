@@ -71,7 +71,7 @@
   "item.drinkbeer.mixed_beer.tooltip_unmixed" : "Нет базы",
   "item.drinkbeer.spice.tooltip_flavor" : "Вкус",
   "item.drinkbeer.spice.tooltip_no_flavor" : "Нет вкуса",
-  "item.drinkbeer.spice.tooltip" : "Пряность",
+  "item.drinkbeer.spice.tooltip" : "Специя",
 
 # # # Plants # # #
   "block.drinkbeer.spice_blaze_paprika" : "Пламенеющая Паприка",
