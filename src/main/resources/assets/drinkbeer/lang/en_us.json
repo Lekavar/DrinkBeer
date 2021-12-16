@@ -1,5 +1,5 @@
 {
-# # # Creative Menu # # #
+# # # Creative Tab # # #
   "itemGroup.drinkbeer.beer": "Beer",
   "itemGroup.drinkbeer.general": "DrinkBeer General Blocks",
 
@@ -35,6 +35,7 @@
   "block.drinkbeer.recipe_board_beer_mug_haars_icey_pale_lager": "Haar's Icey Pale Lager Recipe Board",
   "block.drinkbeer.recipe_board_beer_mug_pumpkin_kvass": "Pumpkin Kvass Recipe Board",
   "block.drinkbeer.recipe_board_beer_mug_night_howl_kvass": "Night Howl Kvass Recipe Board",
+"block.drinkbeer.recipe_board_beer_mug_frothy_pink_eggnog": "Frothy Pink Eggnog Recipe Board",
 
 # # # Beer description # # #
   "item.drinkbeer.beer_mug.tooltip": "Haste 1:00",
@@ -72,7 +73,7 @@
   "item.drinkbeer.spice.tooltip_no_flavor" : "Has no flavor yet",
   "item.drinkbeer.spice.tooltip" : "Spice",
 
-# # # Plants # # #
+# # # Spices # # #
   "block.drinkbeer.spice_blaze_paprika" : "Blaze Paprika",
   "block.drinkbeer.spice_dried_eglia_bud" : "Dried Eglia Bud",
   "block.drinkbeer.spice_smoked_eglia_bud" : "Smoked Eglia Bud",
