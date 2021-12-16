@@ -27,7 +27,7 @@
 
 # # # Recipe Boards # # #
 "block.drinkbeer.recipe_board_package": "Коробка с Вывесками",
-"block.drinkbeer.recipe_board": "Вывеска с Рецептом: Шахтёрский Пейл-Эль",
+"block.drinkbeer.recipe_board_beer_mug": "Вывеска с Рецептом: Шахтёрский Пейл-Эль",
 "block.drinkbeer.recipe_board_beer_mug_blaze_stout": "Вывеска с Рецептом: Пламенный Стаут",
 "block.drinkbeer.recipe_board_beer_mug_blaze_milk_stout": "Вывеска с Рецептом: Пламенный Молочный Стаут",
 "block.drinkbeer.recipe_board_beer_mug_apple_lambic": "Вывеска с Рецептом: Яблочный Ламбик",

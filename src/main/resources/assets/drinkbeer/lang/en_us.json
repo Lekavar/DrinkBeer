@@ -27,7 +27,7 @@
 
 # # # Recipe Boards # # #
   "block.drinkbeer.recipe_board_package": "Recipe Board Package",
-  "block.drinkbeer.recipe_board": "Miner Pale Ale Recipe Board",
+  "block.drinkbeer.recipe_board_beer_mug": "Miner Pale Ale Recipe Board",
   "block.drinkbeer.recipe_board_beer_mug_blaze_stout": "Blaze Stout Recipe Board",
   "block.drinkbeer.recipe_board_beer_mug_blaze_milk_stout": "Blaze Milk Stout Recipe Board",
   "block.drinkbeer.recipe_board_beer_mug_apple_lambic": "Apple Lambic Recipe Board",
