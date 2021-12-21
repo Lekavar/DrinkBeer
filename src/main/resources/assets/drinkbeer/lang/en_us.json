@@ -1,9 +1,7 @@
 {
-# # # Creative Tab # # #
   "itemGroup.drinkbeer.beer": "Beer",
   "itemGroup.drinkbeer.general": "DrinkBeer General Blocks",
 
-# # # Beer # # #
   "block.drinkbeer.beer_mug": "Miner Pale Ale",
   "block.drinkbeer.beer_mug_blaze_stout": "Blaze Stout",
   "block.drinkbeer.beer_mug_blaze_milk_stout": "Blaze Milk Stout",
@@ -14,18 +12,15 @@
   "block.drinkbeer.beer_mug_frothy_pink_eggnog": "Frothy Pink Eggnog",
   "block.drinkbeer.beer_mug_night_howl_kvass": "Night Howl Kvass",
 
-# # # Blocks # # #
   "block.drinkbeer.empty_beer_mug": "Empty Beer Mug",
   "block.drinkbeer.beer_barrel": "Keg",
   "block.drinkbeer.bartending_table_normal" : "Bartending Table",
   "block.drinkbeer.trade_box_normal" : "Bartering Box",
 
-# # # Call Bells # # #
   "block.drinkbeer.iron_call_bell": "Iron Call Bell",
   "block.drinkbeer.golden_call_bell": "Golden Call Bell",
   "block.drinkbeer.lekas_call_bell": "Leka's Call Bell",
 
-# # # Recipe Boards # # #
   "block.drinkbeer.recipe_board_package": "Recipe Board Package",
   "block.drinkbeer.recipe_board_beer_mug": "Miner Pale Ale Recipe Board",
   "block.drinkbeer.recipe_board_beer_mug_blaze_stout": "Blaze Stout Recipe Board",
@@ -37,7 +32,6 @@
   "block.drinkbeer.recipe_board_beer_mug_night_howl_kvass": "Night Howl Kvass Recipe Board",
 "block.drinkbeer.recipe_board_beer_mug_frothy_pink_eggnog": "Frothy Pink Eggnog Recipe Board",
 
-# # # Beer description # # #
   "item.drinkbeer.beer_mug.tooltip": "Haste 1:00",
   "item.drinkbeer.beer_mug_blaze_stout.tooltip":"Fire Resistance 1:30",
   "item.drinkbeer.beer_mug_blaze_milk_stout.tooltip":"Fire Resistance 2:00",
@@ -47,25 +41,21 @@
   "item.drinkbeer.beer_mug_night_howl_kvass.tooltip": "Night Vision 2:00-7:00 (is proportional to the moon's fullness)",
   "item.drinkbeer.beer_mug_frothy_pink_eggnog.tooltip": "Absorption 2:00",
 
-# # # Effects # # #
   "drinkbeer.restores_hunger": "Restores Hunger: ",
   "effect.drinkbeer.drunk_frost_walker": "Drunk Frost Walker",
   "effect.drinkbeer.drunk": "Drunk",
 
   "death.attack.drinkbeer.alcohol": "%1$s drank to death",
 
-# # # Locations # # #
   "drinkbeer.location.northon": "Northon",
   "drinkbeer.location.twigvalley": "Twigvalley",
 
-# # # Residents # # #
   "drinkbeer.resident.you": "You",
   "drinkbeer.resident.leka": "Leka",
   "drinkbeer.resident.haar": "Haar",
   "drinkbeer.resident.anu": "Anu",
-  "drinkbeer.resident.will": "Will", # Will is a Name
+  "drinkbeer.resident.will": "Will",
 
-# # # Liquor # # #
   "block.drinkbeer.mixed_beer" : "§r ☆",
   "item.drinkbeer.mixed_beer.tooltip_base" : "Base",
   "item.drinkbeer.mixed_beer.tooltip_unmixed" : "Has no base",
@@ -73,7 +63,6 @@
   "item.drinkbeer.spice.tooltip_no_flavor" : "Has no flavor yet",
   "item.drinkbeer.spice.tooltip" : "Spice",
 
-# # # Spices # # #
   "block.drinkbeer.spice_blaze_paprika" : "Blaze Paprika",
   "block.drinkbeer.spice_dried_eglia_bud" : "Dried Eglia Bud",
   "block.drinkbeer.spice_smoked_eglia_bud" : "Smoked Eglia Bud",
@@ -90,7 +79,6 @@
   "block.drinkbeer.spice_golden_cinnamon_powder" : "Golden Cinnamon",
   "block.drinkbeer.spice_dried_selaginella" : "Selaginella",
 
-# # # Flavor # # # Insert SPACE after every translation
   "drinkbeer.flavor.spicy" : "Spicy ",
   "drinkbeer.flavor.fiery" : "Fiery ",
   "drinkbeer.flavor.soooo_spicy" : "It's so hot! ",
@@ -108,7 +96,6 @@
   "drinkbeer.flavor.mellow" : "Mellow ",
   "drinkbeer.flavor.drying" : "Drying ",
 
-# # # Flavors Tooltip # # #
   "drinkbeer.flavor.spicy.tooltip" : "Health - 3, status effects duration + 80%",
   "drinkbeer.flavor.fiery.tooltip" : "Health - 4, status effects duration + 100%",
   "drinkbeer.flavor.aromatic.tooltip" : "Status effects duration + 0:40",

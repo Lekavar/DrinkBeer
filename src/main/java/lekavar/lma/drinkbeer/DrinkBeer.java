@@ -313,6 +313,6 @@ public class DrinkBeer implements ModInitializer {
         NetWorking.init();
 
         //Print good list
-        TradeBoxTestManager.PrintGoodList();
+        //TradeBoxTestManager.PrintGoodList();
     }
 }
