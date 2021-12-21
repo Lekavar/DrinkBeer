@@ -9,7 +9,6 @@ import lekavar.lma.drinkbeer.item.BeerMugBlockItem;
 import lekavar.lma.drinkbeer.item.MixedBeerBlockItem;
 import lekavar.lma.drinkbeer.item.RecipeBoardBlockItem;
 import lekavar.lma.drinkbeer.item.SpiceBlockItem;
-import lekavar.lma.drinkbeer.manager.TradeBoxTestManager;
 import lekavar.lma.drinkbeer.networking.NetWorking;
 import lekavar.lma.drinkbeer.screen.BartendingTableScreenHandler;
 import lekavar.lma.drinkbeer.screen.BeerBarrelScreenHandler;
@@ -320,6 +319,6 @@ public class DrinkBeer implements ModInitializer {
         NetWorking.init();
 
         //Print good list
-        TradeBoxTestManager.PrintGoodList();
+        //TradeBoxTestManager.PrintGoodList();
     }
 }

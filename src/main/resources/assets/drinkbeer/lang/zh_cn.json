@@ -1,9 +1,7 @@
 {
-# # # Creative Tab # # #
   "itemGroup.drinkbeer.beer": "啤酒",
   "itemGroup.drinkbeer.general": "喝啤酒啦通用方块",
 
-# # # Beer # # #
   "block.drinkbeer.beer_mug": "矿工麦酒",
   "block.drinkbeer.beer_mug_blaze_stout": "烈焰黑啤",
   "block.drinkbeer.beer_mug_blaze_milk_stout": "烈焰牛奶黑啤",
@@ -14,18 +12,15 @@
   "block.drinkbeer.beer_mug_frothy_pink_eggnog": "泡沫粉红蛋酒",
   "block.drinkbeer.beer_mug_night_howl_kvass": "月夜狼嚎格瓦斯",
 
-# # # Blocks # # #
   "block.drinkbeer.empty_beer_mug": "空啤酒杯",
   "block.drinkbeer.beer_barrel": "啤酒桶",
   "block.drinkbeer.bartending_table_normal" : "调酒桌",
   "block.drinkbeer.trade_box_normal" : "易货箱",
 
-# # # Call Bells # # #
   "block.drinkbeer.iron_call_bell": "铁唤餐铃",
   "block.drinkbeer.golden_call_bell": "金唤餐铃",
   "block.drinkbeer.lekas_call_bell": "莱卡的唤餐铃",
 
-# # # Recipe Boards # # #
   "block.drinkbeer.recipe_board_package": "配方板套装",
   "block.drinkbeer.recipe_board_beer_mug": "矿工麦酒配方板",
   "block.drinkbeer.recipe_board_beer_mug_blaze_stout": "烈焰黑啤配方板",
@@ -37,7 +32,6 @@
   "block.drinkbeer.recipe_board_beer_mug_night_howl_kvass": "月夜狼嚎格瓦斯配方板",
   "block.drinkbeer.recipe_board_beer_mug_frothy_pink_eggnog": "泡沫粉红蛋酒配方板",
 
-  # # # Beer description # # #
   "item.drinkbeer.beer_mug.tooltip": "急迫 1:00",
   "item.drinkbeer.beer_mug_blaze_stout.tooltip":"防火 1:30",
   "item.drinkbeer.beer_mug_blaze_milk_stout.tooltip":"防火 2:00",
@@ -47,25 +41,21 @@
   "item.drinkbeer.beer_mug_night_howl_kvass.tooltip": "夜视 2:00-7:00 （与满月程度成正比）",
   "item.drinkbeer.beer_mug_frothy_pink_eggnog.tooltip": "伤害吸收 2:00",
 
-  # # # Effects # # #
   "drinkbeer.restores_hunger": "饥饿值回复: ",
   "effect.drinkbeer.drunk_frost_walker": "醉酒的冰霜行者",
   "effect.drinkbeer.drunk": "醉酒",
 
   "death.attack.drinkbeer.alcohol": "%1$s把自己喝死了",
 
-# # # Locations # # #
   "drinkbeer.location.northon": "北森镇",
   "drinkbeer.location.twigvalley": "树枝谷",
 
-# # # Residents # # #
   "drinkbeer.resident.you": "你",
   "drinkbeer.resident.leka": "莱卡",
   "drinkbeer.resident.haar": "哈尔",
   "drinkbeer.resident.anu": "阿努",
   "drinkbeer.resident.will": "威尔",
 
-# # # Liquor # # #
   "block.drinkbeer.mixed_beer" : "☆",
   "item.drinkbeer.mixed_beer.tooltip_base" : "基酒",
   "item.drinkbeer.mixed_beer.tooltip_unmixed" : "这杯酒没有基酒",
@@ -73,7 +63,6 @@
   "item.drinkbeer.spice.tooltip_no_flavor" : "这杯酒还没有任何风味",
   "item.drinkbeer.spice.tooltip" : "香料",
 
-# # # Spices # # #
   "block.drinkbeer.spice_blaze_paprika" : "烈焰辣椒粉",
   "block.drinkbeer.spice_dried_eglia_bud" : "干烙凛花蕾",
   "block.drinkbeer.spice_smoked_eglia_bud" : "烟熏烙凛花蕾",
@@ -90,7 +79,6 @@
   "block.drinkbeer.spice_golden_cinnamon_powder" : "黄金肉桂粉",
   "block.drinkbeer.spice_dried_selaginella" : "干卷柏",
 
-# # # Flavor # # #
   "drinkbeer.flavor.spicy" : "辛辣的",
   "drinkbeer.flavor.fiery" : "火辣的",
   "drinkbeer.flavor.soooo_spicy" : "真是够热辣！",
@@ -107,8 +95,7 @@
   "drinkbeer.flavor.nutty1" : "坚果香气的",
   "drinkbeer.flavor.mellow" : "醇厚的",
   "drinkbeer.flavor.drying" : "干燥的",
-
-  # # # Flavors Tooltip # # #
+  
   "drinkbeer.flavor.spicy.tooltip" : "生命值-3，状态效果时间+80%",
   "drinkbeer.flavor.fiery.tooltip" : "生命值-4，状态效果时间+100%",
   "drinkbeer.flavor.aromatic.tooltip" : "状态效果时间+0:40",
