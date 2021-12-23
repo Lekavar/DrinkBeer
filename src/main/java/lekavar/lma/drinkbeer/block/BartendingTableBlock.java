@@ -2,7 +2,6 @@ package lekavar.lma.drinkbeer.block;
 
 import lekavar.lma.drinkbeer.DrinkBeer;
 import lekavar.lma.drinkbeer.block.entity.BartendingTableEntity;
-import lekavar.lma.drinkbeer.block.entity.BeerBarrelEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
@@ -29,7 +28,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Random;
 
 public class BartendingTableBlock extends BlockWithEntity implements BlockEntityProvider {
-    public final static VoxelShape SHAPE = createCuboidShape(0, 0.01, 0, 16, 16, 16);
+    public final static VoxelShape SHAPE = createCuboidShape(0, 0.001, 0, 16, 16, 16);
     public static final BooleanProperty OPENED = BooleanProperty.of("opened");
     public static final IntProperty TYPE = IntProperty.of("type", 1, 2);
 
