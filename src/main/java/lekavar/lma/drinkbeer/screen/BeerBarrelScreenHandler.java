@@ -275,7 +275,7 @@ public class BeerBarrelScreenHandler extends ScreenHandler {
     public void close(PlayerEntity player) {
         super.close(player);
         if (!player.world.isClient) {
-            player.world.playSound(null, new BlockPos(player.getPos()), SoundEvents.BLOCK_BARREL_OPEN, SoundCategory.BLOCKS, 1f, 1f);
+            player.world.playSound(null, new BlockPos(player.getPos()), SoundEvents.BLOCK_BARREL_CLOSE, SoundCategory.BLOCKS, 1f, 1f);
         }
         if (this.isMaterialCompleted() && !isBrewing()) {
             setIsMaterialCompleted(false);
