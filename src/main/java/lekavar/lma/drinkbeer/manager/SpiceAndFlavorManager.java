@@ -4,7 +4,6 @@ import lekavar.lma.drinkbeer.util.mixedbeer.FlavorCombinations;
 import lekavar.lma.drinkbeer.util.mixedbeer.Flavors;
 import lekavar.lma.drinkbeer.util.mixedbeer.MixedBeerOnUsing;
 import lekavar.lma.drinkbeer.util.mixedbeer.Spices;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.particle.DefaultParticleType;

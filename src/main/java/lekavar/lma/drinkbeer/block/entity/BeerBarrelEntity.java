@@ -82,8 +82,7 @@ public class BeerBarrelEntity extends BlockEntity implements ImplementedInventor
     }
 
     @Override
-    public NbtCompound writeNbt(NbtCompound tag) {
-        super.writeNbt(tag);
+    public void writeNbt(NbtCompound tag) {
         Inventories.writeNbt(tag,inventory);
         tag.putShort("RemainingBrewTime", (short)this.remainingBrewingTime);
         tag.putShort("IsMaterialCompleted", (short)this.isMaterialCompleted);
@@ -91,7 +90,8 @@ public class BeerBarrelEntity extends BlockEntity implements ImplementedInventor
         tag.putShort("IsBrewing", (short)this.isBrewing);
         tag.putShort("BeerResultNum", (short)this.beerResultNum);
 
-        return tag;
+
+        super.writeNbt(tag);
     }
 
     @Override

@@ -1,13 +1,7 @@
 package lekavar.lma.drinkbeer.util.mixedbeer;
 
 import lekavar.lma.drinkbeer.DrinkBeer;
-import lekavar.lma.drinkbeer.util.beer.BrewingLeftover;
 import net.minecraft.item.Item;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public enum Spices {
     BLAZE_PAPRIKA(1, DrinkBeer.SPICE_BLAZE_PAPRIKA.asItem(), Flavors.FIERY),

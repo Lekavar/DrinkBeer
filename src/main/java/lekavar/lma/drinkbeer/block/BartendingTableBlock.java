@@ -2,7 +2,6 @@ package lekavar.lma.drinkbeer.block;
 
 import lekavar.lma.drinkbeer.DrinkBeer;
 import lekavar.lma.drinkbeer.block.entity.BartendingTableEntity;
-import lekavar.lma.drinkbeer.block.entity.BeerBarrelEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
