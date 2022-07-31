@@ -83,11 +83,6 @@ public class MixedBeerEntity extends BlockEntity {
     @Nullable
     @Override
     public BlockEntityUpdateS2CPacket toUpdatePacket() {
-        return new BlockEntityUpdateS2CPacket(this.pos, 6, this.toInitialChunkDataNbt());
-    }
-
-    @Override
-    public NbtCompound toInitialChunkDataNbt() {
-        return this.writeNbt((new NbtCompound()));
+        return BlockEntityUpdateS2CPacket.create(this);
     }
 }
