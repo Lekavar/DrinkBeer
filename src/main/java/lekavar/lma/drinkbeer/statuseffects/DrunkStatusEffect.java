@@ -3,8 +3,8 @@ package lekavar.lma.drinkbeer.statuseffects;
 import lekavar.lma.drinkbeer.DrinkBeer;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.entity.effect.StatusEffects;
 
 import java.awt.*;
@@ -20,7 +20,7 @@ public class DrunkStatusEffect extends StatusEffect {
     private static final int[] harmulStatusEffectsIntervals = {200, 160, 200, 300, 20};
 
     public DrunkStatusEffect() {
-        super(StatusEffectType.HARMFUL, new Color(255, 222, 173, 255).getRGB());
+        super(StatusEffectCategory.HARMFUL, new Color(255, 222, 173, 255).getRGB());
     }
 
     @Override
