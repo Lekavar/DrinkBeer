@@ -5,6 +5,7 @@ import lekavar.lma.drinkbeer.manager.MixedBeerManager;
 import lekavar.lma.drinkbeer.renderer.MixedBeerEntityRenderer;
 import lekavar.lma.drinkbeer.screen.BartendingTableScreen;
 import lekavar.lma.drinkbeer.screen.BeerBarrelScreen;
+import lekavar.lma.drinkbeer.screen.TradeBoxScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -28,6 +29,8 @@ public class DrinkBeerClient implements ClientModInitializer {
         ScreenRegistry.register(DrinkBeer.BEER_BARREL_SCREEN_HANDLER, BeerBarrelScreen::new);
         //Bartending table's screen handler
         ScreenRegistry.register(DrinkBeer.BARTENDING_TABLE_SCREEN_HANDLER, BartendingTableScreen::new);
+        //Trade box's screen handler
+        ScreenRegistry.register(DrinkBeer.TRADE_BOX_SCREEN_HANDLER, TradeBoxScreen::new);
         //Mixed beer entity's renderer
         BlockEntityRendererRegistry.register(DrinkBeer.MIXED_BEER_ENTITY, context -> new MixedBeerEntityRenderer());
         //Mixed beer's model predicate provider

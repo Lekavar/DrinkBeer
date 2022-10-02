@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "drinkbeer:block/trade_box_normal"
+    },
+    "facing=east": {
+      "model": "drinkbeer:block/trade_box_normal",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "drinkbeer:block/trade_box_normal",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "drinkbeer:block/trade_box_normal",
+      "y": 270
+    }
+  }
+}

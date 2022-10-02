@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "drinkbeer:block/spice_golden_cinnamon_powder"
+    },
+    "facing=east": {
+      "model": "drinkbeer:block/spice_golden_cinnamon_powder",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "drinkbeer:block/spice_golden_cinnamon_powder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "drinkbeer:block/spice_golden_cinnamon_powder",
+      "y": 270
+    }
+  }
+}

@@ -4,9 +4,15 @@ import lekavar.lma.drinkbeer.block.*;
 import lekavar.lma.drinkbeer.block.entity.BartendingTableEntity;
 import lekavar.lma.drinkbeer.block.entity.BeerBarrelEntity;
 import lekavar.lma.drinkbeer.block.entity.MixedBeerEntity;
+import lekavar.lma.drinkbeer.block.entity.TradeboxEntity;
+import lekavar.lma.drinkbeer.item.BeerMugBlockItem;
+import lekavar.lma.drinkbeer.item.MixedBeerBlockItem;
+import lekavar.lma.drinkbeer.item.RecipeBoardBlockItem;
+import lekavar.lma.drinkbeer.item.SpiceBlockItem;
+import lekavar.lma.drinkbeer.networking.NetWorking;
 import lekavar.lma.drinkbeer.screen.BartendingTableScreenHandler;
 import lekavar.lma.drinkbeer.screen.BeerBarrelScreenHandler;
-import lekavar.lma.drinkbeer.item.*;
+import lekavar.lma.drinkbeer.screen.TradeBoxScreenHandler;
 import lekavar.lma.drinkbeer.statuseffects.DrunkFrostWalkerStatusEffect;
 import lekavar.lma.drinkbeer.statuseffects.DrunkStatusEffect;
 import net.fabricmc.api.ModInitializer;
@@ -15,12 +21,16 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.*;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.SoundEvent;
@@ -66,17 +76,31 @@ public class DrinkBeer implements ModInitializer {
     public static final Block BEER_BARREL = new BeerBarrelBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final Identifier BEER_BARREL_ID = new Identifier("drinkbeer", "beer_barrel");
     public static final ScreenHandlerType<BeerBarrelScreenHandler> BEER_BARREL_SCREEN_HANDLER;
+
     static {
         BEER_BARREL_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(BEER_BARREL_ID, BeerBarrelScreenHandler::new);
     }
+
     //Bartending table
     public static BlockEntityType<BartendingTableEntity> BARTENDING_TABLE_ENTITY;
     public static final Block BARTENDING_TABLE_NORMAL = new BartendingTableBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.0f));
     public static final Identifier BARTENDING_TABLE_ID = new Identifier("drinkbeer", "bartending_table");
     public static final ScreenHandlerType<BartendingTableScreenHandler> BARTENDING_TABLE_SCREEN_HANDLER;
+
     static {
         BARTENDING_TABLE_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(BARTENDING_TABLE_ID, BartendingTableScreenHandler::new);
     }
+
+    //Trade box
+    public static BlockEntityType<TradeboxEntity> TRADE_BOX_ENTITY;
+    public static final TradeboxBlock TRADE_BOX_NORMAL = new TradeboxBlock((FabricBlockSettings.of(Material.WOOD).hardness(2.0f)));
+    public static final Identifier TRADE_BOX_ID = new Identifier("drinkbeer", "trade_box");
+    public static final ScreenHandlerType<TradeBoxScreenHandler> TRADE_BOX_SCREEN_HANDLER;
+
+    static {
+        TRADE_BOX_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(TRADE_BOX_ID, TradeBoxScreenHandler::new);
+    }
+
     //Call bells
     public static final Block IRON_CALL_BELL = new CallBellBlock(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
     public static final Block GOLDEN_CALL_BELL = new CallBellBlock(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
@@ -91,10 +115,18 @@ public class DrinkBeer implements ModInitializer {
     public static final Block RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
-    public static final Block[] RECIPE_BOARD_PACKAGE_CONTENT = {RECIPE_BOARD_BEER_MUG, RECIPE_BOARD_BEER_MUG_BLAZE_STOUT,
-            RECIPE_BOARD_BEER_MUG_BLAZE_MILK_STOUT, RECIPE_BOARD_BEER_MUG_APPLE_LAMBIC,
-            RECIPE_BOARD_BEER_MUG_SWEET_BERRY_KRIEK, RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER,
-            RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS, RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS};
+    public static final Block RECIPE_BOARD_BEER_MUG_FROTHY_PINK_EGGNOG = new BeerRecipeBoardBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block[] RECIPE_BOARD_PACKAGE_CONTENT = {
+            RECIPE_BOARD_BEER_MUG,
+            RECIPE_BOARD_BEER_MUG_BLAZE_STOUT,
+            RECIPE_BOARD_BEER_MUG_BLAZE_MILK_STOUT,
+            RECIPE_BOARD_BEER_MUG_APPLE_LAMBIC,
+            RECIPE_BOARD_BEER_MUG_SWEET_BERRY_KRIEK,
+            RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER,
+            RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS,
+            RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS,
+            RECIPE_BOARD_BEER_MUG_FROTHY_PINK_EGGNOG
+    };
     //Spices
     public static final Block SPICE_BLAZE_PAPRIKA = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block SPICE_DRIED_EGLIA_BUD = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
@@ -104,6 +136,13 @@ public class DrinkBeer implements ModInitializer {
     public static final Block SPICE_ICE_MINT = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block SPICE_ICE_PATCHOULI = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
     public static final Block SPICE_STORM_SHARDS = new SpiceBlock(FabricBlockSettings.of(Material.GLASS).hardness(0.5f));
+    public static final Block SPICE_ROASTED_RED_PINE_NUTS = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block SPICE_GLACE_GOJI_BERRIES = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block SPICE_FROZEN_PERSIMMON = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block SPICE_ROASTED_PECANS = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block SPICE_SILVER_NEEDLE_WHITE_TEA = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block SPICE_GOLDEN_CINNAMON_POWDER = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
+    public static final Block SPICE_DRIED_SELAGINELLA = new SpiceBlock(FabricBlockSettings.of(Material.WOOD).hardness(1.0f));
 
     /*Other*/
     /*------------------------------------------------------------------------------------------------------------------*/
@@ -135,6 +174,10 @@ public class DrinkBeer implements ModInitializer {
     public static SoundEvent BARTENDING_TABLE_OPEN_EVENT = new SoundEvent(BARTENDING_TABLE_OPEN);
     public static final Identifier BARTENDING_TABLE_CLOSE = new Identifier("drinkbeer:bartending_table_close");
     public static SoundEvent BARTENDING_TABLE_CLOSE_EVENT = new SoundEvent(BARTENDING_TABLE_CLOSE);
+    public static final Identifier TRADEBOX_OPEN = new Identifier("drinkbeer:tradebox_open");
+    public static SoundEvent TRADEBOX_OPEN_EVENT = new SoundEvent(TRADEBOX_OPEN);
+    public static final Identifier TRADEBOX_CLOSE = new Identifier("drinkbeer:tradebox_close");
+    public static SoundEvent TRADEBOX_CLOSE_EVENT = new SoundEvent(TRADEBOX_CLOSE);
     //Status effects
     public static final StatusEffect DRUNK_FROST_WALKER = new DrunkFrostWalkerStatusEffect();
     public static final StatusEffect DRUNK = new DrunkStatusEffect();
@@ -164,7 +207,7 @@ public class DrinkBeer implements ModInitializer {
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug_night_howl_kvass"), BEER_MUG_NIGHT_HOWL_KVASS);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_night_howl_kvass"), new BeerMugBlockItem(BEER_MUG_NIGHT_HOWL_KVASS, null, 4));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "beer_mug_frothy_pink_eggnog"), BEER_MUG_FROTHY_PINK_EGGNOG);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_frothy_pink_eggnog"), new BeerMugBlockItem(BEER_MUG_FROTHY_PINK_EGGNOG, null, 2));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "beer_mug_frothy_pink_eggnog"), new BeerMugBlockItem(BEER_MUG_FROTHY_PINK_EGGNOG, new StatusEffectInstance(StatusEffects.ABSORPTION, 2400), 2));
         //Mixed beer
         MIXED_BEER_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "drinkbeer:mixed_beer_entity", FabricBlockEntityTypeBuilder.create(MixedBeerEntity::new, MIXED_BEER).build(null));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "mixed_beer"), MIXED_BEER);
@@ -183,6 +226,10 @@ public class DrinkBeer implements ModInitializer {
         BARTENDING_TABLE_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "drinkbeer:bartending_table_entity", FabricBlockEntityTypeBuilder.create(BartendingTableEntity::new, BARTENDING_TABLE_NORMAL).build(null));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "bartending_table_normal"), BARTENDING_TABLE_NORMAL);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "bartending_table_normal"), new BlockItem(BARTENDING_TABLE_NORMAL, new Item.Settings().group(DRINK_BEER_GENERAL)));
+        //Trade box
+        TRADE_BOX_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "drinkbeer:trade_box_entity", FabricBlockEntityTypeBuilder.create(TradeboxEntity::new, TRADE_BOX_NORMAL).build(null));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "trade_box_normal"), TRADE_BOX_NORMAL);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "trade_box_normal"), new BlockItem(TRADE_BOX_NORMAL, new Item.Settings().group(DRINK_BEER_GENERAL)));
         //Call bells
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "iron_call_bell"), IRON_CALL_BELL);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "iron_call_bell"), new BlockItem(IRON_CALL_BELL, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(64)));
@@ -194,21 +241,23 @@ public class DrinkBeer implements ModInitializer {
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_package"), RECIPE_BOARD_PACKAGE);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_package"), new BlockItem(RECIPE_BOARD_PACKAGE, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug"), RECIPE_BOARD_BEER_MUG);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug"), new BlockItem(RECIPE_BOARD_BEER_MUG, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_blaze_stout"), RECIPE_BOARD_BEER_MUG_BLAZE_STOUT);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_blaze_stout"), new BlockItem(RECIPE_BOARD_BEER_MUG_BLAZE_STOUT, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_blaze_stout"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_BLAZE_STOUT, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_blaze_milk_stout"), RECIPE_BOARD_BEER_MUG_BLAZE_MILK_STOUT);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_blaze_milk_stout"), new BlockItem(RECIPE_BOARD_BEER_MUG_BLAZE_MILK_STOUT, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_blaze_milk_stout"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_BLAZE_MILK_STOUT, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_apple_lambic"), RECIPE_BOARD_BEER_MUG_APPLE_LAMBIC);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_apple_lambic"), new BlockItem(RECIPE_BOARD_BEER_MUG_APPLE_LAMBIC, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_apple_lambic"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_APPLE_LAMBIC, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_sweet_berry_kriek"), RECIPE_BOARD_BEER_MUG_SWEET_BERRY_KRIEK);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_sweet_berry_kriek"), new BlockItem(RECIPE_BOARD_BEER_MUG_SWEET_BERRY_KRIEK, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_sweet_berry_kriek"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_SWEET_BERRY_KRIEK, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_haars_icey_pale_lager"), RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_haars_icey_pale_lager"), new BlockItem(RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_haars_icey_pale_lager"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_HAARS_ICEY_PALE_LAGER, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_pumpkin_kvass"), RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_pumpkin_kvass"), new BlockItem(RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_pumpkin_kvass"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_PUMPKIN_KVASS, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_night_howl_kvass"), RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS);
-        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_night_howl_kvass"), new BlockItem(RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_night_howl_kvass"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_NIGHT_HOWL_KVASS, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "recipe_board_beer_mug_frothy_pink_eggnog"), RECIPE_BOARD_BEER_MUG_FROTHY_PINK_EGGNOG);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "recipe_board_beer_mug_frothy_pink_eggnog"), new RecipeBoardBlockItem(RECIPE_BOARD_BEER_MUG_FROTHY_PINK_EGGNOG, new Item.Settings().group(DRINK_BEER_GENERAL).maxCount(1)));
         //Spices
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_blaze_paprika"), new SpiceBlockItem(SPICE_BLAZE_PAPRIKA, null, 1));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_blaze_paprika"), SPICE_BLAZE_PAPRIKA);
@@ -226,6 +275,20 @@ public class DrinkBeer implements ModInitializer {
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_ice_patchouli"), SPICE_ICE_PATCHOULI);
         Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_storm_shards"), new SpiceBlockItem(SPICE_STORM_SHARDS, null, 1));
         Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_storm_shards"), SPICE_STORM_SHARDS);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_roasted_red_pine_nuts"), new SpiceBlockItem(SPICE_ROASTED_RED_PINE_NUTS, null, 2));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_roasted_red_pine_nuts"), SPICE_ROASTED_RED_PINE_NUTS);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_glace_goji_berries"), new SpiceBlockItem(SPICE_GLACE_GOJI_BERRIES, null, 1));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_glace_goji_berries"), SPICE_GLACE_GOJI_BERRIES);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_frozen_persimmon"), new SpiceBlockItem(SPICE_FROZEN_PERSIMMON, null, 1));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_frozen_persimmon"), SPICE_FROZEN_PERSIMMON);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_roasted_pecans"), new SpiceBlockItem(SPICE_ROASTED_PECANS, null, 2));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_roasted_pecans"), SPICE_ROASTED_PECANS);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_silver_needle_white_tea"), new SpiceBlockItem(SPICE_SILVER_NEEDLE_WHITE_TEA, null, 2));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_silver_needle_white_tea"), SPICE_SILVER_NEEDLE_WHITE_TEA);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_golden_cinnamon_powder"), new SpiceBlockItem(SPICE_GOLDEN_CINNAMON_POWDER, null, 2));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_golden_cinnamon_powder"), SPICE_GOLDEN_CINNAMON_POWDER);
+        Registry.register(Registry.ITEM, new Identifier("drinkbeer", "spice_dried_selaginella"), new SpiceBlockItem(SPICE_DRIED_SELAGINELLA, null, 2));
+        Registry.register(Registry.BLOCK, new Identifier("drinkbeer", "spice_dried_selaginella"), SPICE_DRIED_SELAGINELLA);
 
         /*Other*/
         /*------------------------------------------------------------------------------------------------------------------*/
@@ -243,11 +306,19 @@ public class DrinkBeer implements ModInitializer {
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.UNPACKING, UNPACKING_EVENT);
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.BARTENDING_TABLE_OPEN, BARTENDING_TABLE_OPEN_EVENT);
         Registry.register(Registry.SOUND_EVENT, DrinkBeer.BARTENDING_TABLE_CLOSE, BARTENDING_TABLE_CLOSE_EVENT);
+        Registry.register(Registry.SOUND_EVENT, DrinkBeer.TRADEBOX_OPEN, TRADEBOX_OPEN_EVENT);
+        Registry.register(Registry.SOUND_EVENT, DrinkBeer.TRADEBOX_CLOSE, TRADEBOX_CLOSE_EVENT);
         //Status effects
         Registry.register(Registry.STATUS_EFFECT, new Identifier("drinkbeer", "drunk_frost_walker"), DRUNK_FROST_WALKER);
         Registry.register(Registry.STATUS_EFFECT, new Identifier("drinkbeer", "drunk"), DRUNK);
         //Particles
         Registry.register(Registry.PARTICLE_TYPE, new Identifier("drinkbeer", "mixed_beer_default"), MIXED_BEER_DEFAULT);
         Registry.register(Registry.PARTICLE_TYPE, new Identifier("drinkbeer", "call_bell_tinkle_paw"), CALL_BELL_TINKLE_PAW);
+
+        //Net working
+        NetWorking.init();
+
+        //Print good list
+        //TradeBoxTestManager.PrintGoodList();
     }
 }

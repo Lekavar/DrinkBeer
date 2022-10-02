@@ -13,7 +13,14 @@ public enum Flavors {
     REFRESHING(6, "refreshing", null, DrinkBeer.MIXED_BEER_DEFAULT),
     REFRESHING1(7, "refreshing1", REFRESHING, DrinkBeer.MIXED_BEER_DEFAULT),
     STORMY(8, "stormy", null, DrinkBeer.MIXED_BEER_DEFAULT),
-    THE_FALL_OF_THE_GIANT(9, "the_fall_of_the_giant", null, null);
+    THE_FALL_OF_THE_GIANT(9, "the_fall_of_the_giant", null, null),
+    NUTTY(10, "nutty", null, DrinkBeer.MIXED_BEER_DEFAULT),
+    SWEET(11, "sweet", null, DrinkBeer.MIXED_BEER_DEFAULT),
+    LUSCIOUS(12, "luscious", SWEET, DrinkBeer.MIXED_BEER_DEFAULT),
+    CLOYING(13,"cloying",null,null),
+    NUTTY1(14, "nutty1", NUTTY, DrinkBeer.MIXED_BEER_DEFAULT),
+    MELLOW(15,"mellow",null,DrinkBeer.MIXED_BEER_DEFAULT),
+    DRYING(16,"drying",null,DrinkBeer.MIXED_BEER_DEFAULT);
 
     private final int id;
     private final String name;

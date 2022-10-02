@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "drinkbeer:block/spice_frozen_persimmon"
+    },
+    "facing=east": {
+      "model": "drinkbeer:block/spice_frozen_persimmon",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "drinkbeer:block/spice_frozen_persimmon",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "drinkbeer:block/spice_frozen_persimmon",
+      "y": 270
+    }
+  }
+}

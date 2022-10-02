@@ -11,7 +11,14 @@ public enum Spices {
     CITRINE_NIGELLA_SEEDS(5, DrinkBeer.SPICE_CITRINE_NIGELLA_SEEDS.asItem(), Flavors.AROMITIC1),
     ICE_MINT(6, DrinkBeer.SPICE_ICE_MINT.asItem(), Flavors.REFRESHING),
     ICE_PATCHOULI(7, DrinkBeer.SPICE_ICE_PATCHOULI.asItem(), Flavors.REFRESHING1),
-    STORM_SHARDS(8, DrinkBeer.SPICE_STORM_SHARDS.asItem(), Flavors.STORMY);
+    STORM_SHARDS(8, DrinkBeer.SPICE_STORM_SHARDS.asItem(), Flavors.STORMY),
+    ROASTED_RED_PINE_NUTS(9, DrinkBeer.SPICE_ROASTED_RED_PINE_NUTS.asItem(), Flavors.NUTTY),
+    GLACE_GOJI_BERRIES(10, DrinkBeer.SPICE_GLACE_GOJI_BERRIES.asItem(), Flavors.SWEET),
+    FROZEN_PERSIMMON(11, DrinkBeer.SPICE_FROZEN_PERSIMMON.asItem(), Flavors.LUSCIOUS),
+    ROASTED_PECANS(12, DrinkBeer.SPICE_ROASTED_PECANS.asItem(), Flavors.NUTTY1),
+    SILVER_NEEDLE_WHITE_TEA(13, DrinkBeer.SPICE_SILVER_NEEDLE_WHITE_TEA.asItem(), Flavors.MELLOW),
+    GOLDEN_CINNAMON_POWDER(14, DrinkBeer.SPICE_GOLDEN_CINNAMON_POWDER.asItem(), Flavors.SWEET),
+    DRIED_SELAGINELLA(15, DrinkBeer.SPICE_DRIED_SELAGINELLA.asItem(), Flavors.DRYING);
 
     private final int id;
     private final Item spiceItem;

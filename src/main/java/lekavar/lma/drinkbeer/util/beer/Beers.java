@@ -1,8 +1,12 @@
 package lekavar.lma.drinkbeer.util.beer;
 
 import lekavar.lma.drinkbeer.DrinkBeer;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+
+import java.util.Arrays;
+import java.util.Optional;
 
 public enum Beers {
     BEER_MUG(1, DrinkBeer.BEER_MUG.asItem(), true, new BeerRecipe()
@@ -26,9 +30,9 @@ public enum Beers {
     BEER_MUG_PUMPKIN_KVASS(7, DrinkBeer.BEER_MUG_PUMPKIN_KVASS.asItem(), false, new BeerRecipe()
             .setBeerResultNum(4).setBrewingTime(12000)
             .addMaterial(2, Items.BREAD).addMaterial(Items.PUMPKIN).addMaterial(Items.WATER_BUCKET)),
-    BEER_MUG_FROTHY_PINK_EGGNOG(8, DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem(), false, new BeerRecipe()
+    BEER_MUG_FROTHY_PINK_EGGNOG(8, DrinkBeer.BEER_MUG_FROTHY_PINK_EGGNOG.asItem(), true, new BeerRecipe()
             .setBeerResultNum(4).setBrewingTime(12000)
-            .addMaterial(Items.WHEAT).addMaterial(Items.BEETROOT).addMaterial(Items.SUGAR_CANE).addMaterial(Items.MILK_BUCKET)),
+            .addMaterial(Items.WHEAT).addMaterial(Items.BEETROOT).addMaterial(Items.EGG).addMaterial(Items.MILK_BUCKET)),
     BEER_MUG_NIGHT_HOWL_KVASS(9, DrinkBeer.BEER_MUG_NIGHT_HOWL_KVASS.asItem(), true, new BeerRecipe()
             .setBeerResultNum(4).setBrewingTime(18000)
             .addMaterial(2, Items.BREAD).addMaterial(Items.BONE).addMaterial(Items.WATER_BUCKET));
@@ -90,5 +94,13 @@ public enum Beers {
 
     public static int size() {
         return values().length;
+    }
+
+    public static Beers byRecipeBoardBlock(Block recipeBoardBlcok) {
+        String beerName = recipeBoardBlcok.getTranslationKey().replace("block.drinkbeer.recipe_board_", "");
+        Optional<Beers> matchedBeer = Arrays.stream(values())
+                .filter(beer -> beer.beerItem.getTranslationKey().equals("block.drinkbeer." + beerName))
+                .findFirst();
+        return matchedBeer.isPresent() ? matchedBeer.get() : null;
     }
 }

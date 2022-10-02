@@ -42,7 +42,7 @@ public class BeerBarrelScreen extends HandledScreen<ScreenHandler> {
     public String convertTickToTime(int tick) {
         String result;
         if (tick > 0) {
-            double time = tick / 20;
+            double time = (double)tick / 20;
             int m = (int) (time / 60);
             int s = (int) (time % 60);
             result = m + ":" + s;

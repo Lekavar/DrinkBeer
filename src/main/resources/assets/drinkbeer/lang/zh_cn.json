@@ -9,12 +9,13 @@
   "block.drinkbeer.beer_mug_sweet_berry_kriek": "甜浆果克里克",
   "block.drinkbeer.beer_mug_haars_icey_pale_lager": "哈尔的冰拉格",
   "block.drinkbeer.beer_mug_pumpkin_kvass": "南瓜格瓦斯",
-  "block.drinkbeer.beer_mug_frothy_pink_eggnog": "粉红泡沫蛋酒",
+  "block.drinkbeer.beer_mug_frothy_pink_eggnog": "泡沫粉红蛋酒",
   "block.drinkbeer.beer_mug_night_howl_kvass": "月夜狼嚎格瓦斯",
 
   "block.drinkbeer.empty_beer_mug": "空啤酒杯",
   "block.drinkbeer.beer_barrel": "啤酒桶",
   "block.drinkbeer.bartending_table_normal" : "调酒桌",
+  "block.drinkbeer.trade_box_normal" : "易货箱",
 
   "block.drinkbeer.iron_call_bell": "铁唤餐铃",
   "block.drinkbeer.golden_call_bell": "金唤餐铃",
@@ -29,6 +30,7 @@
   "block.drinkbeer.recipe_board_beer_mug_haars_icey_pale_lager": "哈尔的冰拉格配方板",
   "block.drinkbeer.recipe_board_beer_mug_pumpkin_kvass": "南瓜格瓦斯配方板",
   "block.drinkbeer.recipe_board_beer_mug_night_howl_kvass": "月夜狼嚎格瓦斯配方板",
+  "block.drinkbeer.recipe_board_beer_mug_frothy_pink_eggnog": "泡沫粉红蛋酒配方板",
 
   "item.drinkbeer.beer_mug.tooltip": "急迫 1:00",
   "item.drinkbeer.beer_mug_blaze_stout.tooltip":"防火 1:30",
@@ -37,15 +39,24 @@
   "item.drinkbeer.beer_mug_sweet_berry_kriek.tooltip":"生命恢复 0:20",
   "item.drinkbeer.beer_mug_haars_icey_pale_lager.tooltip": "醉酒的冰霜行者 1:00",
   "item.drinkbeer.beer_mug_night_howl_kvass.tooltip": "夜视 2:00-7:00 （与满月程度成正比）",
+  "item.drinkbeer.beer_mug_frothy_pink_eggnog.tooltip": "伤害吸收 2:00",
 
   "drinkbeer.restores_hunger": "饥饿值回复: ",
   "effect.drinkbeer.drunk_frost_walker": "醉酒的冰霜行者",
   "effect.drinkbeer.drunk": "醉酒",
 
-  "dinkbeer.location.northon": "北森镇",
+  "death.attack.drinkbeer.alcohol": "%1$s把自己喝死了",
+
+  "drinkbeer.location.northon": "北森镇",
   "drinkbeer.location.twigvalley": "树枝谷",
 
-  "block.drinkbeer.mixed_beer" : "调制酒",
+  "drinkbeer.resident.you": "你",
+  "drinkbeer.resident.leka": "莱卡",
+  "drinkbeer.resident.haar": "哈尔",
+  "drinkbeer.resident.anu": "阿努",
+  "drinkbeer.resident.will": "威尔",
+
+  "block.drinkbeer.mixed_beer" : "☆",
   "item.drinkbeer.mixed_beer.tooltip_base" : "基酒",
   "item.drinkbeer.mixed_beer.tooltip_unmixed" : "这杯酒没有基酒",
   "item.drinkbeer.spice.tooltip_flavor" : "风味",
@@ -60,6 +71,13 @@
   "block.drinkbeer.spice_ice_mint" : "冰结薄荷",
   "block.drinkbeer.spice_ice_patchouli" : "冰结广藿香",
   "block.drinkbeer.spice_storm_shards" : "风暴碎片",
+  "block.drinkbeer.spice_roasted_red_pine_nuts" : "烤红松松子",
+  "block.drinkbeer.spice_glace_goji_berries" : "糖渍枸杞",
+  "block.drinkbeer.spice_frozen_persimmon" : "冻柿子",
+  "block.drinkbeer.spice_roasted_pecans" : "烤山核桃仁",
+  "block.drinkbeer.spice_silver_needle_white_tea" : "银针白茶",
+  "block.drinkbeer.spice_golden_cinnamon_powder" : "黄金肉桂粉",
+  "block.drinkbeer.spice_dried_selaginella" : "干卷柏",
 
   "drinkbeer.flavor.spicy" : "辛辣的",
   "drinkbeer.flavor.fiery" : "火辣的",
@@ -70,12 +88,25 @@
   "drinkbeer.flavor.refreshing1" : "清爽的",
   "drinkbeer.flavor.stormy" : "风暴的",
   "drinkbeer.flavor.the_fall_of_the_giant" : "巨人的陨落",
-
-  "drinkbeer.flavor.spicy.tooltip" : "生命-3，状态效果时间+80%",
-  "drinkbeer.flavor.fiery.tooltip" : "生命-4，状态效果时间+100%",
+  "drinkbeer.flavor.nutty" : "坚果香气的",
+  "drinkbeer.flavor.sweet" : "香甜的",
+  "drinkbeer.flavor.luscious" : "甘甜的",
+  "drinkbeer.flavor.cloying" : "甜得发腻，但是我仍然喜欢它",
+  "drinkbeer.flavor.nutty1" : "坚果香气的",
+  "drinkbeer.flavor.mellow" : "醇厚的",
+  "drinkbeer.flavor.drying" : "干燥的",
+  
+  "drinkbeer.flavor.spicy.tooltip" : "生命值-3，状态效果时间+80%",
+  "drinkbeer.flavor.fiery.tooltip" : "生命值-4，状态效果时间+100%",
   "drinkbeer.flavor.aromatic.tooltip" : "状态效果时间+0:40",
   "drinkbeer.flavor.aromatic1.tooltip" : "状态效果时间+1:00",
   "drinkbeer.flavor.refreshing.tooltip" : "醉酒等级-1",
   "drinkbeer.flavor.refreshing1.tooltip" : "醉酒等级-2",
-  "drinkbeer.flavor.stormy.tooltip" : "\"只有风暴才能击倒大树!\""
+  "drinkbeer.flavor.stormy.tooltip" : "\"只有风暴才能击倒大树!\"",
+  "drinkbeer.flavor.nutty.tooltip" : "饥饿值回复+4",
+  "drinkbeer.flavor.sweet.tooltip" : "生命值回复+3",
+  "drinkbeer.flavor.luscious.tooltip" : "生命值回复+4",
+  "drinkbeer.flavor.nutty1.tooltip" : "饥饿值回复+5",
+  "drinkbeer.flavor.mellow.tooltip" : "抗性提升 1:20",
+  "drinkbeer.flavor.drying.tooltip" : "吸收你面前的水"
 }

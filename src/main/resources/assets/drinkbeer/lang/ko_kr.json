@@ -37,5 +37,7 @@
   "item.drinkbeer.beer_mug_night_howl_kvass.tooltip": "야간 투시 2:00-7:00 (달의 밝기에 따라 달라짐)",
 
   "drinkbeer.restores_hunger": "허기 회복: ",
-  "effect.drinkbeer.drunk_frost_walker": "차가운 술걸음"
+  "effect.drinkbeer.drunk_frost_walker": "차가운 술걸음",
+
+  "block.drinkbeer.mixed_beer" : "§r ☆"
 }

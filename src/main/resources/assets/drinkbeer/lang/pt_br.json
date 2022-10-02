@@ -17,7 +17,7 @@
   "block.drinkbeer.iron_call_bell": "Campainha de Ferro",
   "block.drinkbeer.golden_call_bell": "Campainha de Ouro",
 
-  "block.drinkbeer.recipe_board": "Quadro de Receita de Pale Ale Mineira",
+  "block.drinkbeer.recipe_board_beer_mug": "Quadro de Receita de Pale Ale Mineira",
   "block.drinkbeer.recipe_board_beer_mug_blaze_stout": "Quadro de Receita de Cerveja Preta",
   "block.drinkbeer.recipe_board_beer_mug_blaze_milk_stout": "Quadro de Receita de Cerveja Preta de Blaze",
   "block.drinkbeer.recipe_board_beer_mug_apple_lambic": "Quadro de Receita de Lambic de Maçã",
@@ -38,5 +38,7 @@
 
   "drinkbeer.restores_hunger": "Restaura a Fome: ",
   "effect.drinkbeer.drunk_frost_walker": "Caminhante de Geada Bêbado",
-  "effect.drinkbeer.drunk": "Bêbado"
+  "effect.drinkbeer.drunk": "Bêbado",
+
+   "block.drinkbeer.mixed_beer" : "§r ☆"
 }
