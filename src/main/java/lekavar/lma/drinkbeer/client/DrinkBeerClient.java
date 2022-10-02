@@ -11,7 +11,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
@@ -32,7 +32,7 @@ public class DrinkBeerClient implements ClientModInitializer {
         //Trade box's screen handler
         ScreenRegistry.register(DrinkBeer.TRADE_BOX_SCREEN_HANDLER, TradeBoxScreen::new);
         //Mixed beer entity's renderer
-        BlockEntityRendererRegistry.INSTANCE.register(DrinkBeer.MIXED_BEER_ENTITY, context -> new MixedBeerEntityRenderer());
+        BlockEntityRendererRegistry.register(DrinkBeer.MIXED_BEER_ENTITY, context -> new MixedBeerEntityRenderer());
         //Mixed beer's model predicate provider
         try {
             FabricModelPredicateProviderRegistry.register(DrinkBeer.MIXED_BEER.asItem(), new Identifier("beer_id"), (stack, world, entity, seed)

@@ -228,7 +228,8 @@ public class SpiceAndFlavorManager {
                 for (int z = zStart; z < zEnd; z++) {
                     BlockPos pos = user.getBlockPos().add(x, y, z);
                     BlockState blockState = world.getBlockState(pos);
-                    if (BlockTags.LOGS.contains(blockState.getBlock()) || BlockTags.LEAVES.contains(blockState.getBlock())) {
+
+                    if (blockState.isIn(BlockTags.LOGS) || blockState.isIn(BlockTags.LEAVES)) {
                         world.breakBlock(pos, true);
                     }
                 }

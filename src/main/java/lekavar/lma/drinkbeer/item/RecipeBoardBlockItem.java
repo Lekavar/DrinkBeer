@@ -9,8 +9,8 @@ import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -37,10 +37,10 @@ public class RecipeBoardBlockItem extends BlockItem {
         for (Map.Entry<List<Item>, Integer> materials : beerRecipe.getMaterialMap().entrySet()) {
             int materialNum = materials.getValue();
             List<Item> materialList = materials.getKey();
-            TranslatableText text = new TranslatableText(materialList.get(0).getTranslationKey());
+            MutableText text = Text.translatable(materialList.get(0).getTranslationKey());
             if (materialList.size() > 1) {
                 for (int i = 1; i < materialList.size(); i++) {
-                    text.append(" / ").append(new TranslatableText(materialList.get(i).getTranslationKey()));
+                    text.append(" / ").append(Text.translatable(materialList.get(i).getTranslationKey()));
                 }
             }
             text.append(" x ").append(String.valueOf(materialNum));

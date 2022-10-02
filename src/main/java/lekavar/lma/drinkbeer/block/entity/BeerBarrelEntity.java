@@ -15,7 +15,6 @@ import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -78,12 +77,11 @@ public class BeerBarrelEntity extends BlockEntity implements ImplementedInventor
 
     @Override
     public Text getDisplayName() {
-        return new TranslatableText(getCachedState().getBlock().getTranslationKey());
+        return Text.translatable(getCachedState().getBlock().getTranslationKey());
     }
 
     @Override
-    public NbtCompound writeNbt(NbtCompound tag) {
-        super.writeNbt(tag);
+    public void writeNbt(NbtCompound tag) {
         Inventories.writeNbt(tag,inventory);
         tag.putShort("RemainingBrewTime", (short)this.remainingBrewingTime);
         tag.putShort("IsMaterialCompleted", (short)this.isMaterialCompleted);
@@ -91,7 +89,8 @@ public class BeerBarrelEntity extends BlockEntity implements ImplementedInventor
         tag.putShort("IsBrewing", (short)this.isBrewing);
         tag.putShort("BeerResultNum", (short)this.beerResultNum);
 
-        return tag;
+
+        super.writeNbt(tag);
     }
 
     @Override

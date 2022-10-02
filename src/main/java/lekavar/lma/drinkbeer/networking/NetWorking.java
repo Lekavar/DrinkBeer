@@ -3,9 +3,8 @@ package lekavar.lma.drinkbeer.networking;
 import io.netty.buffer.Unpooled;
 import lekavar.lma.drinkbeer.block.entity.TradeboxEntity;
 import lekavar.lma.drinkbeer.screen.TradeBoxScreenHandler;
-import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
-import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
-import net.minecraft.entity.player.PlayerEntity;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.util.Identifier;
@@ -19,12 +18,11 @@ public class NetWorking {
     }
 
     public static void initServer(){
-        ServerSidePacketRegistry.INSTANCE.register(SEND_REFRESH_TRADEBOX, (packetContext, packetByteBuf)->{
-            ScreenHandler screenHandler = packetContext.getPlayer().currentScreenHandler;
+        ServerPlayNetworking.registerGlobalReceiver(SEND_REFRESH_TRADEBOX, (server, player, handler, buf, responseSender)->{
+            ScreenHandler screenHandler = player.currentScreenHandler;
             if (screenHandler instanceof TradeBoxScreenHandler) {
-                BlockPos pos = packetByteBuf.readBlockPos();
-                PlayerEntity player = packetContext.getPlayer();
-                packetContext.getTaskQueue().execute(() -> {
+                BlockPos pos = buf.readBlockPos();
+                server.execute(() -> {
                     TradeboxEntity tradeboxEntity = (TradeboxEntity) player.world.getBlockEntity(pos);
                     tradeboxEntity.screenHandler.setTradeboxCooling();
                 });
@@ -35,6 +33,6 @@ public class NetWorking {
     public static void sendRefreshTradebox(BlockPos pos) {
         PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
         buf.writeBlockPos(pos);
-        ClientSidePacketRegistry.INSTANCE.sendToServer(SEND_REFRESH_TRADEBOX, buf);
+        ClientPlayNetworking.send(SEND_REFRESH_TRADEBOX, buf);
     }
 }

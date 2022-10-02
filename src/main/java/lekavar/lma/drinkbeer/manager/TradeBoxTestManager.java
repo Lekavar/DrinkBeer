@@ -3,7 +3,7 @@ package lekavar.lma.drinkbeer.manager;
 import lekavar.lma.drinkbeer.util.tradebox.Good;
 import lekavar.lma.drinkbeer.util.tradebox.Locations;
 import lekavar.lma.drinkbeer.util.tradebox.Residents;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.Text;
 
 import java.util.List;
 
@@ -18,22 +18,22 @@ public class TradeBoxTestManager {
                     if (location.equals(Locations.EMPTY_LOCATION))
                         continue;
                     System.out.println("|");
-                    System.out.println("|  ■■ Location:" + new TranslatableText(TradeboxManager.getLocationTranslationKey(location)).getString() + " ■■");
+                    System.out.println("|  ■■ Location:" + Text.translatable(TradeboxManager.getLocationTranslationKey(location)).getString() + " ■■");
                     List<Residents> residentList = Residents.getList(location);
                     if (residentList != null) {
                         if (!residentList.isEmpty()) {
                             for (Residents resident : residentList) {
                                 System.out.println("|");
-                                System.out.println("|  ■ Resident:" + new TranslatableText(TradeboxManager.getResidentTranslationKey(resident)).getString() + " ■");
+                                System.out.println("|  ■ Resident:" + Text.translatable(TradeboxManager.getResidentTranslationKey(resident)).getString() + " ■");
                                 List<Good> GoodFromLocationList = TradeboxManager.getGoodListByResident(resident.getId(), Good.TO);
-                                System.out.println("|  ❤ " + new TranslatableText(TradeboxManager.getResidentTranslationKey(resident)).getString() + " wants ❤");
+                                System.out.println("|  ❤ " + Text.translatable(TradeboxManager.getResidentTranslationKey(resident)).getString() + " wants ❤");
                                 for (Good good : GoodFromLocationList) {
                                     System.out.println("|  |  " + good.getGoodItem().getName().getString()
                                             + ", " + (good.getMinCount() == good.getMaxCount() ? good.getMinCount() : (good.getMinCount() + "-" + good.getMaxCount()))
                                             + ", " + getRarityName(good.getRarity())
                                     );
                                 }
-                                System.out.println("|  😀 " + new TranslatableText(TradeboxManager.getResidentTranslationKey(resident)).getString() + " will give 😀");
+                                System.out.println("|  😀 " + Text.translatable(TradeboxManager.getResidentTranslationKey(resident)).getString() + " will give 😀");
                                 List<Good> GoodToLocationList = TradeboxManager.getGoodListByResident(resident.getId(), Good.FROM);
                                 for (Good good : GoodToLocationList) {
                                     System.out.println("|  |  " + good.getGoodItem().getName().getString()

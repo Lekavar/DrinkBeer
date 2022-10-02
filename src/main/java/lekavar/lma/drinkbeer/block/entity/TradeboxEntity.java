@@ -18,7 +18,6 @@ import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -101,7 +100,7 @@ public class TradeboxEntity extends BlockEntity implements ImplementedInventory,
 
     @Override
     public Text getDisplayName() {
-        return new TranslatableText(getCachedState().getBlock().getTranslationKey());
+        return Text.translatable(getCachedState().getBlock().getTranslationKey());
     }
 
     @Override
@@ -111,15 +110,14 @@ public class TradeboxEntity extends BlockEntity implements ImplementedInventory,
     }
 
     @Override
-    public NbtCompound writeNbt(NbtCompound tag) {
-        super.writeNbt(tag);
+    public void writeNbt(NbtCompound tag) {
         Inventories.writeNbt(tag, this.goodInventory);
         tag.putShort("CoolingTime", (short) this.coolingTime);
         tag.putShort("LocationId", (short) this.locationId);
         tag.putShort("ResidentId", (short) this.residentId);
         tag.putShort("Process", (short) this.process);
 
-        return tag;
+        super.writeNbt(tag);
     }
 
     @Override

@@ -2,15 +2,12 @@ package lekavar.lma.drinkbeer.block.entity;
 
 import lekavar.lma.drinkbeer.DrinkBeer;
 import lekavar.lma.drinkbeer.manager.MixedBeerManager;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
-import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,8 +35,8 @@ public class MixedBeerEntity extends BlockEntity {
     }
 
     @Override
-    public NbtCompound writeNbt(NbtCompound tag) {
-        super.writeNbt(tag);
+    public void writeNbt(NbtCompound tag) {
+        
         //Write beerId
         tag.putShort("beerId", (short) this.beerId);
 
@@ -49,7 +46,7 @@ public class MixedBeerEntity extends BlockEntity {
             tag.put("Spices", listTag);
         }
 
-        return tag;
+        super.writeNbt(tag);
     }
 
     @Override
@@ -69,7 +66,7 @@ public class MixedBeerEntity extends BlockEntity {
         }
     }
 
-    @Environment(EnvType.CLIENT)
+    // @Environment(EnvType.CLIENT)
     public ItemStack getPickStack(BlockState state) {
         //Generate mixed beer item stack for dropping
         ItemStack resultStack = MixedBeerManager.genMixedBeerItemStack(this.beerId, this.spiceList);
@@ -83,11 +80,6 @@ public class MixedBeerEntity extends BlockEntity {
     @Nullable
     @Override
     public BlockEntityUpdateS2CPacket toUpdatePacket() {
-        return new BlockEntityUpdateS2CPacket(this.pos, 6, this.toInitialChunkDataNbt());
-    }
-
-    @Override
-    public NbtCompound toInitialChunkDataNbt() {
-        return this.writeNbt((new NbtCompound()));
+        return BlockEntityUpdateS2CPacket.create(this);
     }
 }

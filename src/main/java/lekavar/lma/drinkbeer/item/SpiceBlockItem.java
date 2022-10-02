@@ -12,7 +12,6 @@ import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -31,14 +30,14 @@ public class SpiceBlockItem extends BlockItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         //Spice title
-        tooltip.add(new TranslatableText(SpiceAndFlavorManager.getSpiceToolTipTranslationKey()).formatted(Formatting.YELLOW));
+        tooltip.add(Text.translatable(SpiceAndFlavorManager.getSpiceToolTipTranslationKey()).formatted(Formatting.YELLOW));
         //Flavor title
-        tooltip.add(new TranslatableText(SpiceAndFlavorManager.getFlavorToolTipTranslationKey()).append(":").formatted(Formatting.WHITE));
+        tooltip.add(Text.translatable(SpiceAndFlavorManager.getFlavorToolTipTranslationKey()).append(":").formatted(Formatting.WHITE));
         //Flavor and tooltip
         Flavors flavor = Spices.byItem(this.asItem()).getFlavor();
-        tooltip.add(new TranslatableText(SpiceAndFlavorManager.getFlavorTranslationKey(flavor.getId()))
+        tooltip.add(Text.translatable(SpiceAndFlavorManager.getFlavorTranslationKey(flavor.getId()))
                 .append("(")
-                .append(new TranslatableText(SpiceAndFlavorManager.getFlavorToolTipTranslationKey(flavor.getId())))
+                .append(Text.translatable(SpiceAndFlavorManager.getFlavorToolTipTranslationKey(flavor.getId())))
                 .append(")")
                 .formatted(Formatting.RED));
     }
