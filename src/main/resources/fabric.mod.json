@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "drinkbeer",
-  "version": "3.1",
+  "version": "${version}",
 
   "name": "Drink Beer",
   "description": "Brewing placeable and drinkable beers in Minecraft!",
