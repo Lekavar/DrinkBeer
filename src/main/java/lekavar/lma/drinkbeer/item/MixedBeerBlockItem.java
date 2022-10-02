@@ -15,7 +15,6 @@ import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.*;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -31,48 +30,48 @@ public class MixedBeerBlockItem extends BeerBlockItem {
     @Environment(EnvType.CLIENT)
     public void appendMixedBeerTooltip(ItemStack stack, List<Text> tooltip) {
         //Base title
-        tooltip.add(new TranslatableText(MixedBeerManager.getBaseBeerToolTipTranslationKey()).append(":").formatted(Formatting.WHITE));
+        tooltip.add(Text.translatable(MixedBeerManager.getBaseBeerToolTipTranslationKey()).append(":").formatted(Formatting.WHITE));
         //Base beer
         int beerId = MixedBeerManager.getBeerId(stack);
         Item beerItem = Beers.byId(beerId).getBeerItem();
         String beerName = beerId > Beers.EMPTY_BEER_ID ? beerItem.getTranslationKey()
                 : MixedBeerManager.getUnmixedToolTipTranslationKey();
-        tooltip.add(new TranslatableText(beerName).formatted(Formatting.BLUE));
+        tooltip.add(Text.translatable(beerName).formatted(Formatting.BLUE));
         //Base status effect tooltip
         if (beerId > Beers.EMPTY_BEER_ID) {
             String name = beerItem.asItem().toString();
             if (Beers.byId(beerId).getHasStatusEffectTooltip()) {
-                tooltip.add(new TranslatableText("item.drinkbeer." + name + ".tooltip").formatted(Formatting.BLUE));
+                tooltip.add(Text.translatable("item.drinkbeer." + name + ".tooltip").formatted(Formatting.BLUE));
             }
         }
         //Base food level
         if (beerId > Beers.EMPTY_BEER_ID) {
             Text hunger = Text.of(String.valueOf(beerItem.getFoodComponent().getHunger()));
-            tooltip.add(new TranslatableText("drinkbeer.restores_hunger").formatted(Formatting.BLUE).append(hunger));
+            tooltip.add(Text.translatable("drinkbeer.restores_hunger").formatted(Formatting.BLUE).append(hunger));
         }
 
         //Flavor title
-        tooltip.add(new TranslatableText(SpiceAndFlavorManager.getFlavorToolTipTranslationKey()).append(":").formatted(Formatting.WHITE));
+        tooltip.add(Text.translatable(SpiceAndFlavorManager.getFlavorToolTipTranslationKey()).append(":").formatted(Formatting.WHITE));
         //Flavor
         List<Integer> spiceList = MixedBeerManager.getSpiceList(stack);
         if (!spiceList.isEmpty()) {
             for (int spiceId : spiceList) {
                 Flavors flavor = Spices.byId(spiceId).getFlavor();
-                tooltip.add(new TranslatableText(SpiceAndFlavorManager.getFlavorTranslationKey(flavor.getId()))
+                tooltip.add(Text.translatable(SpiceAndFlavorManager.getFlavorTranslationKey(flavor.getId()))
                         .append("(")
-                        .append(new TranslatableText(SpiceAndFlavorManager.getFlavorToolTipTranslationKey(flavor.getId())))
+                        .append(Text.translatable(SpiceAndFlavorManager.getFlavorToolTipTranslationKey(flavor.getId())))
                         .append(")")
                         .formatted(Formatting.RED));
             }
         } else {
-            tooltip.add(new TranslatableText(SpiceAndFlavorManager.getNoFlavorToolTipTranslationKey()).formatted(Formatting.RED));
+            tooltip.add(Text.translatable(SpiceAndFlavorManager.getNoFlavorToolTipTranslationKey()).formatted(Formatting.RED));
         }
         //Flavor combination(if exists)
         Flavors combinedFlavor = SpiceAndFlavorManager.getCombinedFlavor(spiceList);
         if (combinedFlavor != null) {
-            tooltip.add(new TranslatableText("")
+            tooltip.add(Text.empty()
                     .append("\"")
-                    .append(new TranslatableText(SpiceAndFlavorManager.getFlavorTranslationKey(combinedFlavor.getId())))
+                    .append(Text.translatable(SpiceAndFlavorManager.getFlavorTranslationKey(combinedFlavor.getId())))
                     .append("\"")
                     .formatted(Formatting.DARK_RED));
         }
@@ -88,7 +87,7 @@ public class MixedBeerBlockItem extends BeerBlockItem {
         int beerId = MixedBeerManager.getBeerId(stack);
         Item beerItem = Beers.byId(beerId).getBeerItem();
         String beerName = beerId > Beers.EMPTY_BEER_ID ? beerItem.getTranslationKey() : "";
-        Text name = new TranslatableText(beerName).append(new TranslatableText(MixedBeerManager.getMixedBeerTranslationKey())).formatted(Formatting.YELLOW);
+        Text name = Text.translatable(beerName).append(Text.translatable(MixedBeerManager.getMixedBeerTranslationKey())).formatted(Formatting.YELLOW);
         return name;
     }
 

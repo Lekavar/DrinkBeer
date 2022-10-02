@@ -14,7 +14,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -45,10 +44,10 @@ public class BeerMugBlockItem extends BeerBlockItem {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         String name = this.asItem().toString();
         if (Beers.byItem(this.asItem()).getHasStatusEffectTooltip()) {
-            tooltip.add(new TranslatableText("item.drinkbeer." + name + ".tooltip").formatted(Formatting.BLUE));
+            tooltip.add(Text.translatable("item.drinkbeer." + name + ".tooltip").formatted(Formatting.BLUE));
         }
         Text hunger = Text.of(String.valueOf(asItem().getFoodComponent().getHunger()));
-        tooltip.add(new TranslatableText("drinkbeer.restores_hunger").formatted(Formatting.BLUE).append(hunger));
+        tooltip.add(Text.translatable("drinkbeer.restores_hunger").formatted(Formatting.BLUE).append(hunger));
     }
 
     @Override

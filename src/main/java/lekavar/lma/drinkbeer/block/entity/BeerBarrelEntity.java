@@ -15,7 +15,6 @@ import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -78,7 +77,7 @@ public class BeerBarrelEntity extends BlockEntity implements ImplementedInventor
 
     @Override
     public Text getDisplayName() {
-        return new TranslatableText(getCachedState().getBlock().getTranslationKey());
+        return Text.translatable(getCachedState().getBlock().getTranslationKey());
     }
 
     @Override
